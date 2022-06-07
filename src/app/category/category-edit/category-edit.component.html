@@ -1,1 +1,13 @@
-<p>category-edit works!</p>
+<h1>Update Category</h1>
+<form [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">
+  <table>
+    <tr>
+      <th>Name:</th>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Update</button></td>
+    </tr>
+  </table>
+</form>
