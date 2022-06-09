@@ -1,9 +1,11 @@
 export interface Wallet {
-  id?: number;
+  id ?: number;
+  icon?: string;
   name?: string;
-  amount?: string;
+  total?: number;
+  balance?: number;
+  date?: any;
   note?: string;
-  date?: string;
-  currency?: any;
+  moneyType?: any;
   user?: any;
 }

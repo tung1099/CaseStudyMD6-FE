@@ -11,6 +11,14 @@ const routes: Routes = [
     path: 'transaction',
     loadChildren: () => import('./transaction/transaction.module').then(module => module.TransactionModule)
   },
+  {
+    path: 'wallet',
+    loadChildren: () => import('./wallet/wallet.module').then(module => module.WalletModule)
+  },
+  {
+    path: 'type',
+    loadChildren: () => import('./moneytype/moneytype.module').then(module => module.MoneytypeModule)
+  }
 ];
 
 @NgModule({
