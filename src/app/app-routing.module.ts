@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: () => import('./category/category.module').then(module => module.CategoryModule)
   },
   {
+    path: 'transaction',
+    loadChildren: () => import('./transaction/transaction.module').then(module => module.TransactionModule)
+  },
+  {
     path: 'money',
     loadChildren: () => import('./add-money/add-money.module').then(module => module.AddMoneyModule)
   },

@@ -1,0 +1,48 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+<!--            <h3 class="card-title">-->
+<!--              <a class="btn btn-primary" routerLink="/transaction/createTransaction">Add new transaction</a>-->
+<!--            </h3>-->
+          </div>
+          <div class="card-body">
+            <table id="transaction" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>Stt</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Wallet</th>
+                <th>Note</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let transaction of transaction; index as i">
+                <td>{{i+1}}</td>
+                <td>{{transaction.category}}</td>
+                <td>{{transaction.amount}}</td>
+                <td>{{transaction.wallet}}</td>
+                <td>{{transaction.note}}</td>
+                <td>
+                  <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
+                    <span class="fas fa-edit">edit</span>
+                  </a>
+                </td>
+                <td>
+                  <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
+                    <span class="fas fa-trash">delete</span>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -19,6 +19,6 @@ export class AddMoneyService {
   }
 
   getAllWallet(): Observable<AddMoney[]> {
-    return this.http.get<AddMoney[]>(API_URL + '/addMoney');
+    return this.http.get<AddMoney[]>(API_URL + '/wallet/list');
   }
 }

@@ -19,7 +19,7 @@ export class WalletListComponent implements OnInit {
   }
 
   private getAllWallet() {
-    this.walletService.getAllWallet().subscribe(wallets => {
+    this.walletService.getAll().subscribe(wallets => {
       this.wallets = wallets;
     });
   }
