@@ -8,9 +8,10 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 
 @NgModule({
   declarations: [NavBarComponent, SideBarComponent],
-  exports: [
-    NavBarComponent
-  ],
+    exports: [
+        NavBarComponent,
+        SideBarComponent
+    ],
   imports: [
     CommonModule,
     SharedRoutingModule
