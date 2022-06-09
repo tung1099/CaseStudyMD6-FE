@@ -1,1 +1,78 @@
-<p>wallet-create works!</p>
+<!--<div class="content-wrapper">-->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Tạo ví</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Tạo ví mới</h3>
+          </div>
+          <form [formGroup]="walletForm" (ngSubmit)="createWallet()" enctype="multipart/form-data">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <label for="name">Tên ví</label>
+                  <input class="form-control" type="text" formControlName="name" id="name" placeholder="Nhập tên ví">
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="icon">Icon</label>
+                    <input type="file" id="icon"  formControlName="icon"
+                           (change)="onSelectFile($event)" accept="image/**" multiple>
+                  </div>
+                </div>
+                <div class="col-5">
+                  <label for="total">Số tiền nạp</label>
+                  <input class="form-control" type="text" formControlName="total" id="total" placeholder="Nhập số tiền">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  <label for="type">Loại tiền</label><br>
+                  <select class="form-control" id="type" formControlName="moneyType">-->
+                    <ng-container *ngFor="let m of moneyTypes">
+                      <option [value]="m.id">{{m.name}}</option>
+                    </ng-container>
+                  </select>
+                </div>
+                <br>
+                <div class="col-sm-7">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Tạo mới</button>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+      <!--/.col (left) -->
+      <!-- right column -->
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<!--</div>-->
+

@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(module => module.WalletModule)
   },
+  {
+    path: 'type',
+    loadChildren: () => import('./moneytype/moneytype.module').then(module => module.MoneytypeModule)
+  }
 ];
 
 @NgModule({
