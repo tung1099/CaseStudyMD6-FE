@@ -25,6 +25,7 @@
                   <div class="col-3">
                     <label for="wallet">Ví</label>
                     <select class="form-control" id="wallet" formControlName="wallet">
+                      <option [value]="null">Chọn ví</option>
                       <ng-container *ngFor="let wallet of wallet">
                         <option [value]="wallet.id">{{wallet.name}}</option>
                       </ng-container>
@@ -34,6 +35,7 @@
                     <div class="form-group">
                       <label for="category">Thể loại tiêu dùng</label>
                       <select class="form-control" id="category" formControlName="category">
+                        <option [value]="null">Chọn thể loại tiêu dùng</option>
                         <ng-container *ngFor="let category of categories">
                           <option [value]="category.id">{{category.name}}</option>
                         </ng-container>
@@ -49,7 +51,7 @@
                 <div class="row">
                     <div class="col-5">
                       <label for="date">Ngày giao dịch</label><br>
-                      <input class="form-control" type="text" formControlName="date" id="date" placeholder="yyyy-mm-dd">
+                      <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
                     </div>
                   <br>
 
