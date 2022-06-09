@@ -17,22 +17,15 @@ import { TransactionEditComponent } from './transaction/transaction-edit/transac
 import { TransactionDeleteComponent } from './transaction/transaction-delete/transaction-delete.component';
 import {SharedModule} from './shared/shared.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // CategoryListComponent,
-    // CategoryCreateComponent,
-    // CategoryEditComponent,
-    // CategoryDeleteComponent,
-    // WalletListComponent,
-    // WalletCreateComponent,
-    // WalletEditComponent,
-    // WalletDeleteComponent,
-    // TransactionListComponent,
     // TransactionCreateComponent,
+    // TransactionListComponent,
+    // TransactionDeleteComponent,
     // TransactionEditComponent,
-    // TransactionDeleteComponent
   ],
   imports: [
     BrowserModule,

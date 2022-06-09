@@ -1,9 +1,43 @@
 import { Injectable } from '@angular/core';
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Transaction} from '../../model/transaction';
+import {TransactionToday} from '../../model/transactionToday';
+import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
 
+
+
+const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  create(data): Observable<Transaction> {
+    return this.http.post(`${API_URL}/transaction/create`, data);
+  }
+  getAll(): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/listTransaction`);
+  }
+  update(id, data): Observable<Transaction> {
+    return this.http.put(`${API_URL}/transaction/editTransaction/${id}`, data);
+  }
+  findById(id): Observable<Transaction> {
+    return this.http.get<Transaction>(`${API_URL}/transaction/findTransactionById/${id}`);
+  }
+  delete(id): Observable<Transaction> {
+    return this.http.delete(`${API_URL}/transaction/deleteTransaction/${id}`);
+  }
+  getAllTransactionToday(): Observable<TransactionToday[]> {
+    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDay`);
+  }
+  getAllTransactionTodayByWallet(id): Observable<TransactionToday[]> {
+    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);
+  }
+  getSumTransactionTodayByWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
+    return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionInDay/${id}`);
+  }
 }

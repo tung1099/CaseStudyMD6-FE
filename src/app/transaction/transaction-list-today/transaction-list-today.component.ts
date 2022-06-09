@@ -3,11 +3,11 @@ import {Transaction} from '../../model/transaction';
 import {TransactionService} from '../../service/transaction/transaction.service';
 
 @Component({
-  selector: 'app-transaction-list',
-  templateUrl: './transaction-list.component.html',
-  styleUrls: ['./transaction-list.component.css']
+  selector: 'app-transaction-list-today',
+  templateUrl: './transaction-list-today.component.html',
+  styleUrls: ['./transaction-list-today.component.css']
 })
-export class TransactionListComponent implements OnInit {
+export class TransactionListTodayComponent implements OnInit {
 
   transaction: Transaction[] = [];
   constructor(
@@ -19,7 +19,7 @@ export class TransactionListComponent implements OnInit {
   }
 
   private getAllTransaction() {
-    this.transactionService.getAll().subscribe(transaction1 => {
+    this.transactionService.getAllTransactionToday().subscribe(transaction1 => {
       this.transaction = transaction1;
     });
   }
