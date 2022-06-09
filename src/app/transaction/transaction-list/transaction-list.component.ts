@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Transaction} from '../../model/transaction';
 import {TransactionService} from '../../service/transaction/transaction.service';
+declare var $: any;
 
 @Component({
   selector: 'app-transaction-list',
