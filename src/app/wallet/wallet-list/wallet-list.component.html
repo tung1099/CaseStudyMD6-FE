@@ -1,1 +1,29 @@
-<p>wallet-list works!</p>
+<h1>Wallet list</h1>
+<a routerLink="/wallet/create">Add Category</a>
+<br>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Icon</th>
+    <th>Name</th>
+    <th>Total</th>
+    <th>Balance</th>
+    <th>Date</th>
+    <th>Note</th>
+    <th>Type</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let w of wallets; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{w.icon}}</td>
+    <td>{{w.name}}</td>
+    <td>{{w.total}}</td>
+    <td>{{w.balance}}</td>
+    <td>{{w.date}}</td>
+    <td>{{w.note}}</td>
+    <td>{{w.moneyType}}</td>
+    <td><a [routerLink]="['/category/edit',w.id]">Edit</a></td>
+    <td><a [routerLink]="['/category/delete',w.id]">Delete</a></td>
+  </tr>
+</table>

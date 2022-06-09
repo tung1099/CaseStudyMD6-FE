@@ -1,0 +1,25 @@
+<h1>Add Money</h1>
+<form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
+  <table>
+    <tr>
+      <th>Money:</th>
+      <td><input type="text" formControlName="money"></td>
+    </tr>
+<!--    <tr>-->
+<!--      <th>Date:</th>-->
+<!--      <td><input type="date" formControlName="date"></td>-->
+<!--    </tr>-->
+    <tr>
+      <select id="wallet" formControlName="wallet">
+        <option selected [value]="null" disabled>Chọn</option>
+        <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>
+      </select>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Add</button>
+      </td>
+    </tr>
+  </table>
+</form>
