@@ -1,40 +1,3 @@
-<!--<h1>Edit transaction</h1>-->
-<!--<form [formGroup]="transactionForm" (ngSubmit)="update()">-->
-<!--  <div>-->
-<!--    <label for="wallet">Chon vi</label>-->
-<!--    <select id="wallet" formControlName="wallet">-->
-<!--      <ng-container *ngFor="let wallet of wallet">-->
-<!--        <option [value]="wallet.id">{{wallet.name}}</option>-->
-<!--      </ng-container>-->
-<!--    </select>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <label for="category">Chon danh muc</label>-->
-<!--    <select id="category" formControlName="category">-->
-<!--      <ng-container *ngFor="let category of categories">-->
-<!--        <option [value]="category.id">{{category.name}}</option>-->
-<!--      </ng-container>-->
-<!--    </select>-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <label for="amount">Nhap gia</label>-->
-<!--    <input type="text" formControlName="amount" id="amount">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <label for="date">Nhap ngay giao dich</label>-->
-<!--    <input type="text" formControlName="date" id="date">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <label for="note">Ghi chu</label>-->
-<!--    <input type="text" formControlName="note" id="note">-->
-<!--  </div>-->
-<!--  <div>-->
-<!--    <button>edit</button>-->
-<!--  </div>-->
-
-<!--</form>-->
-
-
 
 <section class="content-header">
   <div class="container-fluid">
@@ -84,7 +47,7 @@
               <div class="row">
                 <div class="col-5">
                   <label for="date">Ngày giao dịch</label><br>
-                  <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
+                  <input class="form-control" type="date" formControlName="date" id="date">
                 </div>
                 <br>
 
@@ -95,10 +58,6 @@
                     <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
                   </div>
                 </div>
-                <!--                    <div class="col-7">-->
-                <!--                      <label for="note">Ghi chu </label>-->
-                <!--                      <input type="text" formControlName="note" id="note">-->
-                <!--                    </div>-->
               </div>
 
             </div>
