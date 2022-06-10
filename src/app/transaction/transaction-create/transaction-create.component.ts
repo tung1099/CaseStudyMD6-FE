@@ -6,7 +6,7 @@ import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {Router} from '@angular/router';
-import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-transaction-create',
