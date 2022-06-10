@@ -22,7 +22,7 @@
     <td>{{w.balance}}</td>
     <td>{{w.date}}</td>
     <td>{{w.note}}</td>
-    <td>{{w.moneyType}}</td>
+    <td>{{w.moneyType.name}}</td>
     <td><a [routerLink]="['/category/edit',w.id]">Edit</a></td>
     <td><a [routerLink]="['/category/delete',w.id]">Delete</a></td>
   </tr>
