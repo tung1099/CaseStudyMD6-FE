@@ -1,0 +1,19 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Đăng kí tài khoản </h2>
+    <!-- Login Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+      <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
+      <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
+      <input type="password" id="passwordConfirm" class="fadeIn third" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu">
+      <input type="submit" class="fadeIn fourth" value="Đăng Kí">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login">Đăng nhập</a>
+    </div>
+  </div>
+</div>

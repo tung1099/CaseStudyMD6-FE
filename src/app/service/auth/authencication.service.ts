@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
+import {User} from '../../model/user';
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -27,7 +28,15 @@ export class AuthencicationService {
         return user;
       }));
   }
+  logout() {
+    localStorage.clear();
+    this.currentUserSubject.next(null);
+  }
   get currentUserValue() {
     return this.currentUserSubject.value;
+  }
+
+  register(singUpForm): Observable<User> {
+    return this.http.post(`${API_URL}/register`, singUpForm);
   }
 }
