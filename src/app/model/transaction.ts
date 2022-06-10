@@ -1,8 +1,8 @@
 export interface Transaction {
   id?: number;
   amount?: string;
-  note?: string;
   date?: string;
+  note?: string;
   category?: any;
   wallet?: any;
 }

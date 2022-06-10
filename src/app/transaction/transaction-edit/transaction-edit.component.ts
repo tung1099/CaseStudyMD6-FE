@@ -7,6 +7,7 @@ import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-transaction-edit',
@@ -14,7 +15,7 @@ import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
   styleUrls: ['./transaction-edit.component.css']
 })
 export class TransactionEditComponent implements OnInit {
-
+  idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -29,12 +30,14 @@ export class TransactionEditComponent implements OnInit {
     private categoryService: CategoryService,
     private sweetAlertService: SweetAlertService,
     private walletService: WalletService,
+    private authService: AuthencicationService,
     private transactionService: TransactionService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
+      this.idUser = this.authService.currentUserValue.id;
       this.getTransactionById(id);
     });
   }
@@ -86,7 +89,7 @@ export class TransactionEditComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.transactionService.update(this.idControl.value, data).subscribe(() => {
+    this.transactionService.update(this.idControl.value, this.idUser , data).subscribe(() => {
       this.sweetAlertService.showNotification('success', 'Xong');
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

@@ -17,14 +17,14 @@ export class TransactionService {
 
   constructor(private http: HttpClient) { }
 
-  create(data): Observable<Transaction> {
-    return this.http.post(`${API_URL}/transaction/create`, data);
+  create(id, data): Observable<Transaction> {
+    return this.http.post(`${API_URL}/transaction/create/${id}`, data);
   }
-  getAll(): Observable<Transaction[]> {
-    return this.http.get<Transaction[]>(`${API_URL}/transaction/listTransaction`);
+  getAll(idUser): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/listTransaction/${idUser}`);
   }
-  update(id, data): Observable<Transaction> {
-    return this.http.put(`${API_URL}/transaction/editTransaction/${id}`, data);
+  update(id, idUser, data): Observable<Transaction> {
+    return this.http.put(`${API_URL}/transaction/editTransaction/${id}/${idUser}`, data);
   }
   findById(id): Observable<Transaction> {
     return this.http.get<Transaction>(`${API_URL}/transaction/findTransactionById/${id}`);
