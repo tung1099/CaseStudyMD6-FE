@@ -26,7 +26,7 @@ export class WalletCreateComponent implements OnInit {
     total: new FormControl(),
     moneyType: new FormControl(),
     note: new FormControl(),
-    // user: new FormControl()
+    user: new FormControl()
   });
 
 
@@ -56,6 +56,12 @@ export class WalletCreateComponent implements OnInit {
       alert(error);
     });
   }
+  // createWallet() {
+  //   const wallet = this.walletForm.value;
+  //   this.walletService.create(wallet).subscribe(() => {
+  //     this.router.navigateByUrl('/wallet/list');
+  //   });
+  // }
 
 
 }
