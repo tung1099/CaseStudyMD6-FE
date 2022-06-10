@@ -30,7 +30,15 @@ export class LoginComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500});
       this.router.navigate(['category/list']);
-    });
+    }, error => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Sai tên đăng nhập hoặc mật khẩu!',
+        showConfirmButton: false,
+        timer: 1500});
+      }
+    );
   }
 
 }
