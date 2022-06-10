@@ -8,6 +8,7 @@ import {TransactionListTodayComponent} from './transaction-list-today/transactio
 import {
   TransactionListTodayWalletComponent
 } from './transaction-list-today-wallet/transaction-list-today-wallet.component';
+import {TransacsionAllWalletComponent} from './transacsion-all-wallet/transacsion-all-wallet.component';
 
 
 
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'listTransactionTodayByIdWallet/:id',
     component: TransactionListTodayWalletComponent
+  },
+  {
+    path: 'listTransactionByIdWallet/:id',
+    component: TransacsionAllWalletComponent
   },
 ];
 

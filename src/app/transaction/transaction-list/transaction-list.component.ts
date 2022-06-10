@@ -10,6 +10,7 @@ declare var $: any;
 })
 export class TransactionListComponent implements OnInit {
 
+  date: Date[] = [];
   transaction: Transaction[] = [];
   constructor(
     private transactionService: TransactionService
