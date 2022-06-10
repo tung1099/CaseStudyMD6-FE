@@ -6,13 +6,36 @@
     <form [formGroup]="signUpForm" (ngSubmit)="register()">
 
       <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
-
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.email">Vui lòng nhập đúng (abc@gmail.com)</span>
+        <span class="col alert alert-danger" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.pattern">Không nhập các ký tự đặc biệt (*, %, , ')!</span>
+      </div>
       <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.minlength">Hãy nhập tối thiểu 6 ký tự</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.maxlength">Hãy nhập tối đa 32 ký tự</span>
+      </div>
       <input type="password" id="passwordConfirm" class="fadeIn third" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.confirmPassword?.errors?.required">Vui lòng không để trống</span>
+      </div>
       <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Tên">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.name?.touched || submitted) && signUpForm.controls.name?.errors?.required">Vui lòng không để trống</span>
+      </div>
       <input type="text" id="phoneNumber" class="fadeIn second" formControlName="phoneNumber" placeholder="Số điện thoại">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.pattern">SĐT có 10 hoặc 11 số, bắt đầu bằng số 0!</span>
+      </div>
       <input type="date" id="birthDay" class="fadeIn second" formControlName="birthDay" placeholder="Ngày sinh">
       <input type="text" id="address" class="fadeIn second" formControlName="address" placeholder="Địa chỉ">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.address?.touched || submitted) && signUpForm.controls.address?.errors?.required">Vui lòng không để trống</span>
+
+      </div>
       <input type="submit" class="fadeIn fourth" value="Đăng Kí">
     </form>
 
