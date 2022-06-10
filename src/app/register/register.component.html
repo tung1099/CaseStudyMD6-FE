@@ -1,0 +1,28 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Đăng kí tài khoản </h2>
+    <!-- Login Form -->
+    <form [formGroup]="signUpForm" (ngSubmit)="register()">
+
+      <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
+
+      <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
+      <span class="col alert alert-danger" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.required">Hãy nhập passwword</span>
+      <span class="col alert alert-danger" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.minlength">Hãy nhập tối thiểu 6 ký tự</span>
+      <span class="col alert alert-danger" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.maxlength">Hãy nhập tối đa 32 ký tự</span>
+  </div>
+      <input type="password" id="passwordConfirm" class="fadeIn third" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu">
+      <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Tên">
+      <input type="text" id="phoneNumber" class="fadeIn second" formControlName="phoneNumber" placeholder="Số điện thoại">
+      <input type="date" id="birthDay" class="fadeIn second" formControlName="birthDay" placeholder="Ngày sinh">
+      <input type="text" id="address" class="fadeIn second" formControlName="address" placeholder="Địa chỉ">
+      <input type="submit" class="fadeIn fourth" value="Đăng Kí">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login">Đăng nhập</a>
+    </div>
+  </div>
+</div>
