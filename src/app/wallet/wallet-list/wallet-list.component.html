@@ -1,1 +1,39 @@
-<p>wallet-list works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3>
+              Ví của tôi
+            </h3>
+          </div>
+          <a routerLink="/wallet/create">Tạo ví mới</a>
+          <div class="card-body">
+            <table id="transaction" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th>Icon</th>
+                <th>Tên ví</th>
+                <th>Sửa</th>
+                <th>Xóa</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let wallet of wallets, index as i">
+                <td><a routerLink="/wallet/{{wallet.id}}"><img src="http://localhost:8080/image/{{wallet.icon}}" style="width: 80px"></a></td>
+                <td>{{wallet.name}}</td>
+                <td>
+                  <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}"><span class="fas fa-edit"></span></a>
+                </td>
+                <td>
+                  <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}"><span class="fas fa-trash"></span></a>
+                </td>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

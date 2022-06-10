@@ -28,7 +28,7 @@
                 <td>{{transaction.category.name}}</td>
                 <td>{{transaction.amount}}</td>
                 <td>{{transaction.wallet.name}}</td>
-                <td>{{transaction.date}}</td>
+                <td>{{transaction.date | date: 'fullDate' }}</td>
                 <td>{{transaction.note}}</td>
                 <td>
                   <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">

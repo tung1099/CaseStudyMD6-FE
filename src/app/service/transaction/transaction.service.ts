@@ -8,6 +8,7 @@ import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayById
 
 
 
+
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,8 @@ export class TransactionService {
   }
   getSumTransactionTodayByWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
     return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionInDay/${id}`);
+  }
+  getAllTransactionByWallet(id): Observable<TransactionToday[]> {
+    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
   }
 }
