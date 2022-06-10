@@ -6,6 +6,8 @@ import {WalletService} from '../../service/wallet/wallet.service';
 import {MoneytypeService} from '../../service/moneytype/moneytype.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {IconService} from '../../service/icon/icon.service';
+import {Icon} from '../../model/icon';
 
 @Component({
   selector: 'app-wallet-create',
@@ -17,6 +19,7 @@ export class WalletCreateComponent implements OnInit {
   selectedFile: any = File;
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
+  icons: Icon[] = [];
   walletForm: FormGroup = new FormGroup({
     icon: new FormControl(),
     name: new FormControl(),
@@ -29,13 +32,22 @@ export class WalletCreateComponent implements OnInit {
 
   constructor(private walletService: WalletService,
               private moneytypeService: MoneytypeService,
+              private iconService: IconService,
               private router: Router) { }
 
   ngOnInit() {
     this.getAllType();
+    this.getAllIcon();
   }
   onSelectFile(event) {
     this.selectedFile = event.target.files[0];
+  }
+  getAllIcon() {
+    this.iconService.getAll().subscribe((data) => {
+      this.icons = data;
+    }, (error) => {
+      alert(error);
+    });
   }
   getAllType() {
     this.moneytypeService.getAll().subscribe((data) => {
@@ -44,17 +56,6 @@ export class WalletCreateComponent implements OnInit {
       alert(error);
     });
   }
-  createWallet() {
-    const wallet = new FormData();
-    wallet.append('icon', this.selectedFile);
-    wallet.append('name', this.walletForm.get('name').value);
-    wallet.append('total', this.walletForm.get('total').value);
-    wallet.append('moneyType', this.walletForm.get('moneyType').value);
-    wallet.append('note', this.walletForm.get('note').value);
-    // wallet.append('user', this.walletForm.get('user').value);
-    this.walletService.create(this.idUser, wallet).subscribe(() => {
-      this.router.navigateByUrl('/wallet/list');
-    });
-  }
+
 
 }

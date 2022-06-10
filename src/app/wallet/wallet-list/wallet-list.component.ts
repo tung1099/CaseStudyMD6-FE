@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {identity} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-wallet-list',
@@ -10,9 +11,11 @@ import {identity} from 'rxjs';
 })
 export class WalletListComponent implements OnInit {
   wallets: Wallet[] = [];
+  wallet: Wallet = {};
   userId = 1;
 
-  constructor(private walletService: WalletService) { }
+  constructor(private walletService: WalletService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAllWalletByUser(this.userId);

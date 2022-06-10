@@ -18,10 +18,12 @@ import { TransactionDeleteComponent } from './transaction/transaction-delete/tra
 import {SharedModule} from './shared/shared.module';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { IconListComponent } from './icon/icon-list/icon-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    // IconListComponent,
     // TransactionCreateComponent,
     // TransactionListComponent,
     // TransactionDeleteComponent,
