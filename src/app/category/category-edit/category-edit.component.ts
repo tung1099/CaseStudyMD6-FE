@@ -42,7 +42,7 @@ export class CategoryEditComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['category']);
+      this.router.navigate(['category/list']);
     });
   }
 }

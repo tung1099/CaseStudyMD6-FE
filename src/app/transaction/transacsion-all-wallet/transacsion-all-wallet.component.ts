@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Transaction} from "../../model/transaction";
-import {SumTransactionTodayByIdWallet} from "../../model/sumTransactiontodayByIdWallet";
-import {TransactionService} from "../../service/transaction/transaction.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Transaction} from '../../model/transaction';
+import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
+import {TransactionService} from '../../service/transaction/transaction.service';
+import {ActivatedRoute, Router} from '@angular/router';
 declare var $: any;
 @Component({
   selector: 'app-transacsion-all-wallet',
