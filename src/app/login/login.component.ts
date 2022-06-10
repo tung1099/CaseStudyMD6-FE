@@ -23,14 +23,22 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(() => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Đăng nhập thành công!',
-        showConfirmButton: false,
-        timer: 1500});
-      this.router.navigate(['wallet']);
-    });
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Đăng nhập thành công!',
+          showConfirmButton: false,
+          timer: 1500});
+        this.router.navigate(['wallet']);
+      }, error => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'Sai tên đăng nhập hoặc mật khẩu!',
+          showConfirmButton: false,
+          timer: 1500});
+      }
+    );
   }
 
 }
