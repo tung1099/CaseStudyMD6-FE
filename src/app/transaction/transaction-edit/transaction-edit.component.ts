@@ -53,8 +53,8 @@ export class TransactionEditComponent implements OnInit {
         amount: new FormControl(transaction.amount),
         note: new FormControl(transaction.note),
         date: new FormControl(transaction.date),
-        category: new FormControl(transaction.category),
-        wallet: new FormControl(transaction.wallet)
+        category: new FormControl(transaction.category.id),
+        wallet: new FormControl(transaction.wallet.id)
       });
     });
   }

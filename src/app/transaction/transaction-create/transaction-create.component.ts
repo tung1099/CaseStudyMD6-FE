@@ -53,6 +53,7 @@ export class TransactionCreateComponent implements OnInit {
   }
   create() {
     const data = this.transactionForm.value;
+    console.log(data.date);
     data.category = {
       id: data.category
     };

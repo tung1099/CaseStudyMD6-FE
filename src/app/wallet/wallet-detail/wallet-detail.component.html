@@ -5,7 +5,7 @@
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Created Date: </span>{{wallet.date}}</p>
+    <p><span style="font-weight: bold">Created Date: </span>{{wallet.date | date: 'fullDate' }}</p>
     <hr>
   </div>
   <div class="mb-3">
@@ -24,5 +24,11 @@
     <p><span style="font-weight: bold">Note: </span>{{wallet.note}}</p>
     <hr>
   </div>
+  <h3 class="card-title">
+    <a class="btn btn-primary" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</a>
+  </h3>
+  <h3 class="card-title">
+    <a class="btn btn-primary" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</a>
+  </h3>
 
 </div>
