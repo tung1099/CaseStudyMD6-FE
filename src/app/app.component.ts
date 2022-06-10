@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthencicationService} from './service/auth/authencication.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'casestudy-md6';
+  constructor(private authenticationService: AuthencicationService,
+              private router: Router) {
+
+  }
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
 }

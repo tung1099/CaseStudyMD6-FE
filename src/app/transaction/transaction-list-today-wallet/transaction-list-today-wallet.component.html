@@ -15,8 +15,8 @@
                 <th>Stt</th>
                 <th>Category</th>
                 <th>Amount</th>
-                <th>Wallet</th>
                 <th>Note</th>
+
                 <th>Update</th>
                 <th>Delete</th>
               </tr>
@@ -26,8 +26,8 @@
                 <td>{{i+1}}</td>
                 <td>{{transaction.category}}</td>
                 <td>{{transaction.amount}}</td>
-                <td>{{transaction.wallet}}</td>
                 <td>{{transaction.note}}</td>
+
                 <td>
                   <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
                     <span class="fas fa-edit">edit</span>
@@ -39,8 +39,14 @@
                   </a>
                 </td>
               </tr>
+<!--              <tr *ngFor="sum of sum"></tr>-->
+              </tbody>
+
+
+
+
             </table>
-            <h3>{{sum[0].sum}}</h3>
+<!--            <h3>{{sum[0].sum}}</h3>-->
           </div>
         </div>
       </div>

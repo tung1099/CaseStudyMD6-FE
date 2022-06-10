@@ -1,0 +1,11 @@
+<table border="1px">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let m of moneyTypes, index as i">
+    <td>{{i+1}}</td>
+    <td>{{m.name}}</td>
+  </tr>
+
+</table>

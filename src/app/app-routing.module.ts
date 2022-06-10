@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
+import {UserInfoComponent} from './user-info/user-info.component';
 
 
 const routes: Routes = [
@@ -19,6 +22,22 @@ const routes: Routes = [
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then(module => module.WalletModule)
   },
+  {
+    path: 'type',
+    loadChildren: () => import('./moneytype/moneytype.module').then(module => module.MoneytypeModule)
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'profile',
+    component: UserInfoComponent
+  }
 ];
 
 @NgModule({
