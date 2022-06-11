@@ -10,11 +10,12 @@ import {HttpClientModule} from '@angular/common/http';
 import { TransactionListTodayComponent } from './transaction-list-today/transaction-list-today.component';
 import { TransactionListTodayWalletComponent } from './transaction-list-today-wallet/transaction-list-today-wallet.component';
 import {TransactionRoutingModule} from './transaction-routing.module';
+import { TransacsionAllWalletComponent } from './transacsion-all-wallet/transacsion-all-wallet.component';
 
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [TransactionListComponent, TransactionCreateComponent, TransactionEditComponent, TransactionDeleteComponent, TransactionListTodayComponent, TransactionListTodayWalletComponent],
+  declarations: [TransactionListComponent, TransactionCreateComponent, TransactionEditComponent, TransactionDeleteComponent, TransactionListTodayComponent, TransactionListTodayWalletComponent, TransacsionAllWalletComponent],
     imports: [
         CommonModule,
         TransactionRoutingModule,

@@ -4,14 +4,12 @@ import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayById
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
 declare var $: any;
-
-
 @Component({
-  selector: 'app-transaction-list-today-wallet',
-  templateUrl: './transaction-list-today-wallet.component.html',
-  styleUrls: ['./transaction-list-today-wallet.component.css']
+  selector: 'app-transacsion-all-wallet',
+  templateUrl: './transacsion-all-wallet.component.html',
+  styleUrls: ['./transacsion-all-wallet.component.css']
 })
-export class TransactionListTodayWalletComponent implements OnInit {
+export class TransacsionAllWalletComponent implements OnInit {
 
   transaction: Transaction[] = [];
   sum: SumTransactionTodayByIdWallet[] = [];
@@ -23,7 +21,6 @@ export class TransactionListTodayWalletComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.getAllTransactionByWallet(id);
-      this.getSumTransactionByWallet(id);
     });
   }
 
@@ -31,27 +28,20 @@ export class TransactionListTodayWalletComponent implements OnInit {
   }
 
   private getAllTransactionByWallet(id) {
-    this.transactionService.getAllTransactionTodayByWallet(id).subscribe(transaction1 => {
+    this.transactionService.getAllTransactionByWallet(id).subscribe(transaction1 => {
       this.transaction = transaction1;
       $(function() {
         $('#transaction').DataTable({
-          // 'paging': true,
-          // 'lengthChange': false,
-          // 'searching': true,
-          // 'ordering': true,
+          'paging': true,
+          'lengthChange': false,
+          'searching': true,
+          'ordering': true,
           'info': true,
-          // 'pageLength': 5,
+          'pageLength': 5,
           'autoWidth': false,
           'responsive': true,
         });
       });
-    });
-  }
-
-  private getSumTransactionByWallet(id) {
-    this.transactionService.getSumTransactionTodayByWallet(id).subscribe(sum => {
-      this.sum = sum;
-      console.log(sum);
     });
   }
 

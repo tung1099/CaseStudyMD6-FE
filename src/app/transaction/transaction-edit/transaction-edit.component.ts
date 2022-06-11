@@ -6,6 +6,7 @@ import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-transaction-edit',
@@ -26,6 +27,7 @@ export class TransactionEditComponent implements OnInit {
   });
   constructor(
     private categoryService: CategoryService,
+    private sweetAlertService: SweetAlertService,
     private walletService: WalletService,
     private transactionService: TransactionService,
     private activatedRoute: ActivatedRoute,
@@ -53,8 +55,8 @@ export class TransactionEditComponent implements OnInit {
         amount: new FormControl(transaction.amount),
         note: new FormControl(transaction.note),
         date: new FormControl(transaction.date),
-        category: new FormControl(transaction.category),
-        wallet: new FormControl(transaction.wallet)
+        category: new FormControl(transaction.category.id),
+        wallet: new FormControl(transaction.wallet.id)
       });
     });
   }
@@ -85,7 +87,9 @@ export class TransactionEditComponent implements OnInit {
       id: data.wallet
     };
     this.transactionService.update(this.idControl.value, data).subscribe(() => {
-      alert('chinh sua thanh cong');
+      this.sweetAlertService.showNotification('success', 'Xong');
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
   }
 

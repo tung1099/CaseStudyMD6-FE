@@ -6,6 +6,7 @@ import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {Router} from '@angular/router';
+import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
 
 @Component({
   selector: 'app-transaction-create',
@@ -26,6 +27,7 @@ export class TransactionCreateComponent implements OnInit {
 
   constructor(
     private categoryService: CategoryService,
+    private sweetAlertService: SweetAlertService,
     private walletService: WalletService,
     private transactionService: TransactionService,
     private router: Router
@@ -60,8 +62,10 @@ export class TransactionCreateComponent implements OnInit {
       id: data.wallet
     };
     this.transactionService.create(data).subscribe(() => {
-      alert('tao moi thanh cong');
+      this.sweetAlertService.showNotification('success', 'Xong');
       this.transactionForm.reset();
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
   }
 

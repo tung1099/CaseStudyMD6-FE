@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import {IconService} from '../../service/icon/icon.service';
 import {Icon} from '../../model/icon';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-wallet-create',
@@ -15,8 +16,8 @@ import {Icon} from '../../model/icon';
   styleUrls: ['./wallet-create.component.css']
 })
 export class WalletCreateComponent implements OnInit {
-  idUser = 1;
-  selectedFile: any = File;
+  idUser: number;
+  // selectedFile: any = File;
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
   icons: Icon[] = [];
@@ -26,22 +27,25 @@ export class WalletCreateComponent implements OnInit {
     total: new FormControl(),
     moneyType: new FormControl(),
     note: new FormControl(),
-    user: new FormControl()
+    // user: new FormControl()
   });
 
 
   constructor(private walletService: WalletService,
               private moneytypeService: MoneytypeService,
+              private authService: AuthencicationService,
               private iconService: IconService,
-              private router: Router) { }
+              private router: Router) {
+     this.idUser = authService.currentUserValue.id;
+  }
 
   ngOnInit() {
     this.getAllType();
     this.getAllIcon();
   }
-  onSelectFile(event) {
-    this.selectedFile = event.target.files[0];
-  }
+  // onSelectFile(event) {
+  //   this.selectedFile = event.target.files[0];
+  // }
   getAllIcon() {
     this.iconService.getAll().subscribe((data) => {
       this.icons = data;
@@ -56,12 +60,20 @@ export class WalletCreateComponent implements OnInit {
       alert(error);
     });
   }
-  // createWallet() {
-  //   const wallet = this.walletForm.value;
-  //   this.walletService.create(wallet).subscribe(() => {
-  //     this.router.navigateByUrl('/wallet/list');
-  //   });
-  // }
+  createWallet() {
+    const wallet = this.walletForm.value;
+    console.log(this.walletForm.value);
+    // wallet.moneyTypes = {
+    //   id: wallet.moneyTypes
+    // };
+    wallet.icon = {
+      id: 1
+    };
+    this.walletService.create(this.idUser, wallet).subscribe(() => {
+      // this.walletForm.reset();
+      this.router.navigate(['/wallet/list', this.idUser]);
+    });
+  }
 
 
 }
