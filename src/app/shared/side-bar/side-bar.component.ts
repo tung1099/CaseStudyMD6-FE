@@ -10,6 +10,7 @@ export class SideBarComponent implements OnInit {
 idUser: number;
   constructor(private authService: AuthencicationService) {
     this.idUser = this.authService.currentUserValue.id;
+    console.log(this.idUser);
   }
 
   ngOnInit() {
