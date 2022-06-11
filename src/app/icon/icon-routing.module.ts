@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MoneytypeListComponent} from './moneytype-list/moneytype-list.component';
+import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
+import {IconListComponent} from './icon-list/icon-list.component';
 
 
 const routes: Routes = [
   {
     path: 'list',
-    component: MoneytypeListComponent
+    component: IconListComponent
   }
 ];
 
@@ -14,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MoneytypeRoutingModule { }
+export class IconRoutingModule { }

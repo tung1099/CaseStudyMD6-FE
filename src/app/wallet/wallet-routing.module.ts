@@ -9,11 +9,11 @@ import {WalletDetailComponent} from './wallet-detail/wallet-detail.component';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: 'list/:id',
     component: WalletListComponent
   },
   {
-    path: 'create',
+    path: 'create/:id',
     component: WalletCreateComponent
   },
   {

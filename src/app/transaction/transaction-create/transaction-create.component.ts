@@ -64,7 +64,7 @@ export class TransactionCreateComponent implements OnInit {
     console.log(data);
     console.log(data.category);
     data.category = {
-      id: data.category
+      id: 1
     };
     data.wallet = {
       id: data.wallet
