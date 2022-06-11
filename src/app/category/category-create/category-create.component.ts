@@ -27,7 +27,7 @@ export class CategoryCreateComponent implements OnInit {
     const category = this.categoryForm.value;
     this.categoryService.saveCategory(this.id, category).subscribe(() => {
       Swal.fire({
-        position: 'top-left',
+        position: 'top-end',
         icon: 'success',
         title: 'Thêm mới thành công',
         showConfirmButton: false,
