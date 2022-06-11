@@ -39,7 +39,7 @@
                       <ul class="users-list clearfix" >
                         <li *ngFor="let icon of icons">
                           <img src="{{icon.linkIcon}}" width="50px" alt="User Image">
-                          <input type="radio" name="idIcon" value="{{icon.id}}">
+                          <input type="radio" id="idIcon" formControlName="icon" value="{{icon.id}}">
                         </li>
                       </ul>
                     </div>

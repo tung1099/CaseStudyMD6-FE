@@ -59,11 +59,12 @@ export class WalletCreateComponent implements OnInit {
   createWallet() {
     const wallet = new FormData();
     wallet.append('name', this.walletForm.get('name').value);
-    wallet.append('icon', this.walletForm.get('icon').value);
+    if (this.walletForm.get('icon').value != null) {
+      wallet.append('icon', this.walletForm.get('icon').value);
+    }
     wallet.append('total', this.walletForm.get('total').value);
     wallet.append('note', this.walletForm.get('note').value);
     wallet.append('moneyType', this.walletForm.get('moneyType').value);
-    console.log(this.walletForm.get('icon').value);
     this.walletService.create(this.idUser, wallet).subscribe(() => {
       this.router.navigate(['/wallet/list', this.idUser]);
     });
