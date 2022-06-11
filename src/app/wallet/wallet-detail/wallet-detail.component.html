@@ -1,34 +1,35 @@
 <div class="container">
-  <h1>Wallet Detail</h1>
+  <h1>Chi tiết ví</h1>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Name: </span>{{wallet.name}}</p>
+    <p><span style="font-weight: bold">Tên ví: </span>{{wallet.name}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Created Date: </span>{{wallet.date | date: 'fullDate' }}</p>
+    <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'fullDate'}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Currency: </span>{{wallet.moneyType.name}}</p>
+    <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Total: </span>{{wallet.total}}</p>
+    <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Balance: </span>{{wallet.balance}}</p>
+    <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Note: </span>{{wallet.note}}</p>
+    <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
     <hr>
   </div>
-  <h3 class="card-title">
-    <a class="btn btn-primary" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</a>
-  </h3>
-  <h3 class="card-title">
-    <a class="btn btn-primary" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</a>
-  </h3>
+
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</button>
+
+  &nbsp;
+
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
+
 
 </div>
