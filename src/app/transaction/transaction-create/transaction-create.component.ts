@@ -35,7 +35,6 @@ export class TransactionCreateComponent implements OnInit {
     private router: Router
   ) {
     this.idUser = this.authService.currentUserValue.id;
-    console.log(this.idUser);
   }
 
   ngOnInit() {
@@ -60,8 +59,9 @@ export class TransactionCreateComponent implements OnInit {
       });
   }
 
-  create() {
+  createTransaction() {
     const data = this.transactionForm.value;
+    console.log(data);
     data.category = {
       id: data.category
     };
@@ -69,10 +69,13 @@ export class TransactionCreateComponent implements OnInit {
       id: data.wallet
     };
     this.transactionService.create(this.idUser, data).subscribe(() => {
+      console.log(data, this.idUser);
       this.sweetAlertService.showNotification('success', 'Xong');
       this.transactionForm.reset();
-    }, () => {
+    }
+    , () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
-    });
+    }
+    );
   }
 }
