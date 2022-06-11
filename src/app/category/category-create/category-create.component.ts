@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-category-create',
@@ -16,7 +17,8 @@ export class CategoryCreateComponent implements OnInit {
     name: new FormControl()
   });
   constructor(private categoryService: CategoryService,
-              private authenticationService: AuthencicationService) {
+              private authenticationService: AuthencicationService,
+              private sweetAlertService: SweetAlertService) {
     this.id = this.authenticationService.currentUserValue.id;
   }
 
@@ -26,14 +28,12 @@ export class CategoryCreateComponent implements OnInit {
   createCategory() {
     const category = this.categoryForm.value;
     this.categoryService.saveCategory(this.id, category).subscribe(() => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Thêm mới thành công',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    });
+      this.sweetAlertService.showNotification('success', 'Xong');
+    }
+      , () => {
+        this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
+      }
+    );
     this.categoryForm.reset();
   }
 }
