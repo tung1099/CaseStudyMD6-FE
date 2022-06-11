@@ -15,7 +15,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
-  id: number;
+  idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -29,12 +29,13 @@ export class TransactionCreateComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private sweetAlertService: SweetAlertService,
+    private authService: AuthencicationService,
     private walletService: WalletService,
     private transactionService: TransactionService,
-    private authenticationServcie: AuthencicationService,
     private router: Router
   ) {
-    this.id = this.authenticationServcie.currentUserValue.id;
+    this.idUser = this.authService.currentUserValue.id;
+    console.log(this.idUser);
   }
 
   ngOnInit() {
@@ -43,20 +44,22 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory(this.id).subscribe(categories => {
+    this.categoryService.getAllCategory(this.idUser).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);
     });
   }
+
   getAllWallet() {
-    this.walletService.getAll().subscribe( wallet1 => {
+    this.walletService.getAll().subscribe(wallet1 => {
         this.wallet = wallet1;
       },
       (error) => {
         console.log(error);
       });
   }
+
   create() {
     const data = this.transactionForm.value;
     data.category = {
@@ -65,12 +68,11 @@ export class TransactionCreateComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.transactionService.create(data).subscribe(() => {
+    this.transactionService.create(this.idUser, data).subscribe(() => {
       this.sweetAlertService.showNotification('success', 'Xong');
       this.transactionForm.reset();
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
   }
-
 }

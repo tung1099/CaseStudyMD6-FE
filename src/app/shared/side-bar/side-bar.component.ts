@@ -7,10 +7,9 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-
-  id: number;
-  constructor(private authenticationService: AuthencicationService) {
-    this.id = this.authenticationService.currentUserValue.id;
+idUser: number;
+  constructor(private authService: AuthencicationService) {
+    this.idUser = this.authService.currentUserValue.id;
   }
 
   ngOnInit() {
