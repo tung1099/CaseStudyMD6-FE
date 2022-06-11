@@ -25,9 +25,9 @@
               <tbody>
               <tr *ngFor="let transaction of transaction; index as i">
                 <td>{{i+1}}</td>
-                <td>{{transaction.category.name}}</td>
+                <td>{{transaction.category}}</td>
                 <td>{{transaction.amount}}</td>
-                <td>{{transaction.wallet.name}}</td>
+                <td>{{transaction.wallet}}</td>
                 <td>{{transaction.date | date: 'fullDate' }}</td>
                 <td>{{transaction.note}}</td>
                 <td>

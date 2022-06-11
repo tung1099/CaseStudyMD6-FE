@@ -4,6 +4,7 @@ import {WalletService} from '../../service/wallet/wallet.service';
 import {Wallet} from '../../model/wallet';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-add-money',
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class AddMoneyComponent implements OnInit {
 
+  id: number;
   wallets: Wallet[] = [];
   addMoneyForm: FormGroup = new FormGroup({
     money : new FormControl(),
@@ -19,10 +21,12 @@ export class AddMoneyComponent implements OnInit {
     wallet : new FormControl(),
   });
   constructor(private addMoneyService: AddMoneyService,
+              private authentication: AuthencicationService,
               private walletService: WalletService) { }
 
   ngOnInit() {
     this.getAllWallet();
+    this.id = this.authentication.currentUserValue.id;
   }
 
   addMoney() {
@@ -30,11 +34,11 @@ export class AddMoneyComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.addMoneyService.addMoney(data).subscribe(() => {
+    this.addMoneyService.addMoney(this.id, data).subscribe(() => {
       Swal.fire({
         position: 'top-left',
         icon: 'success',
-        title: 'Thêm mới thành công',
+        title: 'Thêm thành công',
         showConfirmButton: false,
         timer: 1500
       });

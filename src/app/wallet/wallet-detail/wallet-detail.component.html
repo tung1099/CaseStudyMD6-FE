@@ -24,11 +24,12 @@
     <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
     <hr>
   </div>
-  <h3 class="card-title">
-    <a class="btn btn-primary" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</a>
-  </h3>
-  <h3 class="card-title">
-    <a class="btn btn-primary" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</a>
-  </h3>
+
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</button>
+
+  &nbsp;
+
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
+
 
 </div>
