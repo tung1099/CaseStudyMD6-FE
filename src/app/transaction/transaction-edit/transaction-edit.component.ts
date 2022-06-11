@@ -7,6 +7,7 @@ import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-transaction-edit',
@@ -15,6 +16,7 @@ import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 })
 export class TransactionEditComponent implements OnInit {
 
+  userId: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -31,11 +33,13 @@ export class TransactionEditComponent implements OnInit {
     private walletService: WalletService,
     private transactionService: TransactionService,
     private activatedRoute: ActivatedRoute,
+    private authenticationService: AuthencicationService,
     private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.getTransactionById(id);
+      this.userId = this.authenticationService.currentUserValue.id;
     });
   }
 
@@ -62,7 +66,7 @@ export class TransactionEditComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(categories => {
+    this.categoryService.getAllCategory(this.userId).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);

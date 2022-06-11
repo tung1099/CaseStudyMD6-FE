@@ -6,7 +6,8 @@ import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {Router} from '@angular/router';
-import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-transaction-create',
@@ -14,7 +15,7 @@ import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
-
+  id: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -30,8 +31,11 @@ export class TransactionCreateComponent implements OnInit {
     private sweetAlertService: SweetAlertService,
     private walletService: WalletService,
     private transactionService: TransactionService,
+    private authenticationServcie: AuthencicationService,
     private router: Router
-  ) { }
+  ) {
+    this.id = this.authenticationServcie.currentUserValue.id;
+  }
 
   ngOnInit() {
     this.getAllWallet();
@@ -39,7 +43,7 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(categories => {
+    this.categoryService.getAllCategory(this.id).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);
