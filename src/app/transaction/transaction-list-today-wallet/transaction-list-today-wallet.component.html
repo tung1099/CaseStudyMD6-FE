@@ -13,12 +13,12 @@
               <thead>
               <tr>
                 <th>Stt</th>
-                <th>Category</th>
-                <th>Amount</th>
-                <th>Note</th>
+                <th>Thể loại tiêu dùng</th>
+                <th>Giá tiền</th>
+                <th>Ghi chú</th>
 
-                <th>Update</th>
-                <th>Delete</th>
+                <th>Chính sửa</th>
+                <th>Xóa</th>
               </tr>
               </thead>
               <tbody>
@@ -30,12 +30,12 @@
 
                 <td>
                   <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
-                    <span class="fas fa-edit">edit</span>
+                    <span class="fas fa-edit"></span>
                   </a>
                 </td>
                 <td>
                   <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
-                    <span class="fas fa-trash">delete</span>
+                    <span class="fas fa-trash"></span>
                   </a>
                 </td>
               </tr>

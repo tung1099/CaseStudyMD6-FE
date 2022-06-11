@@ -65,7 +65,7 @@ export class TransactionEditComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(categories => {
+    this.categoryService.getAllCategory(this.idUser).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);

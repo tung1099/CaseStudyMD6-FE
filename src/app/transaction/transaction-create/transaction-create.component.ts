@@ -15,7 +15,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
-idUser: number;
+  idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -35,7 +35,6 @@ idUser: number;
     private router: Router
   ) {
     this.idUser = this.authService.currentUserValue.id;
-    console.log(this.idUser);
   }
 
   ngOnInit() {
@@ -44,34 +43,39 @@ idUser: number;
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(categories => {
+    this.categoryService.getAllCategory(this.idUser).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);
     });
   }
+
   getAllWallet() {
-    this.walletService.getAll().subscribe( wallet1 => {
+    this.walletService.getAll().subscribe(wallet1 => {
         this.wallet = wallet1;
       },
       (error) => {
         console.log(error);
       });
   }
-  create() {
+
+  createTransaction() {
     const data = this.transactionForm.value;
+    console.log(data);
     data.category = {
-      id: data.category
+      id: 1
     };
     data.wallet = {
       id: data.wallet
     };
     this.transactionService.create(this.idUser, data).subscribe(() => {
+      console.log(data, this.idUser);
       this.sweetAlertService.showNotification('success', 'Xong');
       this.transactionForm.reset();
-    }, () => {
+    }
+    , () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
-    });
+    }
+    );
   }
-
 }

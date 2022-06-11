@@ -14,12 +14,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {
   }
-  getAllCategory(): Observable<Category[]> {
-    return this.http.get<Category[]>(API_URL + '/categories/list');
+  getAllCategory(id): Observable<Category[]> {
+    return this.http.get<Category[]>(API_URL + `/categories/list/${id}`);
   }
 
-  saveCategory(category): Observable<Category> {
-    return this.http.post<Category>(API_URL + '/categories', category);
+  saveCategory(id, category): Observable<Category> {
+    return this.http.post<Category>(API_URL + `/categories/create/${id}`, category);
   }
 
   findCategoryById(id: number): Observable<Category> {

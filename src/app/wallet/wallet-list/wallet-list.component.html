@@ -1,38 +1,76 @@
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3>
-              Ví của tôi
-            </h3>
-          </div>
-          <a routerLink="/wallet/create">Tạo ví mới</a>
-          <div class="card-body">
-            <table id="transaction" class="table table-bordered table-hover">
-              <thead>
-              <tr>
-                <th>Icon</th>
-                <th>Tên ví</th>
-                <th>Sửa</th>
-                <th>Xóa</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let wallet of wallets, index as i">
-                <td><a routerLink="/wallet/{{wallet.id}}"><img src="http://localhost:8080/image/{{wallet.icon}}" style="width: 80px"></a></td>
-                <td>{{wallet.name}}</td>
-                <td>
-                  <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}"><span class="fas fa-edit"></span></a>
-                </td>
-                <td>
-                  <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}"><span class="fas fa-trash"></span></a>
-                </td>
-            </table>
-          </div>
+<!--<section class="content">-->
+<!--  <div class="container-fluid">-->
+<!--    <div class="row">-->
+<!--      <div class="col-12">-->
+<!--        <div class="card">-->
+<!--          <div class="card-header">-->
+<!--            <h3>Ví của tôi</h3>-->
+<!--            <h3 class="card-title">-->
+<!--              <a routerLink="/wallet/create" class="btn btn-primary">Tạo ví mới</a>-->
+<!--            </h3>-->
+<!--          </div>-->
+
+<!--          <div class="card-body">-->
+<!--            <table id="transaction" class="table table-bordered table-hover">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th>Icon</th>-->
+<!--                <th>Số dư</th>-->
+<!--                <th>Sửa</th>-->
+<!--                <th>Xóa</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--              <tr *ngFor="let wallet of wallets, index as i">-->
+<!--                <td><a routerLink="/wallet/{{wallet.id}}"><img src="http://localhost:8080/image/{{wallet.icon}}" style="width: 80px"></a></td>-->
+<!--                <td>{{wallet.balance}}</td>-->
+<!--                <td>-->
+<!--                  <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}"><span class="fas fa-edit"></span></a>-->
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}"><span class="fas fa-trash"></span></a>-->
+<!--                </td>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
+
+
+
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Ví của tôi</h1>
         </div>
+
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <h5 class="mb-2">
+        <a routerLink="/wallet/create/{{idUser}}" class="btn btn-outline-success">Tạo ví mới</a>
+      </h5>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-12" *ngFor="let wallet of wallets" >
+          <div class="info-box" >
+            <span class="info-box-icon bg-info"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+            <div class="info-box-content">
+              <span class="info-box-text">{{wallet.name}}</span>
+              <span class="info-box-number">Số dư: {{wallet.balance}} {{wallet.moneyType.name}}</span>
+              <button type="button" class="btn btn-outline-warning"  routerLink="/money/add">Nạp tiền</button>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
