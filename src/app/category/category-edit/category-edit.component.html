@@ -1,13 +1,17 @@
-<h1>Update Category</h1>
-<form [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">
-  <table>
-    <tr>
-      <th>Name:</th>
-      <td><input type="text" formControlName="name"></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><button>Update</button></td>
-    </tr>
-  </table>
+<h1 style="font-family: 'Courier New'; color: blue">Edit Category</h1>
+<!--<form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">-->
+<!--  <div class="form-group mb-2">-->
+<!--    <label for="staticEmail2" class="sr-only">Name</label>-->
+<!--    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" formControlName="name">-->
+<!--  </div>-->
+<!--  <button type="submit" class="btn btn-primary mb-2">Edit</button>-->
+<!--</form>-->
+
+<form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" class="form-control" formControlName="name">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

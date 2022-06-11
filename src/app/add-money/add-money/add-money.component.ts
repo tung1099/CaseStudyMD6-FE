@@ -34,7 +34,7 @@ export class AddMoneyComponent implements OnInit {
       Swal.fire({
         position: 'top-left',
         icon: 'success',
-        title: 'Thêm mới thành công',
+        title: 'Thêm thành công',
         showConfirmButton: false,
         timer: 1500
       });
