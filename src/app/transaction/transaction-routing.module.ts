@@ -20,7 +20,7 @@ const routes: Routes = [
     component: TransactionCreateComponent
   },
   {
-    path: 'listTransaction',
+    path: 'listTransaction/:idUser',
     component: TransactionListComponent
   },
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
     component: TransactionDeleteComponent
   },
   {
-    path: 'listTransactionToday',
+    path: 'listTransactionToday/:id',
     component: TransactionListTodayComponent
   },
   {
