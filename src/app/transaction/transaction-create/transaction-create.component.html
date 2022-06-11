@@ -1,6 +1,4 @@
 
-<!--<div class="content-wrapper">-->
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -8,7 +6,7 @@
           <h1>Tạo giao dịch mới</h1>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
 
   <section class="content">
@@ -23,24 +21,38 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-3">
-                    <label for="wallet">Ví</label>
+                    <div class="form-group">
+                      <div class="col-12">
+                      <label for="wallet">Ví</label>
+                        <div class="input-group">
                     <select class="form-control" id="wallet" formControlName="wallet">
                       <option [value]="null">Chọn ví</option>
                       <ng-container *ngFor="let wallet of wallet">
                         <option [value]="wallet.id">{{wallet.name}}</option>
                       </ng-container>
                     </select>
+                    </div>
+                      </div>
+                  </div>
                   </div>
                   <div class="col-4">
-                    <div class="form-group">
+<!--                    <div class="form-group">-->
+                      <div class="col-12">
                       <label for="category">Thể loại tiêu dùng</label>
+                        <div class="input-group">
                       <select class="form-control" id="category" formControlName="category">
                         <option [value]="null">Chọn thể loại tiêu dùng</option>
                         <ng-container *ngFor="let category of categories">
                           <option [value]="category.id">{{category.name}}</option>
                         </ng-container>
                       </select>
-                    </div>
+                        <div class="input-group-append">
+                          <a routerLink="/category/create/{{idUser}}" class="btn btn-primary">Thêm thể loại</a>
+                        </div>
+                          </div>
+                      </div>
+
+<!--                    </div>-->
 
                   </div>
                   <div class="col-5">
@@ -62,11 +74,8 @@
                       <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
                     </div>
                   </div>
-<!--                    <div class="col-7">-->
-<!--                      <label for="note">Ghi chu </label>-->
-<!--                      <input type="text" formControlName="note" id="note">-->
-<!--                    </div>-->
                 </div>
+
 
               </div>
 
@@ -78,9 +87,7 @@
 
 
         </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <!--/.col (right) -->
+
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
