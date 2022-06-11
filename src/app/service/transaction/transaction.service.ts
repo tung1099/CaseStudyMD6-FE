@@ -32,8 +32,8 @@ export class TransactionService {
   delete(id): Observable<Transaction> {
     return this.http.delete(`${API_URL}/transaction/deleteTransaction/${id}`);
   }
-  getAllTransactionToday(): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDay`);
+  getAllTransactionToday(idUser): Observable<TransactionToday[]> {
+    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);
   }
   getAllTransactionTodayByWallet(id): Observable<TransactionToday[]> {
     return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);

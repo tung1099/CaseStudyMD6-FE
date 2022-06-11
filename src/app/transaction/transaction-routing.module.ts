@@ -32,7 +32,7 @@ const routes: Routes = [
     component: TransactionDeleteComponent
   },
   {
-    path: 'listTransactionToday',
+    path: 'listTransactionToday/:id',
     component: TransactionListTodayComponent
   },
   {
