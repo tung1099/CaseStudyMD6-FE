@@ -1,89 +1,94 @@
-
-<!--<div class="content-wrapper">-->
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Tạo giao dịch mới</h1>
-        </div>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 style="text-align:center">Tạo giao dịch mới</h1>
       </div>
-    </div><!-- /.container-fluid -->
-  </section>
+    </div>
+  </div>
+</section>
 
-  <section class="content">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-success">
-            <div class="card-header">
-              <h3 class="card-title">Giao dịch</h3>
-            </div>
-            <form [formGroup]="transactionForm" (ngSubmit)="create()">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-3">
-                    <label for="wallet">Ví</label>
-                    <select class="form-control" id="wallet" formControlName="wallet">
-                      <option [value]="null">Chọn ví</option>
-                      <ng-container *ngFor="let wallet of wallet">
-                        <option [value]="wallet.id">{{wallet.name}}</option>
-                      </ng-container>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-group">
-                      <label for="category">Thể loại tiêu dùng</label>
-                      <select class="form-control" id="category" formControlName="category">
-                        <option [value]="null">Chọn thể loại tiêu dùng</option>
-                        <ng-container *ngFor="let category of categories">
-                          <option [value]="category.id">{{category.name}}</option>
-                        </ng-container>
-                      </select>
-                    </div>
-
-                  </div>
-                  <div class="col-5">
-                    <label for="amount">Giá</label>
-                    <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
-                  </div>
-                </div>
-                <div class="row">
-                    <div class="col-5">
-                      <label for="date">Ngày giao dịch</label><br>
-                      <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
-                    </div>
-                  <br>
-
-                  <div class="col-sm-7">
-                    <!-- textarea -->
-                    <div class="form-group">
-                      <label>Ghi chú</label>
-                      <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
-                    </div>
-                  </div>
-<!--                    <div class="col-7">-->
-<!--                      <label for="note">Ghi chu </label>-->
-<!--                      <input type="text" formControlName="note" id="note">-->
-<!--                    </div>-->
-                </div>
-
-              </div>
-
-              <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Thêm mới</button>
-              </div>
-            </form>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Giao dịch</h3>
           </div>
+          <form [formGroup]="transactionForm" (ngSubmit)="createTransaction()">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <div class="form-group">
+                    <div class="col-12">
+                      <label for="wallet">Ví</label>
+                      <div class="input-group">
+                        <select class="form-control" id="wallet" formControlName="wallet">
+                          <option [value]="null">Chọn ví</option>
+                          <ng-container *ngFor="let wallet of wallet">
+                            <option [value]="wallet.id">{{wallet.name}}</option>
+                          </ng-container>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <div class="col-12">
+                      <label for="category">Thể loại tiêu dùng</label>
+                      <div class="input-group">
+                        <select class="form-control" id="category" formControlName="category">
+                          <option [value]="null">Chọn thể loại tiêu dùng</option>
+                          <ng-container *ngFor="let category of categories">
+                            <option [value]="category.id">{{category.name}}</option>
+                          </ng-container>
+                        </select>
+                        <div class="input-group-append">
+                          <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}">Thêm danh mục</a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="col-5">
+                  <label for="amount">Giá</label>
+                  <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  <label for="date">Ngày giao dịch</label><br>
+                  <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
+                </div>
+                <br>
+                <div class="col-sm-7">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                  </div>
+                </div>
+              </div>
 
 
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-success">Thêm mới</button>
+            </div>
+          </form>
         </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <!--/.col (right) -->
+
+
       </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 <!--</div>-->

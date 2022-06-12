@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {identity} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-wallet-list',
@@ -10,17 +12,23 @@ import {identity} from 'rxjs';
 })
 export class WalletListComponent implements OnInit {
   wallets: Wallet[] = [];
-  userId = 1;
+  wallet: Wallet = {};
+  idUser: number;
 
-  constructor(private walletService: WalletService) { }
+  constructor(private walletService: WalletService,
+              private authService: AuthencicationService,
+              private activatedRoute: ActivatedRoute) {
+    this.idUser = authService.currentUserValue.id;
+    console.log(this.idUser);
+  }
 
   ngOnInit() {
-    this.getAllWalletByUser(this.userId);
+    this.getAllWalletByUser();
   }
-  getAllWalletByUser(id) {
-    this.walletService.getAllByUserId(id).subscribe((wallets) => {
+  getAllWalletByUser() {
+    this.walletService.getAllByUserId(this.idUser).subscribe((wallets) => {
       this.wallets = wallets;
-    })
+    });
   }
 
 }

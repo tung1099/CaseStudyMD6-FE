@@ -6,7 +6,8 @@ import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {Router} from '@angular/router';
-import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-transaction-create',
@@ -14,7 +15,7 @@ import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
-
+  idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
@@ -28,10 +29,13 @@ export class TransactionCreateComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private sweetAlertService: SweetAlertService,
+    private authService: AuthencicationService,
     private walletService: WalletService,
     private transactionService: TransactionService,
     private router: Router
-  ) { }
+  ) {
+    this.idUser = this.authService.currentUserValue.id;
+  }
 
   ngOnInit() {
     this.getAllWallet();
@@ -39,34 +43,40 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(categories => {
+    this.categoryService.getAllCategory(this.idUser).subscribe(categories => {
       this.categories = categories;
     }, (error) => {
       console.log(error);
     });
   }
+
   getAllWallet() {
-    this.walletService.getAll().subscribe( wallet1 => {
+    this.walletService.getAllByUserId(this.idUser).subscribe(wallet1 => {
         this.wallet = wallet1;
       },
       (error) => {
         console.log(error);
       });
   }
-  create() {
+
+  createTransaction() {
     const data = this.transactionForm.value;
+    console.log(data);
+    console.log(data.category);
     data.category = {
       id: data.category
     };
     data.wallet = {
       id: data.wallet
     };
-    this.transactionService.create(data).subscribe(() => {
+    this.transactionService.create(this.idUser, data).subscribe(() => {
+      console.log(data, this.idUser);
       this.sweetAlertService.showNotification('success', 'Xong');
       this.transactionForm.reset();
-    }, () => {
+    }
+    , () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
-    });
+    }
+    );
   }
-
 }

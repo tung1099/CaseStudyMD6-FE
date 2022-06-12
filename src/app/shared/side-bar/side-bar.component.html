@@ -1,14 +1,17 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-  <!-- Brand Logo -->
-  <a href="../../index3.html" class="brand-link">
-    <img src="assets/dist/img/logoN4.png" alt="AdminLTE Logo" class="brand-image  elevation-3"
-         style="opacity: .8">
-    <span class="brand-text font-weight-light">Double Cat</span>
-  </a>
+<aside class="main-sidebar sidebar-dark-green elevation-4">
+<!--   Brand Logo -->
+
 
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <a href="../../index3.html" class="brand-link">
+        <img src="assets/dist/img/logoN4.png" alt="AdminLTE Logo" class="brand-image  elevation-3"
+             style="opacity: .8">
+<!--        <span class="brand-text font-weight-light">Double Cat</span>-->
+      </a>
+    </div>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
         <img src="http://localhost:8080/image/okok.jpg" class="img-circle elevation-2" alt="User Image">
@@ -24,16 +27,16 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a routerLink="/wallet/list" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+          <a routerLink="/wallet/list/{{idUser}}" class="nav-link">
+            <i class="fa fa-wallet"></i>
             <p>
-              Wallet
+              Ví của tôi
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <i class="fa fa-money-bill-wave"></i>
             <p>
               Giao dịch
               <i class="right fas fa-angle-left"></i>
@@ -49,7 +52,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a routerLink="/transaction/listTransaction" class="nav-link">
+              <a routerLink="/transaction/listTransaction/{{idUser}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Danh sách tiêu dùng
@@ -57,7 +60,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a routerLink="/transaction/listTransactionToday" class="nav-link">
+              <a routerLink="/transaction/listTransactionToday/{{idUser}}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Danh sách tiêu dùng hôm nay
@@ -67,10 +70,10 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a routerLink="/category/list" class="nav-link">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+          <a routerLink="/category/list/{{idUser}}" class="nav-link">
+            <i class="fa fa-align-left"></i>
             <p>
-              Category
+              Thể loại tiêu dùng
             </p>
           </a>
         </li>

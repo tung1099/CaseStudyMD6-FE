@@ -18,6 +18,7 @@ import { TransactionDeleteComponent } from './transaction/transaction-delete/tra
 import {SharedModule} from './shared/shared.module';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
+import { IconListComponent } from './icon/icon-list/icon-list.component';
 import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import { LoginComponent } from './login/login.component';
@@ -29,6 +30,7 @@ import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.
 @NgModule({
   declarations: [
     AppComponent,
+    // IconListComponent,
     LoginComponent,
     RegisterComponent,
     UserInfoComponent,

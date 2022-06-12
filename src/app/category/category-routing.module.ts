@@ -8,11 +8,11 @@ import {CategoryDeleteComponent} from './category-delete/category-delete.compone
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: 'list/:id',
     component: CategoryListComponent
   },
   {
-    path: 'create',
+    path: 'create/:id',
     component: CategoryCreateComponent
   },
   {

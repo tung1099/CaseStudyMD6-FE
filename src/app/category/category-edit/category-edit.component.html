@@ -1,17 +1,10 @@
-<h1 style="font-family: 'Courier New'; color: blue">Edit Category</h1>
-<!--<form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">-->
-<!--  <div class="form-group mb-2">-->
-<!--    <label for="staticEmail2" class="sr-only">Name</label>-->
-<!--    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" formControlName="name">-->
-<!--  </div>-->
-<!--  <button type="submit" class="btn btn-primary mb-2">Edit</button>-->
-<!--</form>-->
-
-<form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory(id)">
+<h1>Chỉnh sửa thể loại tiêu dùng</h1>
+<form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory()">
   <div class="form-group">
-    <label>Name:</label>
+    <label>Tên thể loại:</label>
     <input type="text" class="form-control" formControlName="name">
   </div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="button" class="btn btn-outline-success">Chỉnh sửa</button>
 </form>
+
+
