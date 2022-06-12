@@ -15,6 +15,7 @@
                 </div>
 
                 <div class="col-3">
+                  <label>Icon</label>
                   <div class="card collapsed-card">
                     <div class="card-header">
                       <div class="card-tools">
@@ -41,7 +42,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-5">
+                  <div class="col-3">
                     <label for="type">Loại tiền</label><br>
                     <select class="form-control" id="type" formControlName="moneyType">
                       <ng-container *ngFor="let m of moneyTypes">
@@ -49,18 +50,21 @@
                       </ng-container>
                     </select>
                   </div>
-              </div>
+                </div>
 
-              <div class="col-5">
+                <div class="row">
+              <div class="col-3">
                 <label for="total">Tổng tiền đã nạp</label>
                 <input class="form-control" type="text" formControlName="total" id="total" disabled>
               </div>
 
-                <div class="col-5">
+
+                <div class="col-3">
                   <label for="balance">Số dư</label>
                   <input class="form-control" type="text" formControlName="balance" id="balance" disabled>
                 </div>
             </div>
+
 
               <br>
               <div class="col-sm-7">
@@ -74,6 +78,7 @@
             </div>
             <div class="card-footer">
               <button type="submit" class="btn btn-outline-success">Sửa</button>
+            </div>
             </div>
           </form>
         </div>
