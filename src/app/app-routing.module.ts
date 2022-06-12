@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
-import {UserInfoComponent} from './user-info/user-info.component';
+import {UserInfoComponent} from './userInfo/user-info/user-info.component';
+import {UserInfoEditComponent} from "./userInfo/user-info-edit/user-info-edit.component";
+import {ChangePasswordComponent} from "./change-password/change-password.component";
 
 
 const routes: Routes = [
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path: 'profile',
     component: UserInfoComponent
+  },
+  {
+    path: 'profile-edit',
+    component: UserInfoEditComponent
+  },
+  {
+    path: 'repass',
+    component: ChangePasswordComponent
   }
 ];
 
