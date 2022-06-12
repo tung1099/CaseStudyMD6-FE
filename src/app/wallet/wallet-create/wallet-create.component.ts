@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {MoneytypeService} from '../../service/moneytype/moneytype.service';
 import {Router} from '@angular/router';
@@ -22,10 +22,10 @@ export class WalletCreateComponent implements OnInit {
   icons: Icon[] = [];
   walletForm: FormGroup = new FormGroup({
     icon: new FormControl(),
-    name: new FormControl(),
-    total: new FormControl(),
+    name: new FormControl('', [Validators.required]),
+    total: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
-    moneyType: new FormControl(),
+    moneyType: new FormControl('', [Validators.required]),
   });
 
 
@@ -69,5 +69,13 @@ export class WalletCreateComponent implements OnInit {
       this.router.navigate(['/wallet/list', this.idUser]);
     });
   }
-
+  get totalControl() {
+    return this.walletForm.get('total');
+  }
+  get nameControl() {
+    return this.walletForm.get('name');
+  }
+  get moneyTypeControl() {
+    return this.walletForm.get('moneyType');
+  }
 }
