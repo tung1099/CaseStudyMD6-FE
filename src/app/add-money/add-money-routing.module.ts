@@ -5,7 +5,7 @@ import {AddMoneyComponent} from './add-money/add-money.component';
 
 const routes: Routes = [
   {
-    path: 'add/:idUser',
+    path: 'add/:id',
     component: AddMoneyComponent
   }
 ];

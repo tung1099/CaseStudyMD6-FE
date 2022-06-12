@@ -73,7 +73,7 @@ export class TransactionEditComponent implements OnInit {
   }
 
   getAllWallet() {
-    this.walletService.getAll().subscribe( wallet1 => {
+    this.walletService.getAllByUserId(this.idUser).subscribe( wallet1 => {
         this.wallet = wallet1;
       },
       (error) => {

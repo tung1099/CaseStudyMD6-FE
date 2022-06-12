@@ -13,7 +13,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
-  idWallet: string;
+idWallet: any;
   addMoneyForm: FormGroup = new FormGroup({
     money : new FormControl(),
     description : new FormControl(),

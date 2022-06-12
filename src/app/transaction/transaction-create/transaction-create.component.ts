@@ -51,7 +51,7 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   getAllWallet() {
-    this.walletService.getAll().subscribe(wallet1 => {
+    this.walletService.getAllByUserId(this.idUser).subscribe(wallet1 => {
         this.wallet = wallet1;
       },
       (error) => {
@@ -62,8 +62,9 @@ export class TransactionCreateComponent implements OnInit {
   createTransaction() {
     const data = this.transactionForm.value;
     console.log(data);
+    console.log(data.category);
     data.category = {
-      id: 1
+      id: data.category
     };
     data.wallet = {
       id: data.wallet

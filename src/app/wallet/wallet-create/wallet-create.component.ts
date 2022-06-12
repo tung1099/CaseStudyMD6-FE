@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {MoneytypeService} from '../../service/moneytype/moneytype.service';
 import {Router} from '@angular/router';
@@ -17,17 +17,15 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 })
 export class WalletCreateComponent implements OnInit {
   idUser: number;
-  // selectedFile: any = File;
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
   icons: Icon[] = [];
   walletForm: FormGroup = new FormGroup({
     icon: new FormControl(),
-    name: new FormControl('', [Validators.required]),
-    total: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
-    moneyType: new FormControl('', [Validators.required]),
+    name: new FormControl(),
+    total: new FormControl(),
     note: new FormControl(),
-    // user: new FormControl()
+    moneyType: new FormControl(),
   });
 
 
@@ -43,9 +41,7 @@ export class WalletCreateComponent implements OnInit {
     this.getAllType();
     this.getAllIcon();
   }
-  // onSelectFile(event) {
-  //   this.selectedFile = event.target.files[0];
-  // }
+
   getAllIcon() {
     this.iconService.getAll().subscribe((data) => {
       this.icons = data;
@@ -54,33 +50,24 @@ export class WalletCreateComponent implements OnInit {
     });
   }
   getAllType() {
-    this.moneytypeService.getAll().subscribe((data) => {
+    this.walletService.getAllType().subscribe((data) => {
       this.moneyTypes = data;
     }, (error) => {
       alert(error);
     });
   }
   createWallet() {
-    const wallet = this.walletForm.value;
-    console.log(this.walletForm.value);
-    // wallet.moneyTypes = {
-    //   id: wallet.moneyTypes
-    // };
-    wallet.icon = {
-      id: 1
-    };
+    const wallet = new FormData();
+    wallet.append('name', this.walletForm.get('name').value);
+    if (this.walletForm.get('icon').value != null) {
+      wallet.append('icon', this.walletForm.get('icon').value);
+    }
+    wallet.append('total', this.walletForm.get('total').value);
+    wallet.append('note', this.walletForm.get('note').value);
+    wallet.append('moneyType', this.walletForm.get('moneyType').value);
     this.walletService.create(this.idUser, wallet).subscribe(() => {
-      // this.walletForm.reset();
       this.router.navigate(['/wallet/list', this.idUser]);
     });
   }
-  get nameControl() {
-    return this.walletForm.get('name');
-  }
-  get totalControl() {
-    return this.walletForm.get('total');
-  }
-  get moneyTypeControl() {
-    return this.walletForm.get('moneyType');
-  }
+
 }

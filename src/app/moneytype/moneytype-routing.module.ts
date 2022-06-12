@@ -4,10 +4,6 @@ import {MoneytypeListComponent} from './moneytype-list/moneytype-list.component'
 
 
 const routes: Routes = [
-  {
-    path: 'list',
-    component: MoneytypeListComponent
-  }
 ];
 
 @NgModule({
