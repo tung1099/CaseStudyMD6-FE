@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-category-create',
@@ -10,14 +11,15 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
-  id: number;
+  idUser: number;
 
   categoryForm: FormGroup = new FormGroup({
     name: new FormControl()
   });
   constructor(private categoryService: CategoryService,
+              private sweetAlertService: SweetAlertService,
               private authenticationService: AuthencicationService) {
-    this.id = this.authenticationService.currentUserValue.id;
+    this.idUser = this.authenticationService.currentUserValue.id;
   }
 
   ngOnInit() {
@@ -25,15 +27,12 @@ export class CategoryCreateComponent implements OnInit {
 
   createCategory() {
     const category = this.categoryForm.value;
-    this.categoryService.saveCategory(this.id, category).subscribe(() => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Thêm mới thành công',
-        showConfirmButton: false,
-        timer: 1500
-      });
-    });
-    this.categoryForm.reset();
+    this.categoryService.saveCategory(this.idUser, category).subscribe(() => {
+      this.sweetAlertService.showNotification('success', 'Xong');
+      this.categoryForm.reset();
+    }, () => {
+        this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
+      }
+    );
   }
 }

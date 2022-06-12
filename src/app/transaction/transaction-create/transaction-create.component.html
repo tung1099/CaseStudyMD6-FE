@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1>Tạo giao dịch mới</h1>
+        <h1 style="text-align:center">Tạo giao dịch mới</h1>
       </div>
     </div>
   </div>
@@ -30,6 +30,11 @@
                             <option [value]="wallet.id">{{wallet.name}}</option>
                           </ng-container>
                         </select>
+                        <div *ngIf="walletControl.touched && walletControl.invalid">
+                          <p style="color: red" *ngIf="walletControl.errors?.required">
+                            Bạn chưa chọn ví
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -45,6 +50,11 @@
                             <option [value]="category.id">{{category.name}}</option>
                           </ng-container>
                         </select>
+                        <div *ngIf="categoryControl.touched && categoryControl.invalid">
+                          <p style="color: red" *ngIf="categoryControl.errors?.required">
+                            Bạn chưa chọn thể loại
+                          </p>
+                        </div>
                         <div class="input-group-append">
                           <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}">Thêm danh mục</a>
                         </div>
@@ -57,12 +67,25 @@
                 <div class="col-5">
                   <label for="amount">Giá</label>
                   <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
+                  <div *ngIf="amountControl.touched && amountControl.invalid">
+                    <p style="color: red" *ngIf="amountControl.errors?.required">
+                      Không được để trống
+                    </p>
+                    <p style="color: red" *ngIf="amountControl.errors?.pattern">
+                      Vui lòng chỉ nhập số.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-5">
                   <label for="date">Ngày giao dịch</label><br>
                   <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
+                  <div *ngIf="dateControl.touched && dateControl.invalid">
+                    <p style="color: red" *ngIf="dateControl.errors?.required">
+                      Bạn chưa chọn ngày giao dịch
+                    </p>
+                  </div>
                 </div>
                 <br>
                 <div class="col-sm-7">

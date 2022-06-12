@@ -6,6 +6,6 @@
     <div>
       <div class="fw-bold">{{cate.name}}</div>
     </div>
-    <a class="btn btn-warning" [routerLink]="['/category/edit', cate.id]" ><span class="fas fa-edit" ></span></a>
+    <a class="btn btn-warning"  routerLink="/category/edit/{{cate.id}}" ><span class="fas fa-edit" ></span></a>
   </li>
 </ul>

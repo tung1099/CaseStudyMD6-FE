@@ -5,6 +5,7 @@ import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {User} from '../../model/user';
+import {Repass} from "../../model/repass";
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -38,5 +39,8 @@ export class AuthencicationService {
 
   register(singUpForm): Observable<User> {
     return this.http.post(`${API_URL}/register`, singUpForm);
+  }
+  changePassword(currentUserId: number, changePassword: Repass): Observable<User> {
+    return this.http.post<User>(`${API_URL}/changePassword/${currentUserId}`, changePassword);
   }
 }
