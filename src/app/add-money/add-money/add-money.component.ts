@@ -13,6 +13,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
+  idUser: number;
 idWallet: string;
   addMoneyForm: FormGroup = new FormGroup({
     money : new FormControl(),
@@ -24,6 +25,7 @@ idWallet: string;
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private walletService: WalletService) {
+    this.idUser = this.authentication.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.idWallet = paramMap.get('id');
     });
@@ -46,6 +48,6 @@ idWallet: string;
         timer: 1500
       });
     });
-    this.router.navigate(['wallet/list/{id}']);
+    this.router.navigate(['wallet/list', this.idUser]);
   }
 }
