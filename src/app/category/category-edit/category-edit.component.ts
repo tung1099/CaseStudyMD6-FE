@@ -13,53 +13,36 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 })
 export class CategoryEditComponent implements OnInit {
 
-  userId: number;
-  categoryForm: FormGroup = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl()
-  });
-  // id: number;
+  id: number;
+  categoryForm: FormGroup;
   constructor(private categoryService: CategoryService,
               private router: Router,
               private authenticationService: AuthencicationService,
               private sweetAlertService: SweetAlertService,
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
-      const id = paramMap.get('id');
-      this.getCategory(id);
-      this.userId = this.authenticationService.currentUserValue.id;
+      const a = +paramMap.get('id');
+      this.id = a;
     });
   }
 
   ngOnInit() {
+    this.getCategoryById(this.id);
   }
 
-  get idControl() {
-    return this.categoryForm.get('id');
-  }
-
-   getCategory(id) {
+   getCategoryById(id) {
     return this.categoryService.findCategoryById(id).subscribe((category) => {
       this.categoryForm = new FormGroup({
-        id: new FormControl(category.id),
         name: new FormControl(category.name),
       });
     });
   }
   updateCategory() {
-    const category = this.categoryForm.value;
-    this.categoryService.updateCategory(this.idControl.value, this.userId, category).subscribe(() => {
-      Swal.fire({
-        position: 'top-left',
-        icon: 'success',
-        title: 'Chỉnh sửa thành công',
-        showConfirmButton: false,
-        timer: 1500
-      });
+    this.categoryService.updateCategory(this.id, this.categoryForm.value ).subscribe(() => {
+      this.sweetAlertService.showNotification('success', 'Xong');
       this.router.navigate(['category/list/{id}']);
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
-  }
-  get nameControl() {
-    return this.categoryForm.get('name');
   }
 }

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {AddMoneyService} from '../../service/add-money/add-money.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {Wallet} from '../../model/wallet';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-add-money',
@@ -13,16 +14,20 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
-idWallet: any;
+  idUser: number;
+idWallet: string;
   addMoneyForm: FormGroup = new FormGroup({
-    money : new FormControl(),
+    money : new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     description : new FormControl(),
     wallet : new FormControl(),
   });
   constructor(private addMoneyService: AddMoneyService,
               private authentication: AuthencicationService,
               private activatedRoute: ActivatedRoute,
+              private sweetAlertService: SweetAlertService,
+              private router: Router,
               private walletService: WalletService) {
+    this.idUser = this.authentication.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.idWallet = paramMap.get('id');
     });
@@ -37,14 +42,14 @@ idWallet: any;
       id: data.wallet
     };
     this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
-      Swal.fire({
-        position: 'top-left',
-        icon: 'success',
-        title: 'Thêm thành công',
-        showConfirmButton: false,
-        timer: 1500
-      });
+      this.sweetAlertService.showNotification('success', 'Xong');
+      this.router.navigate(['wallet/list', this.idUser]);
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
-    this.addMoneyForm.reset();
+  }
+
+  get moneyControl() {
+    return this.addMoneyForm.get('money');
   }
 }

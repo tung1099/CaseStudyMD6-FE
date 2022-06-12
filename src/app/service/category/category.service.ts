@@ -22,15 +22,15 @@ export class CategoryService {
     return this.http.post<Category>(API_URL + `/categories/create/${id}`, category);
   }
 
-  findCategoryById(id: number): Observable<Category> {
+  findCategoryById(id): Observable<Category> {
     return this.http.get<Category>(`${API_URL}/categories/${id}`);
   }
 
-  updateCategory(id, userId, category): Observable<Category> {
-    return this.http.put<Category>(`${API_URL}/categories/edit/${id}/${userId}`, category);
+  updateCategory(id, category): Observable<Category> {
+    return this.http.put<Category>(`${API_URL}/categories/edit/${id}`, category);
   }
 
-  deleteCategory(id: number): Observable<Category> {
+  deleteCategory(id): Observable<Category> {
     return this.http.delete<Category>(`${API_URL}/categories/${id}`);
   }
 }

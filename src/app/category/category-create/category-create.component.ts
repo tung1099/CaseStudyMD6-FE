@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
@@ -11,15 +11,15 @@ import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
-  id: number;
+  idUser: number;
 
   categoryForm: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required])
+    name: new FormControl()
   });
   constructor(private categoryService: CategoryService,
-              private authenticationService: AuthencicationService,
-              private sweetAlertService: SweetAlertService) {
-    this.id = this.authenticationService.currentUserValue.id;
+              private sweetAlertService: SweetAlertService,
+              private authenticationService: AuthencicationService) {
+    this.idUser = this.authenticationService.currentUserValue.id;
   }
 
   ngOnInit() {
@@ -27,17 +27,12 @@ export class CategoryCreateComponent implements OnInit {
 
   createCategory() {
     const category = this.categoryForm.value;
-    this.categoryService.saveCategory(this.id, category).subscribe(() => {
+    this.categoryService.saveCategory(this.idUser, category).subscribe(() => {
       this.sweetAlertService.showNotification('success', 'Xong');
-    }
-      , () => {
+      this.categoryForm.reset();
+    }, () => {
         this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
       }
     );
-    this.categoryForm.reset();
-  }
-
-  get nameControl() {
-    return this.categoryForm.get('name');
   }
 }
