@@ -1,4 +1,4 @@
-<h1 style="font-family: 'Courier New'; color: blue">Add Money</h1>
+<h1 style="font-family: 'Courier New'; color: blue">Thêm tiền</h1>
 <form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
   <div class="form-group">
     <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Enter the money you want to add">
@@ -11,13 +11,13 @@
       </p>
     </div>
   </div>
-<!--  <div class="form-group">-->
-<!--    <label>Chọn ví</label>-->
-<!--    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="wallet">-->
-<!--      <option selected>Choose...</option>-->
-<!--      <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>-->
-<!--    </select>-->
-<!--  </div>-->
+  <!--  <div class="form-group">-->
+  <!--    <label>Chọn ví</label>-->
+  <!--    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="wallet">-->
+  <!--      <option selected>Choose...</option>-->
+  <!--      <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>-->
+  <!--    </select>-->
+  <!--  </div>-->
   <div c1lass="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
