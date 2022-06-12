@@ -1,45 +1,3 @@
-<!--<section class="content">-->
-<!--  <div class="container-fluid">-->
-<!--    <div class="row">-->
-<!--      <div class="col-12">-->
-<!--        <div class="card">-->
-<!--          <div class="card-header">-->
-<!--            <h3>Ví của tôi</h3>-->
-<!--            <h3 class="card-title">-->
-<!--              <a routerLink="/wallet/create" class="btn btn-primary">Tạo ví mới</a>-->
-<!--            </h3>-->
-<!--          </div>-->
-
-<!--          <div class="card-body">-->
-<!--            <table id="transaction" class="table table-bordered table-hover">-->
-<!--              <thead>-->
-<!--              <tr>-->
-<!--                <th>Icon</th>-->
-<!--                <th>Số dư</th>-->
-<!--                <th>Sửa</th>-->
-<!--                <th>Xóa</th>-->
-<!--              </tr>-->
-<!--              </thead>-->
-<!--              <tbody>-->
-<!--              <tr *ngFor="let wallet of wallets, index as i">-->
-<!--                <td><a routerLink="/wallet/{{wallet.id}}"><img src="http://localhost:8080/image/{{wallet.icon}}" style="width: 80px"></a></td>-->
-<!--                <td>{{wallet.balance}}</td>-->
-<!--                <td>-->
-<!--                  <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}"><span class="fas fa-edit"></span></a>-->
-<!--                </td>-->
-<!--                <td>-->
-<!--                  <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}"><span class="fas fa-trash"></span></a>-->
-<!--                </td>-->
-<!--            </table>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</section>-->
-
-
-
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -60,11 +18,11 @@
       <div class="row">
         <div class="col-md-3 col-sm-6 col-12" *ngFor="let wallet of wallets" >
           <div class="info-box" >
-            <span class="info-box-icon bg-info" class="btn btn-default" data-toggle="modal" data-target="#modal-lg"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+            <span class="info-box-icon bg-info"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
             <div class="info-box-content">
               <span class="info-box-text">{{wallet.name}}</span>
               <span class="info-box-number">Số dư: {{wallet.balance}} {{wallet.moneyType.name}}</span>
-              <button type="button" class="btn btn-outline-warning"  routerLink="/money/add/{{wallet.id}}">Nạp tiền</button>
+              <button type="button" class="btn btn-outline-warning"  routerLink="/money/add">Nạp tiền</button>
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -74,54 +32,5 @@
       </div>
     </div>
   </section>
-<div class="modal fade" id="modal-lg">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Large Modal</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h1>Chi tiết ví</h1>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Tên ví: </span>{{wallet.name}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'fullDate'}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
-          <hr>
-        </div>
 
-        <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</button>
 
-        &nbsp;
-
-        <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
