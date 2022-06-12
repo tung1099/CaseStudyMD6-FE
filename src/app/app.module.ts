@@ -24,6 +24,7 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { UserInfoComponent } from './user-info/user-info.component';
     LoginComponent,
     RegisterComponent,
     UserInfoComponent,
+    HomeComponent,
     // TransactionCreateComponent,
     // TransactionListComponent,
     // TransactionDeleteComponent,

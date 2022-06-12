@@ -3,6 +3,11 @@
   <div class="form-group">
     <label for="exampleInputName">Tên thể loại</label>
     <input type="email" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nhập thể loại tiêu dùng">
+    <div *ngIf="nameControl.touched && nameControl.invalid">
+      <p style="color: red" *ngIf="nameControl.errors?.required">
+        Không được để trống
+      </p>
+    </div>
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">

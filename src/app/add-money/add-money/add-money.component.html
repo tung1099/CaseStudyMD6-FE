@@ -1,7 +1,15 @@
 <h1 style="font-family: 'Courier New'; color: blue">Add Money</h1>
 <form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
   <div class="form-group">
-    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Enter the money you want to add">
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Nhập số tiền">
+    <div *ngIf="addMoneyForm.touched && addMoneyForm.invalid">
+      <p style="color: red" *ngIf="moneyControl.errors?.required">
+        Không được để trống
+      </p>
+      <p style="color: red" *ngIf="moneyControl.errors?.pattern">
+        Vui lòng chỉ nhập số.
+      </p>
+    </div>
   </div>
 <!--  <div class="form-group">-->
 <!--    <label>Chọn ví</label>-->

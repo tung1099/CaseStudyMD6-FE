@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from '../../model/category';
 import {Wallet} from '../../model/wallet';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {TransactionService} from '../../service/transaction/transaction.service';
@@ -19,11 +19,11 @@ export class TransactionCreateComponent implements OnInit {
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
-    amount: new FormControl(),
+    amount: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
-    date: new FormControl(),
-    category: new FormControl(),
-    wallet: new FormControl()
+    date: new FormControl('', [Validators.required]),
+    category: new FormControl('', [Validators.required]),
+    wallet: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -77,5 +77,17 @@ export class TransactionCreateComponent implements OnInit {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     }
     );
+  }
+  get amountControl() {
+    return this.transactionForm.get('amount');
+  }
+  get dateControl() {
+    return this.transactionForm.get('date');
+  }
+  get categoryControl() {
+    return this.transactionForm.get('category');
+  }
+  get walletControl() {
+    return this.transactionForm.get('wallet');
   }
 }

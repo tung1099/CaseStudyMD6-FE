@@ -24,6 +24,11 @@
                 <div class="col-3">
                   <label for="name">Tên ví</label>
                   <input class="form-control" type="text" formControlName="name" id="name" placeholder="Nhập tên ví">
+                  <div *ngIf="nameControl.touched && nameControl.invalid">
+                    <p style="color: red" *ngIf="nameControl.errors?.required">
+                      Không được để trống
+                    </p>
+                  </div>
                 </div>
 
 <!--                <div class="col-3">-->
@@ -49,6 +54,14 @@
                 <div class="col-5">
                   <label for="total">Số tiền nạp</label>
                   <input class="form-control" type="text" formControlName="total" id="total" placeholder="Nhập số tiền">
+                  <div *ngIf="totalControl.touched && totalControl.invalid">
+                    <p style="color: red" *ngIf="totalControl.errors?.required">
+                      Không được để trống
+                    </p>
+                    <p style="color: red" *ngIf="totalControl.errors?.pattern">
+                      Vui lòng chỉ nhập số.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div class="row">
@@ -59,6 +72,11 @@
                       <option [value]="m.id">{{m.name}}</option>
                     </ng-container>
                   </select>
+                  <div *ngIf="moneyTypeControl.touched && moneyTypeControl.invalid">
+                    <p style="color: red" *ngIf="moneyTypeControl.errors?.required">
+                      Bạn chưa chọn loại tiền
+                    </p>
+                  </div>
                 </div>
                 <br>
                 <div class="col-sm-7">
