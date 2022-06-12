@@ -1,25 +1,26 @@
-<h1>Add Money</h1>
+<h1 style="font-family: 'Courier New'; color: blue">Add Money</h1>
 <form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
-  <table>
-    <tr>
-      <th>Money:</th>
-      <td><input type="text" formControlName="money"></td>
-    </tr>
-<!--    <tr>-->
-<!--      <th>Date:</th>-->
-<!--      <td><input type="date" formControlName="date"></td>-->
-<!--    </tr>-->
-    <tr>
-      <select id="wallet" formControlName="wallet">
-        <option selected [value]="null" disabled>Chọn</option>
-        <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>
-      </select>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <button>Add</button>
-      </td>
-    </tr>
-  </table>
+  <div class="form-group">
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Enter the money you want to add">
+    <div *ngIf="addMoneyForm.touched && addMoneyForm.invalid">
+      <p style="color: red" *ngIf="moneyControl.errors?.required">
+        Không được để trống
+      </p>
+      <p style="color: red" *ngIf="moneyControl.errors?.pattern">
+        Vui lòng chỉ nhập số.
+      </p>
+    </div>
+  </div>
+<!--  <div class="form-group">-->
+<!--    <label>Chọn ví</label>-->
+<!--    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" formControlName="wallet">-->
+<!--      <option selected>Choose...</option>-->
+<!--      <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>-->
+<!--    </select>-->
+<!--  </div>-->
+  <div c1lass="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
 </form>

@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {AddMoneyService} from '../../service/add-money/add-money.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {Wallet} from '../../model/wallet';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {AuthencicationService} from '../../service/auth/authencication.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-add-money',
@@ -11,18 +14,26 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
-
-  wallets: Wallet[] = [];
+  idUser: number;
+idWallet: string;
   addMoneyForm: FormGroup = new FormGroup({
-    money : new FormControl(),
+    money : new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     description : new FormControl(),
     wallet : new FormControl(),
   });
   constructor(private addMoneyService: AddMoneyService,
-              private walletService: WalletService) { }
+              private authentication: AuthencicationService,
+              private activatedRoute: ActivatedRoute,
+              private sweetAlertService: SweetAlertService,
+              private router: Router,
+              private walletService: WalletService) {
+    this.idUser = this.authentication.currentUserValue.id;
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.idWallet = paramMap.get('id');
+    });
+  }
 
   ngOnInit() {
-    this.getAllWallet();
   }
 
   addMoney() {
@@ -30,21 +41,15 @@ export class AddMoneyComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.addMoneyService.addMoney(data).subscribe(() => {
-      Swal.fire({
-        position: 'top-left',
-        icon: 'success',
-        title: 'Thêm mới thành công',
-        showConfirmButton: false,
-        timer: 1500
-      });
+    this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
+      this.sweetAlertService.showNotification('success', 'Xong');
+      this.router.navigate(['wallet/list', this.idUser]);
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
-    this.addMoneyForm.reset();
   }
 
-   getAllWallet() {
-    this.addMoneyService.getAllWallet().subscribe(wallets => {
-      this.wallets = wallets;
-    });
+  get moneyControl() {
+    return this.addMoneyForm.get('money');
   }
 }

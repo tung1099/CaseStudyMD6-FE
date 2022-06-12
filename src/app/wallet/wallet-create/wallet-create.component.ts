@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {MoneytypeService} from '../../service/moneytype/moneytype.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {IconService} from '../../service/icon/icon.service';
+import {Icon} from '../../model/icon';
+import {AuthencicationService} from '../../service/auth/authencication.service';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-wallet-create',
@@ -13,32 +17,42 @@ import Swal from 'sweetalert2';
   styleUrls: ['./wallet-create.component.css']
 })
 export class WalletCreateComponent implements OnInit {
-  idUser = 1;
-  selectedFile: any = File;
+  idUser: number;
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
+  icons: Icon[] = [];
   walletForm: FormGroup = new FormGroup({
     icon: new FormControl(),
-    name: new FormControl(),
-    total: new FormControl(),
-    moneyType: new FormControl(),
+    name: new FormControl('', [Validators.required]),
+    total: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
-    // user: new FormControl()
+    moneyType: new FormControl('', [Validators.required]),
   });
 
 
   constructor(private walletService: WalletService,
               private moneytypeService: MoneytypeService,
-              private router: Router) { }
+              private authService: AuthencicationService,
+              private iconService: IconService,
+              private sweetalertService: SweetAlertService,
+              private router: Router) {
+     this.idUser = authService.currentUserValue.id;
+  }
 
   ngOnInit() {
     this.getAllType();
+    this.getAllIcon();
   }
-  onSelectFile(event) {
-    this.selectedFile = event.target.files[0];
+
+  getAllIcon() {
+    this.iconService.getAll().subscribe((data) => {
+      this.icons = data;
+    }, (error) => {
+      alert(error);
+    });
   }
   getAllType() {
-    this.moneytypeService.getAll().subscribe((data) => {
+    this.walletService.getAllType().subscribe((data) => {
       this.moneyTypes = data;
     }, (error) => {
       alert(error);
@@ -46,15 +60,28 @@ export class WalletCreateComponent implements OnInit {
   }
   createWallet() {
     const wallet = new FormData();
-    wallet.append('icon', this.selectedFile);
     wallet.append('name', this.walletForm.get('name').value);
+    if (this.walletForm.get('icon').value != null) {
+      wallet.append('icon', this.walletForm.get('icon').value);
+    }
     wallet.append('total', this.walletForm.get('total').value);
-    wallet.append('moneyType', this.walletForm.get('moneyType').value);
     wallet.append('note', this.walletForm.get('note').value);
-    // wallet.append('user', this.walletForm.get('user').value);
+    wallet.append('moneyType', this.walletForm.get('moneyType').value);
     this.walletService.create(this.idUser, wallet).subscribe(() => {
-      this.router.navigateByUrl('/wallet/list');
+      this.sweetalertService.showNotification('success', 'Đã tạo mới thành công');
+      this.router.navigate(['/wallet/list', this.idUser]);
+    },
+    () => {
+      this.sweetalertService.showNotification('error', 'Tạo mới không thành công');
     });
   }
-
+  get totalControl() {
+    return this.walletForm.get('total');
+  }
+  get nameControl() {
+    return this.walletForm.get('name');
+  }
+  get moneyTypeControl() {
+    return this.walletForm.get('moneyType');
+  }
 }

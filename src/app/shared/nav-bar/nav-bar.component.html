@@ -4,10 +4,11 @@
     <li class="nav-item">
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
-      <a href="../../index3.html" class="nav-link">Home</a>
+    <li class="nav-item active mr-sm-3">
+      <a class="nav-link" routerLink="/home">
+        <i class="fa fa-home fa-lg"></i>
+        Trang chủ<span class="sr-only">(current)</span></a>
     </li>
-<!--    <li>-->
 <!--  <h3 class="card-title">-->
 <!--    <a class="btn btn-primary" routerLink="/transaction/createTransaction">Add new transaction</a>-->
 <!--  </h3>-->
@@ -16,16 +17,9 @@
   <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
       <h3 class="card-title">
-        <a class="btn btn-primary" routerLink="/transaction/createTransaction">Thêm mới giao dịch</a>
+        <button type="button" class="btn btn-outline-success" routerLink="/transaction/createTransaction">Thêm mới giao dịch</button>
       </h3>
     </li>
-    <li class="nav-item dropdown">
-      <h3 class="card-title">
-        <a class="btn btn-primary" routerLink="/money/add">Nạp tiền</a>
-      </h3>
-    </li>
-
-
   </ul>
 
 </nav>

@@ -14,8 +14,8 @@ export class AddMoneyService {
 
   constructor(private http: HttpClient) { }
 
-  addMoney(addMoney): Observable<AddMoney> {
-    return this.http.post<AddMoney>(API_URL + '/addMoney', addMoney);
+  addMoney(id, addMoney): Observable<AddMoney> {
+    return this.http.post<AddMoney>(API_URL + `/addMoney/${id}`, addMoney);
   }
 
   getAllWallet(): Observable<AddMoney[]> {

@@ -14,23 +14,23 @@ export class CategoryService {
 
   constructor(private http: HttpClient) {
   }
-  getAllCategory(): Observable<Category[]> {
-    return this.http.get<Category[]>(API_URL + '/categories/list');
+  getAllCategory(id): Observable<Category[]> {
+    return this.http.get<Category[]>(API_URL + `/categories/list/${id}`);
   }
 
-  saveCategory(category): Observable<Category> {
-    return this.http.post<Category>(API_URL + '/categories', category);
+  saveCategory(id, category): Observable<Category> {
+    return this.http.post<Category>(API_URL + `/categories/create/${id}`, category);
   }
 
-  findCategoryById(id: number): Observable<Category> {
+  findCategoryById(id): Observable<Category> {
     return this.http.get<Category>(`${API_URL}/categories/${id}`);
   }
 
-  updateCategory(id: number, category: Category): Observable<Category> {
-    return this.http.put<Category>(`${API_URL}/categories/${id}`, category);
+  updateCategory(id, category): Observable<Category> {
+    return this.http.put<Category>(`${API_URL}/categories/edit/${id}`, category);
   }
 
-  deleteCategory(id: number): Observable<Category> {
+  deleteCategory(id): Observable<Category> {
     return this.http.delete<Category>(`${API_URL}/categories/${id}`);
   }
 }
