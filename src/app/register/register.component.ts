@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.pattern(this.regexUsername)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern('(0)[0-9]{9,10}')]),
-    birthDay: new FormControl(),
+    birthDay: new FormControl(''),
     address: new FormControl('', [Validators.required, Validators.pattern(this.regexUsername)]),
   });
   constructor(private authenticationService: AuthencicationService,

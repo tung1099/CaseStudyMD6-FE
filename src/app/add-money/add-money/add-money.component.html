@@ -2,6 +2,14 @@
 <form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
   <div class="form-group">
     <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Enter the money you want to add">
+    <div *ngIf="addMoneyForm.touched && addMoneyForm.invalid">
+      <p style="color: red" *ngIf="moneyControl.errors?.required">
+        Không được để trống
+      </p>
+      <p style="color: red" *ngIf="moneyControl.errors?.pattern">
+        Vui lòng chỉ nhập số.
+      </p>
+    </div>
   </div>
 <!--  <div class="form-group">-->
 <!--    <label>Chọn ví</label>-->
@@ -10,7 +18,7 @@
 <!--      <option *ngFor="let w of wallets" [value]="w.id">{{w.name}}</option>-->
 <!--    </select>-->
 <!--  </div>-->
-  <div class="form-group form-check">
+  <div c1lass="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
