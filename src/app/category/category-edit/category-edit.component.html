@@ -2,9 +2,14 @@
 <form class="form-inline" [formGroup]="categoryForm" (ngSubmit)="updateCategory()">
   <div class="form-group">
     <label>Tên thể loại:</label>
-    <input type="text" class="form-control" formControlName="name">
+    <input type="text" class="form-control" id="name" formControlName="name">
+<!--    <div *ngIf="categoryForm.touched && categoryForm.invalid">-->
+<!--      <p style="color: red" *ngIf="nameControl.errors?.required">-->
+<!--        Không được để trống-->
+<!--      </p>-->
+<!--    </div>-->
   </div>
-  <button type="button" class="btn btn-outline-success">Chỉnh sửa</button>
+  <button type="submit" class="btn btn-outline-success">Chỉnh sửa</button>
 </form>
 
 

@@ -26,6 +26,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserInfoComponent } from './userInfo/user-info/user-info.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.
     UserInfoComponent,
     ChangePasswordComponent,
     UserInfoEditComponent,
+    HomeComponent
     // TransactionCreateComponent,
     // TransactionListComponent,
     // TransactionDeleteComponent,
