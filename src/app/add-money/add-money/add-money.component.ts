@@ -5,7 +5,7 @@ import {Wallet} from '../../model/wallet';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-money',
@@ -13,7 +13,8 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
-idWallet: string;
+  idUser: number;
+  idWallet: string;
   addMoneyForm: FormGroup = new FormGroup({
     money : new FormControl(),
     description : new FormControl(),
@@ -22,7 +23,9 @@ idWallet: string;
   constructor(private addMoneyService: AddMoneyService,
               private authentication: AuthencicationService,
               private activatedRoute: ActivatedRoute,
+              private router: Router,
               private walletService: WalletService) {
+    this.idUser = this.authentication.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.idWallet = paramMap.get('id');
     });
@@ -44,7 +47,7 @@ idWallet: string;
         showConfirmButton: false,
         timer: 1500
       });
+      this.router.navigate(['wallet/list', this.idUser]);
     });
-    this.addMoneyForm.reset();
   }
 }
