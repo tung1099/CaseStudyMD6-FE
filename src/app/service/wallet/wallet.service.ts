@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Wallet} from '../../model/wallet';
+import {MoneyType} from '../../model/money-type';
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -24,5 +25,8 @@ export class WalletService {
   }
   getById(id): Observable<Wallet> {
     return this.http.get<Wallet>(`${API_URL}/wallet/${id}`);
+  }
+  getAllType(): Observable<MoneyType[]> {
+    return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
   }
 }

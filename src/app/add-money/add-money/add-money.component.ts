@@ -5,6 +5,7 @@ import {Wallet} from '../../model/wallet';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-add-money',
@@ -12,9 +13,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./add-money.component.css']
 })
 export class AddMoneyComponent implements OnInit {
-
-  id: number;
-  wallets: Wallet[] = [];
+idWallet: string;
   addMoneyForm: FormGroup = new FormGroup({
     money : new FormControl(),
     description : new FormControl(),
@@ -22,11 +21,14 @@ export class AddMoneyComponent implements OnInit {
   });
   constructor(private addMoneyService: AddMoneyService,
               private authentication: AuthencicationService,
-              private walletService: WalletService) { }
+              private activatedRoute: ActivatedRoute,
+              private walletService: WalletService) {
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.idWallet = paramMap.get('id');
+    });
+  }
 
   ngOnInit() {
-    this.getAllWallet();
-    this.id = this.authentication.currentUserValue.id;
   }
 
   addMoney() {
@@ -34,7 +36,7 @@ export class AddMoneyComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.addMoneyService.addMoney(this.id, data).subscribe(() => {
+    this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
       Swal.fire({
         position: 'top-left',
         icon: 'success',
@@ -44,11 +46,5 @@ export class AddMoneyComponent implements OnInit {
       });
     });
     this.addMoneyForm.reset();
-  }
-
-   getAllWallet() {
-    this.addMoneyService.getAllWallet().subscribe(wallets => {
-      this.wallets = wallets;
-    });
   }
 }

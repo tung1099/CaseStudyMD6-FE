@@ -5,6 +5,7 @@ import {WalletCreateComponent} from './wallet-create/wallet-create.component';
 import {WalletEditComponent} from './wallet-edit/wallet-edit.component';
 import {WalletDeleteComponent} from './wallet-delete/wallet-delete.component';
 import {WalletDetailComponent} from './wallet-detail/wallet-detail.component';
+import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
     path: ':id',
     component: WalletDetailComponent
   },
+  {
+    path: 'listType',
+    component: MoneytypeListComponent
+  },
+
 ];
 
 @NgModule({
