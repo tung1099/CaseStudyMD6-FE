@@ -5,7 +5,7 @@ import {Wallet} from '../../model/wallet';
 import {FormControl, FormGroup} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-money',
@@ -22,6 +22,7 @@ idWallet: string;
   constructor(private addMoneyService: AddMoneyService,
               private authentication: AuthencicationService,
               private activatedRoute: ActivatedRoute,
+              private router: Router,
               private walletService: WalletService) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       this.idWallet = paramMap.get('id');
@@ -45,6 +46,6 @@ idWallet: string;
         timer: 1500
       });
     });
-    this.addMoneyForm.reset();
+    this.router.navigate(['wallet/list/{id}']);
   }
 }
