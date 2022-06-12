@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./wallet/wallet.module').then(module => module.WalletModule)
   },
   {
+    path: 'type',
+    loadChildren: () => import('./moneytype/moneytype.module').then(module => module.MoneytypeModule)
+  },
+  {
     path: 'icon',
     loadChildren: () => import('./icon/icon.module').then(module => module.IconModule)
   },
