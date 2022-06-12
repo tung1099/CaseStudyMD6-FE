@@ -19,5 +19,9 @@ export class UserInfoService {
   updateProfile(id, data): Observable<UserInfo> {
     return this.http.put(`${API_URL}/userInfo/update/${id}`, data)
   }
+
+  setAvatar(id, data): Observable<UserInfo> {
+    return this.http.put(`${API_URL}/userInfo/avatar/${id}`, data)
+  }
 }
 
