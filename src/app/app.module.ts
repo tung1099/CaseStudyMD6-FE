@@ -22,7 +22,9 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { UserInfoComponent } from './user-info/user-info.component';
+import { UserInfoComponent } from './userInfo/user-info/user-info.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     LoginComponent,
     RegisterComponent,
     UserInfoComponent,
+    ChangePasswordComponent,
+    UserInfoEditComponent,
     // TransactionCreateComponent,
     // TransactionListComponent,
     // TransactionDeleteComponent,

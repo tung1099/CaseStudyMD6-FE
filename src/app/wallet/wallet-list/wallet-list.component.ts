@@ -20,9 +20,7 @@ export class WalletListComponent implements OnInit {
   getAllWalletByUser(id) {
     this.walletService.getAllByUserId(id).subscribe((wallets) => {
       this.wallets = wallets;
-    }, (error) => {
-      alert(error);
-    });
+    })
   }
 
 }
