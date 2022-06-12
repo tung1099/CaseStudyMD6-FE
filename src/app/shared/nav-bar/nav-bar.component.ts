@@ -10,10 +10,10 @@ export class NavBarComponent implements OnInit {
 
   id: number;
   constructor(private authenticationService: AuthencicationService) {
-    this.id = this.authenticationService.currentUserValue.id;
   }
 
   ngOnInit() {
+    this.id = this.authenticationService.currentUserValue.id;
   }
 
 }

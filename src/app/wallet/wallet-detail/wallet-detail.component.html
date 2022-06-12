@@ -1,9 +1,21 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 style="text-align: center">Chi tiết ví {{wallet.name}}</h1>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a routerLink="/wallet/edit/{{wallet.id}}/{{idUser}}">Sửa ví</a></li>
+          <li class="breadcrumb-item active"><a routerLink="/wallet/delete/{{wallet.id}}" >Xóa ví</a></li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
 <div class="container">
-  <h1>Chi tiết ví</h1>
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Tên ví: </span>{{wallet.name}}</p>
-    <hr>
-  </div>
+
   <div class="mb-3">
     <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'fullDate'}}</p>
     <hr>
@@ -31,101 +43,6 @@
 
     <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
 
-
 </div>
 
 
-<div>
-  <div class="card-body">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
-      Launch Default Modal
-    </button>
-  </div>
-</div>
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Chi tiết ví</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Tên ví: </span>{{wallet.name}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'fullDate'}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance}}</p>
-          <hr>
-        </div>
-        <div class="mb-3">
-          <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
-          <hr>
-        </div>
-
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-
-<!--tạo bảng mới-->
-<div class="row">
-  <div class="col-md-8">
-    <!-- Widget: user widget style 2 -->
-    <div class="card card-widget widget-user-2">
-      <!-- Add the bg color to the header using any of the bg-* classes -->
-      <div class="widget-user-header bg-warning">
-        <div class="widget-user-image">
-          <img class="img-circle elevation-2" src="{{wallet.icon.linkIcon}}" alt="User Avatar">
-        </div>
-        <!-- /.widget-user-image -->
-        <h3 class="widget-user-username">{{wallet.name}}l</h3>
-        <h5 class="widget-user-desc">Ngày tạo ví: {{wallet.date | date:'fullDate'}}</h5>
-      </div>
-      <div class="card-footer p-0">
-        <ul class="nav flex-column">
-
-          <li class="nav-item">
-             <h5>Đơn vị: <span class="float-right ">{{wallet.moneyType.name}}</span></h5>
-          </li>
-          <li class="nav-item">
-            <h5>Tổng nạp: <span class="float-right " >{{wallet.total}}</span></h5>
-          </li>
-          <li class="nav-item">
-              <h5>Số dư: <span class="float-right ">12</span></h5>
-          </li>
-          <li class="nav-item">
-              <h5>Ghi chú: <span class="float-right ">842</span></h5>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- /.widget-user -->
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</button>
-
-  </div>
-  <!-- /.col -->
-
-</div>

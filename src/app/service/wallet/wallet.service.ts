@@ -20,6 +20,9 @@ export class WalletService {
   create(id, data): Observable<Wallet> {
     return this.http.post<Wallet>(`${API_URL}/wallet/createWallet/${id}`, data);
   }
+  edit(id, idUser, data): Observable<Wallet> {
+    return this.http.put<Wallet>(`${API_URL}/wallet/editWallet/${id}/${idUser}`, data);
+  }
   delete(id): Observable<Wallet> {
     return this.http.delete<Wallet>(`${API_URL}/wallet/${id}`);
   }

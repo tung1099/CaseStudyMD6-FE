@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import {IconService} from '../../service/icon/icon.service';
 import {Icon} from '../../model/icon';
 import {AuthencicationService} from '../../service/auth/authencication.service';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-wallet-create',
@@ -33,6 +34,7 @@ export class WalletCreateComponent implements OnInit {
               private moneytypeService: MoneytypeService,
               private authService: AuthencicationService,
               private iconService: IconService,
+              private sweetalertService: SweetAlertService,
               private router: Router) {
      this.idUser = authService.currentUserValue.id;
   }
@@ -66,7 +68,11 @@ export class WalletCreateComponent implements OnInit {
     wallet.append('note', this.walletForm.get('note').value);
     wallet.append('moneyType', this.walletForm.get('moneyType').value);
     this.walletService.create(this.idUser, wallet).subscribe(() => {
+      this.sweetalertService.showNotification('success', 'Đã tạo mới thành công');
       this.router.navigate(['/wallet/list', this.idUser]);
+    },
+    () => {
+      this.sweetalertService.showNotification('error', 'Tạo mới không thành công');
     });
   }
 

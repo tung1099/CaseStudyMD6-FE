@@ -1,1 +1,90 @@
-<p>wallet-edit works!</p>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Sửa ví</h3>
+          </div>
+          <form [formGroup]="walletForm" (ngSubmit)="editWallet()" >
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <label for="name">Tên ví</label>
+                  <input class="form-control" type="text" formControlName="name" id="name">
+                </div>
+
+                <div class="col-3">
+                  <div class="card collapsed-card">
+                    <div class="card-header">
+                      <div class="card-tools">
+                        <span class="btn btn-tool" data-card-widget="collapse">
+                          <img data-v-111acfae="" src="{{wallet.icon.linkIcon}}"  width="50px">
+                        </span>
+
+                      </div>
+                    </div>
+                    <div class="card-body" >
+                      <ul class="users-list clearfix" >
+                        <li *ngFor="let icon of icons">
+                          <img src="{{icon.linkIcon}}" width="50px" alt="User Image">
+                          <input type="radio" id="idIcon" formControlName="icon" value="{{icon.id}}">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-5">
+                  <label>Ngày tạo ví: </label>
+                  <p >{{wallet.date | date:'fullDate'}}</p>
+                </div>
+
+                <div class="row">
+                  <div class="col-5">
+                    <label for="type">Loại tiền</label><br>
+                    <select class="form-control" id="type" formControlName="moneyType">
+                      <ng-container *ngFor="let m of moneyTypes">
+                        <option [value]="m.id">{{m.name}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="col-5">
+                <label for="total">Tổng tiền đã nạp</label>
+                <input class="form-control" type="text" formControlName="total" id="total" disabled>
+              </div>
+
+                <div class="col-5">
+                  <label for="balance">Số dư</label>
+                  <input class="form-control" type="text" formControlName="balance" id="balance" disabled>
+                </div>
+            </div>
+
+              <br>
+              <div class="col-sm-7">
+                <!-- textarea -->
+                <div class="form-group">
+                  <label>Ghi chú</label>
+                  <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-success">Sửa</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
