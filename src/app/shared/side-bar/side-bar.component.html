@@ -6,20 +6,20 @@
   <div class="sidebar">
     <!-- Sidebar user (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <a href="../../index3.html" class="brand-link">
+      <a routerLink="/home" class="brand-link">
         <img src="assets/dist/img/logoN4.png" alt="AdminLTE Logo" class="brand-image  elevation-3"
              style="opacity: .8">
 <!--        <span class="brand-text font-weight-light">Double Cat</span>-->
       </a>
     </div>
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="http://localhost:8080/image/okok.jpg" class="img-circle elevation-2" alt="User Image">
-      </div>
-      <div class="info">
-        <a routerLink="profile" class="d-block">Cuong987</a>
-      </div>
-    </div>
+<!--    <div class="user-panel mt-3 pb-3 mb-3 d-flex">-->
+<!--      <div class="image">-->
+<!--        <img src="http://localhost:8080/image/okok.jpg" class="img-circle elevation-2" alt="User Image">-->
+<!--      </div>-->
+<!--      <div class="info">-->
+<!--        <a routerLink="profile" class="d-block">Cuong987</a>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -76,6 +76,33 @@
               Thể loại tiêu dùng
             </p>
           </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-cog"></i>
+            <p>
+              Cài đặt
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="profile" class="nav-link">
+                <i class="fa fa-user"></i>
+                <p>
+                  Tài khoản
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)="logout()" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <p>
+                  Đăng xuất
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
       </ul>
     </nav>
