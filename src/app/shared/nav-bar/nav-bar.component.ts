@@ -8,12 +8,14 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 })
 export class NavBarComponent implements OnInit {
 
-  id: number;
+  id: number = 0;
   constructor(private authenticationService: AuthencicationService) {
   }
 
   ngOnInit() {
-    this.id = this.authenticationService.currentUserValue.id;
+    if (this.authenticationService.currentUserValue != null) {
+      this.id = this.authenticationService.currentUserValue.id;
+    }
   }
 
 }
