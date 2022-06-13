@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
           title: 'Đăng nhập thành công!',
           showConfirmButton: false,
           timer: 1500});
-        this.router.navigate(['wallet']);
+        this.router.navigate(['home']);
       }, error => {
         Swal.fire({
           position: 'top-end',
