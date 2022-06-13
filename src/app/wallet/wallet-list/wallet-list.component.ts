@@ -19,7 +19,6 @@ export class WalletListComponent implements OnInit {
               private authService: AuthencicationService,
               private activatedRoute: ActivatedRoute) {
     this.idUser = authService.currentUserValue.id;
-    console.log(this.idUser);
   }
 
   ngOnInit() {

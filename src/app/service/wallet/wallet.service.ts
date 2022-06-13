@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
+import {SumMoney} from '../../model/sum-money';
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -31,5 +32,8 @@ export class WalletService {
   }
   getAllType(): Observable<MoneyType[]> {
     return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
+  }
+  getSumMoney(id): Observable<SumMoney[]> {
+    return this.http.get<SumMoney[]>(`${API_URL}/wallet/sumMoney/${id}`);
   }
 }

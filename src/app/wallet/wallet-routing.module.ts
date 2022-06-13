@@ -6,6 +6,7 @@ import {WalletEditComponent} from './wallet-edit/wallet-edit.component';
 import {WalletDeleteComponent} from './wallet-delete/wallet-delete.component';
 import {WalletDetailComponent} from './wallet-detail/wallet-detail.component';
 import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
+import {SumMoneyComponent} from './sum-money/sum-money.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'listType',
     component: MoneytypeListComponent
+  },
+  {
+    path: 'sumMoney/:id',
+    component: SumMoneyComponent
   },
 
 ];
