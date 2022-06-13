@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthencicationService} from '../../service/auth/authencication.service';
-import {UserInfo} from "../../model/user-info";
-import {UserInfoService} from "../../service/userInfo/user-info.service";
-import {FormControl, FormGroup} from "@angular/forms";
+import {UserInfo} from '../../model/user-info';
+import {UserInfoService} from '../../service/userInfo/user-info.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,15 +10,16 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-idUser: number = 0;
+idUser = 0;
 userInfo: UserInfo = {};
   constructor(private authService: AuthencicationService,
-              private userInfoService: UserInfoService
+              private userInfoService: UserInfoService,
+              private router: Router
               ) {
-    if (this.authService.currentUserValue!= null) {
+    if (this.authService.currentUserValue != null) {
       this.idUser = this.authService.currentUserValue.id;
     }
-    this.findByUserId(this.idUser)
+    this.findByUserId(this.idUser);
   }
   ngOnInit() {
 
@@ -26,7 +27,11 @@ userInfo: UserInfo = {};
   findByUserId(id) {
     this.userInfoService.findByUserId(id).subscribe(profile => {
       this.userInfo = profile;
-    })
+    });
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
 }

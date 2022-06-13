@@ -1,3 +1,5 @@
+import {MoneyType} from './money-type';
+
 export interface Wallet {
   id?: number;
   icon?: any;
@@ -6,6 +8,6 @@ export interface Wallet {
   balance?: number;
   date?: string;
   note?: string;
-  moneyType?: any;
+  moneyType?: MoneyType;
   user?: any;
 }
