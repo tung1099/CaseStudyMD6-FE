@@ -32,16 +32,16 @@ export class TransactionService {
   delete(id): Observable<Transaction> {
     return this.http.delete(`${API_URL}/transaction/deleteTransaction/${id}`);
   }
-  getAllTransactionToday(idUser): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);
+  getAllTransactionToday(idUser): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);
   }
-  getAllTransactionTodayByWallet(id): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);
+  getAllTransactionTodayByWallet(id): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);
   }
   getSumTransactionTodayByWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
     return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionInDay/${id}`);
   }
-  getAllTransactionByWallet(id): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
+  getAllTransactionByWallet(id): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
   }
 }
