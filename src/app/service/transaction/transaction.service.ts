@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Transaction} from '../../model/transaction';
 import {TransactionToday} from '../../model/transactionToday';
 import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
+import {DateDto} from '../../model/date-dto';
 
 
 
@@ -43,5 +44,14 @@ export class TransactionService {
   }
   getAllTransactionByWallet(id): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
+  }
+  getSumTransactionWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
+    return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionWallet/${id}`);
+  }
+  getTransactionInTime(id, data): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(`${API_URL}/transaction/transactionInTime/${id}`, data);
+  }
+  getTransactionInTimeByIdWallet(data): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(`${API_URL}/transaction/transactionInTimeByIdWallet`, data);
   }
 }

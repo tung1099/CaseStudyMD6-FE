@@ -6,6 +6,7 @@ import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
 import {SumMoney} from '../../model/sum-money';
 import {AddMoney} from '../../model/addMoney';
+import {InOut} from "../../model/inOut";
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
@@ -33,6 +34,10 @@ export class WalletService {
   }
   getAllType(): Observable<MoneyType[]> {
     return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
+  }
+  getInOut(idWallet, month, year): Observable<InOut> {
+    // @ts-ignore
+    return this.http.post<InOut>(`${API_URL}/wallet/inOut/${idWallet}?month=${month}&year=${year}`);
   }
   getSumMoney(id): Observable<SumMoney[]> {
     return this.http.get<SumMoney[]>(`${API_URL}/wallet/sumMoney/${id}`);

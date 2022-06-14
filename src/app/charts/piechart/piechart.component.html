@@ -1,0 +1,98 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 style="text-align:center">Xem dưới dạng biểu đồ</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6">
+      <div class="col-md-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Nhập thời gian và ví bạn muốn tìm</h3>
+          </div>
+          <form [formGroup]="YearMonth" (ngSubmit)="getInOut()">
+            <div class="card-body">
+
+                <div class="col-12">
+                  <label>Tháng</label><br>
+                  <div class="input-group">
+                    <select class="form-control" id="month" formControlName="month">
+                      <option [value]="null" disabled>Chọn tháng</option>
+                      <ng-container *ngFor="let m of Month; index as i">
+                        <option [value]="i+1">{{m}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+<!--                  <input class="form-control" type="text" formControlName="month" placeholder="Nhập tháng">-->
+                </div>
+
+                <div class="col-12">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Năm</label>
+                    <div class="input-group">
+                      <select class="form-control" id="year" formControlName="year">
+                        <option [value]="null" disabled>Chọn năm</option>
+                        <ng-container *ngFor="let m of Year; index as i">
+                          <option [value]="i+2022">{{m}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+<!--                    <input class="form-control" type="text" formControlName="year" placeholder="Nhập năm">-->
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <div class="col-12">
+                      <label for="wallet">Ví</label>
+                      <div class="input-group">
+                        <select class="form-control" id="wallet" formControlName="wallet">
+                          <option [value]="null" disabled>Chọn ví</option>
+                          <ng-container *ngFor="let wallet of wallet">
+                            <option [value]="wallet.id">{{wallet.name}} ({{wallet.moneyType.name}})</option>
+                          </ng-container>
+                        </select>
+<!--                        <div *ngIf="walletControl.touched && walletControl.invalid">-->
+<!--                          <p style="color: red" *ngIf="walletControl.errors?.required">-->
+<!--                            Bạn chưa chọn ví-->
+<!--                          </p>-->
+<!--                        </div>-->
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row">
+
+              </div>
+
+
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      </div>
+      <div class="col-6">
+        <div class="chart-container" style="position: relative; height:15vh; width:30vw" >
+          <canvas id="canvas"></canvas>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+
+
+

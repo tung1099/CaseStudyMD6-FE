@@ -3,6 +3,7 @@ import {Transaction} from '../../model/transaction';
 import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Wallet} from '../../model/wallet';
 declare var $: any;
 @Component({
   selector: 'app-transacsion-all-wallet',
@@ -21,6 +22,7 @@ export class TransacsionAllWalletComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.getAllTransactionByWallet(id);
+      this.getSumTransactionByWallet(id);
     });
   }
 
@@ -42,6 +44,13 @@ export class TransacsionAllWalletComponent implements OnInit {
           'responsive': true,
         });
       });
+    });
+  }
+
+  private getSumTransactionByWallet(id) {
+    this.transactionService.getSumTransactionWallet(id).subscribe(sum => {
+      this.sum = sum;
+      console.log(sum);
     });
   }
 

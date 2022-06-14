@@ -70,6 +70,33 @@
           </ul>
         </li>
         <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-search-plus"></i>
+            <p>
+              Tìm kiếm giao dịch
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/transaction/listTransactionInTime/{{idUser}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Tìm kiếm theo khoảng thời gian
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/transaction/listTransactionInTimeByIdWallet" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Tìm kiếm theo khoảng thời gian của từng ví
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
           <a routerLink="/category/list/{{idUser}}" class="nav-link">
             <i class="fa fa-align-left"></i>
             <p>
@@ -78,8 +105,16 @@
           </a>
         </li>
         <li class="nav-item">
+          <a routerLink="charts/chart" class="nav-link active">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Xem dưới dạng biểu đồ
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="fa fa-cog"></i>
+            <div class="fa fa-cog"></div>
             <p>
               Cài đặt
               <i class="right fas fa-angle-left"></i>
@@ -104,6 +139,7 @@
             </li>
           </ul>
         </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

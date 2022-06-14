@@ -42,7 +42,11 @@ const routes: Routes = [
   {
     path: 'addMoney/:id',
     component: HistoryAddMoneyComponent
-  }
+  },
+  {
+    path: 'inOut',
+    component: MoneytypeListComponent
+  },
 
 ];
 
