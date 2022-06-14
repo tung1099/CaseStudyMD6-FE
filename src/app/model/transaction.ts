@@ -1,3 +1,4 @@
+import {Category} from './category';
 import {Wallet} from './wallet';
 
 export interface Transaction {
@@ -5,6 +6,6 @@ export interface Transaction {
   amount?: string;
   date?: string;
   note?: string;
-  category?: any;
+  category?: Category;
   wallet?: Wallet;
 }

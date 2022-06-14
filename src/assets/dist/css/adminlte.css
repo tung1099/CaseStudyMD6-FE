@@ -13752,7 +13752,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 
 .sidebar-dark-green .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-green .nav-sidebar > .nav-item > .nav-link.active {
-  background-color: #28a745;
+  background-color: mediumseagreen;
   color: #fff;
 }
 

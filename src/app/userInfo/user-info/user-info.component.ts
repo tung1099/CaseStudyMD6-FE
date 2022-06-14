@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {UserInfoService} from "../../service/userInfo/user-info.service";
 import {UserInfo} from "../../model/user-info";
 import {AuthencicationService} from "../../service/auth/authencication.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-user-info',
@@ -14,6 +15,7 @@ export class UserInfoComponent implements OnInit {
 
   id: number;
   userInfo: UserInfo = {};
+
   userInfoForm: FormGroup;
   constructor(
     private router: Router,
@@ -39,6 +41,32 @@ export class UserInfoComponent implements OnInit {
       })
     })
   }
+
+  avatarForm: FormGroup = new FormGroup({
+    avatar: new FormControl('')
+  })
+  onFileSelect($event) {
+    if ($event.target.files.length > 0) {
+      const file = $event.target.files[0];
+      this.avatarForm.get('avatar').setValue(file);
+    }
+  }
+
+  setAvatar() {
+    const formData =  new FormData();
+    formData.append('avatar', this.avatarForm.get('avatar').value);
+    this.userInfoService.setAvatar(this.id, formData).subscribe(() => {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Cập nhật thành công!',
+        showConfirmButton: false,
+        timer: 1500});
+    })
+    this.router.navigate(['profile'])
+  }
+
+
 
 
 

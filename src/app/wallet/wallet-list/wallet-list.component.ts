@@ -13,12 +13,14 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 export class WalletListComponent implements OnInit {
   wallets: Wallet[] = [];
   wallet: Wallet = {};
-  idUser: number;
+  idUser: number = 0;
 
   constructor(private walletService: WalletService,
               private authService: AuthencicationService,
               private activatedRoute: ActivatedRoute) {
-    this.idUser = authService.currentUserValue.id;
+    if (authService.currentUserValue != null) {
+      this.idUser = authService.currentUserValue.id;
+    }
     console.log(this.idUser);
   }
 

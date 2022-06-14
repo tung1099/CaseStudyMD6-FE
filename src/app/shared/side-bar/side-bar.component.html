@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-green elevation-4">
+<aside class="main-sidebar sidebar-dark-cyan elevation-4">
 <!--   Brand Logo -->
 
 
@@ -12,14 +12,14 @@
 <!--        <span class="brand-text font-weight-light">Double Cat</span>-->
       </a>
     </div>
-<!--    <div class="user-panel mt-3 pb-3 mb-3 d-flex">-->
-<!--      <div class="image">-->
-<!--        <img src="http://localhost:8080/image/okok.jpg" class="img-circle elevation-2" alt="User Image">-->
-<!--      </div>-->
-<!--      <div class="info">-->
-<!--        <a routerLink="profile" class="d-block">Cuong987</a>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a routerLink="profile" class="d-block">{{userInfo.name}}</a>
+      </div>
+    </div>
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
@@ -64,6 +64,33 @@
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                   Danh sách tiêu dùng hôm nay
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fa fa-search-plus"></i>
+            <p>
+              Tìm kiếm giao dịch
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="/transaction/listTransactionInTime/{{idUser}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Tìm kiếm theo khoảng thời gian
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="/transaction/listTransactionInTimeByIdWallet/{{idUser}}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                  Tìm kiếm theo khoảng thời gian của từng ví
                 </p>
               </a>
             </li>

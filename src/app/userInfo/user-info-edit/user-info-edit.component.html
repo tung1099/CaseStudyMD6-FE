@@ -1,13 +1,33 @@
-<div class="wrapper">
-  <nav >
-  </nav>
-  <!-- /.navbar -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cập nhật ảnh đại diện</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="avatarForm" (ngSubmit)="setAvatar()">
+          <div style="text-align: center">
+            <img class="profile-user-img img-fluid img-circle"
+                 src="http://localhost:8080/image/{{userInfo.avatar}}"
+                 alt="User profile picture">
+            <br>
+            <label for="file-upload" class="custom-file-upload">
+              Tải ảnh lên
+            </label>
+            <input id="file-upload" type="file" formControlName="avatar" (change)="onFileSelect($event)">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Lưu</button>
+          </div>
+        </form>
+      </div>
 
-  <!-- Main Sidebar Container -->
-  <aside >
-  </aside>
+    </div>
+  </div>
+</div>
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -36,8 +56,8 @@
                 </div>
 
                 <h3 class="profile-username text-center">{{userInfo.name}}</h3>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block"><b>Thay đổi ảnh đại diện</b></a>
 
-                <a routerLink="profile-edit" class="btn btn-primary btn-block"><b>Thay đổi ảnh đại diện</b></a>
               </div>
               <!-- /.card-body -->
             </div>
@@ -47,17 +67,17 @@
             <div class="card">
               <div class="card-body">
                 <div class="tab-pane" id="settings">
-                  <form class="form-horizontal" [formGroup]="userInfoForm" (ngSubmit)="update(userInfo.id)">
+                  <form class="form-horizontal" [formGroup]="userInfoForm"  *ngIf="userInfoForm" (ngSubmit)="update()">
                     <div class="form-group row">
-                      <label for="inputName" class="col-sm-2 col-form-label">Tên</label>
+                      <label for="name" class="col-sm-2 col-form-label">Tên</label>
                       <div class="col-sm-10">
-                        <input   type="text" class="form-control" id="inputName" formControlName="name" placeholder="Name">
+                        <input  type="text" class="form-control" id="name" formControlName="name" >
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="inputEmail" class="col-sm-2 col-form-label">Số điện thoại</label>
                       <div class="col-sm-10">
-                        <input  type="text" class="form-control" id="inputEmail" formControlName="phoneNumber" placeholder="Email">
+                        <input  type="text" class="form-control" id="inputEmail" formControlName="phoneNumber">
                       </div>
                     </div>
                     <div class="form-group row">
@@ -74,7 +94,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btn btn-danger">Submit</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
                       </div>
                     </div>
                   </form>
@@ -90,5 +110,3 @@
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
-</div>
