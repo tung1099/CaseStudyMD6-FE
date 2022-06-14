@@ -7,23 +7,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cập nhật ảnh đại diện</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Xem ảnh đại diện</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="avatarForm" (ngSubmit)="setAvatar()">
+          <form [formGroup]="avatarForm">
             <div style="text-align: center">
-              <img class="profile-user-img img-fluid img-circle"
-                   src="http://localhost:8080/image/{{userInfo.avatar}}"
+              <img width="300"
+                   [src]="sanitizer.bypassSecurityTrustUrl(imageLink)"
                    alt="User profile picture">
-              <br>
-              <label for="file-upload" class="custom-file-upload">
-                Tải ảnh lên
-              </label>
-              <input id="file-upload" type="file" formControlName="avatar" (change)="onFileSelect($event)">
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Lưu</button>
             </div>
           </form>
         </div>
@@ -59,7 +51,7 @@
                 </div>
 
                 <h3 class="profile-username text-center">{{userInfo.name}}</h3>
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block"><b>Thay đổi ảnh đại diện</b></a>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block"><b>Xem ảnh đại diện</b></a>
 
               </div>
               <!-- /.card-body -->

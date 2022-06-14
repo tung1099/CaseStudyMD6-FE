@@ -9,13 +9,13 @@
         <form [formGroup]="avatarForm" (ngSubmit)="setAvatar()">
           <div style="text-align: center">
             <img class="profile-user-img img-fluid img-circle"
-                 src="http://localhost:8080/image/{{userInfo.avatar}}"
+                 [src]="sanitizer.bypassSecurityTrustUrl(imageLink)"
                  alt="User profile picture">
             <br>
             <label for="file-upload" class="custom-file-upload">
               Tải ảnh lên
             </label>
-            <input id="file-upload" type="file" formControlName="avatar" (change)="onFileSelect($event)">
+            <input id="file-upload" type="file" (change)="onFileSelect($event)">
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Lưu</button>

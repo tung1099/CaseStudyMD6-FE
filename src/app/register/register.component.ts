@@ -3,6 +3,10 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthencicationService} from '../service/auth/authencication.service';
 import {Router} from '@angular/router';
 import Swal from 'sweetalert2';
+import {
+  addMonths, addYears, differenceInDays, differenceInMonths, differenceInYears, differenceInHours,
+  differenceInMinutes, differenceInSeconds
+} from 'date-fns';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +14,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  checkDay: boolean;
+  checkUser: boolean;
   submitted = false;
+  today: Date;
+  username: string;
+  birthday: Date;
   regexUsername = '^A-Za-z0-9 \\S||@||\\.||_';
 
   signUpForm: FormGroup = new FormGroup({
@@ -19,7 +28,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.pattern(this.regexUsername)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.pattern('(0)[0-9]{9,10}')]),
-    birthDay: new FormControl(''),
+    birthDay: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required, Validators.pattern(this.regexUsername)]),
   });
   constructor(private authenticationService: AuthencicationService,
@@ -58,5 +67,26 @@ export class RegisterComponent implements OnInit {
         timer: 1500});
     }
   }
+
+  usernameCheck($event) {
+    this.username = $event.target.value;
+    this.authenticationService.checkUserName(this.username).subscribe((check) => {
+      this.checkUser = check;
+    });
+  }
+  checkBirthday($event) {
+    this.birthday = new Date($event.target.value);
+    this.today = new Date();
+    this.checkDay = false;
+    const days = differenceInDays(this.today, this.birthday );
+    if (days <= 0) {
+      this.checkDay = true;
+    }
+    // if (this.birthday.getDay() >= this.today.getDay()) {
+    //   this.invalidBirthday = true;
+    // }
+  }
+
+
 
 }

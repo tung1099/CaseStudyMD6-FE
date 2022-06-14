@@ -32,7 +32,7 @@ export class ChangePasswordComponent implements OnInit {
     this.authentication.changePassword(this.currentUserId, this.changePasswordForm.value).subscribe(() => {      Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Thành công!',
+        title: 'Thay đổi thành công!',
         showConfirmButton: false,
         timer: 1500});
       this.changePasswordForm.reset();
@@ -40,7 +40,7 @@ export class ChangePasswordComponent implements OnInit {
       Swal.fire({
         position: 'top-end',
         icon: 'error',
-        title: 'Thất bại!',
+        title: 'Mật khẩu cũ sai!',
         showConfirmButton: false,
         timer: 1500});
     })

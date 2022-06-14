@@ -43,4 +43,8 @@ export class AuthencicationService {
   changePassword(currentUserId: number, changePassword: Repass): Observable<User> {
     return this.http.post<User>(`${API_URL}/changePassword/${currentUserId}`, changePassword);
   }
+
+  checkUserName(username): Observable<boolean> {
+    return this.http.get<boolean>(`${API_URL}/username/${username}`);
+  }
 }
