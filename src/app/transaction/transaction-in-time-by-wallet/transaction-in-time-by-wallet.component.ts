@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./transaction-in-time-by-wallet.component.css']
 })
 export class TransactionInTimeByWalletComponent implements OnInit {
+  idUser: number;
   date: Date[] = [];
   transaction: Transaction[] = [];
   wallet: Wallet[] = [];
@@ -25,16 +26,16 @@ export class TransactionInTimeByWalletComponent implements OnInit {
               private walletService: WalletService,
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthencicationService) {
-
+      this.idUser = this.authenticationService.currentUserValue.id;
       this.getTransactionInTimeByIdWallet();
-
   }
 
   ngOnInit() {
+    this.getAllWalletById();
   }
 
-  getAllWalletById(id) {
-    this.walletService.getAllByUserId(id).subscribe(wallet => {
+  getAllWalletById() {
+    this.walletService.getAllByUserId(this.idUser).subscribe(wallet => {
         this.wallet = wallet;
       },
       (error) => {
@@ -49,5 +50,6 @@ export class TransactionInTimeByWalletComponent implements OnInit {
     this.transactionService.getTransactionInTimeByIdWallet(data).subscribe((list) => {
       this.transaction = list;
     });
+    console.log(this.transaction);
   }
 }

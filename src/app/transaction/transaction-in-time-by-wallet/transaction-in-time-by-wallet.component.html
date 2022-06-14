@@ -1,11 +1,32 @@
 <form [formGroup]="dateForm" (ngSubmit)="getTransactionInTimeByIdWallet()">
-<!--  <input type="date" formControlName="date1"> || <input type="date" formControlName="date2">-->
-<!--  <select class="form-control" id="category" formControlName="wallet">-->
-<!--    <option [value]="null">Chọn ví</option>-->
-<!--    <ng-container *ngFor="let w of wallet">-->
-<!--      <option [value]="w.id">{{w.name}}</option>-->
-<!--    </ng-container>-->
-<!--  </select>-->
+  <div class="card card-success">
+    <div class="card-header">
+      <h3 class="card-title; text-center">Tìm kiếm giao dịch của bạn</h3>
+    </div>
+  </div>
+  <div class="row">
+  <div class="form-group; col-3">
+    <label>Từ ngày:</label>
+    <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
+  </div>
+  <div class="form-group; col-3">
+    <label>Đến ngày:</label>
+    <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
+  </div>
+    <div class="col-3">
+      <b></b><br>
+      <select class="form-control" id="category" formControlName="wallet">
+        <option [value]="null">Chọn ví</option>
+        <ng-container *ngFor="let w of wallet">
+          <option [value]="w.id">{{w.name}}</option>
+        </ng-container>
+      </select>
+    </div>
+    <div class="col-2">
+      <b></b><br>
+      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+    </div>
+  </div>
   <div class="card-body">
     <table id="transaction" class="table table-bordered table-hover">
       <thead>
@@ -41,6 +62,5 @@
       </tr>
     </table>
   </div>
-  <button type="submit">Submit</button>
 </form>
 
