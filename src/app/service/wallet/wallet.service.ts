@@ -33,7 +33,8 @@ export class WalletService {
   getAllType(): Observable<MoneyType[]> {
     return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
   }
-  getInOut(idWallet): Observable<InOut> {
-    return this.http.get<InOut>(`${API_URL}/wallet/inOut/${idWallet}`);
+  getInOut(idWallet, month, year): Observable<InOut> {
+    // @ts-ignore
+    return this.http.post<InOut>(`${API_URL}/wallet/inOut/${idWallet}?month=${month}&year=${year}`);
   }
 }

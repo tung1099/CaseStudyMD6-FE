@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-// import {Chart, ChartType} from 'chart.js';
-import {Data} from '../../model/data';
 import Chart from 'chart.js/auto';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {AuthencicationService} from '../../service/auth/authencication.service';
 import {FormControl, FormGroup} from '@angular/forms';
+import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-piechart',
@@ -15,55 +14,31 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class PiechartComponent implements OnInit {
   idUser: number;
   title = 'Biểu đồ';
-  data: Data[];
+  Year = [];
+  Month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   Name = ['thu', 'chi'];
-  Money = [2, 5];
+  Money = [];
   chart = [];
   wallet: Wallet[] = [];
   YearMonth: FormGroup = new FormGroup({
     year: new FormControl(),
     month: new FormControl(),
+    wallet: new FormControl()
   });
+  private result: any;
   constructor(
     private walletService: WalletService,
     private authService: AuthencicationService,
+    private sweetAlertService: SweetAlertService,
   ) {
     this.idUser = this.authService.currentUserValue.id;
   }
 
   ngOnInit() {
+    for (let i = 2022; i < 3000 ; i++) {
+      this.Year.push(i);
+    }
     this.getAllWallet();
-    // @ts-ignore
-    this.chart = new Chart('canvas', {
-      type: 'pie',
-      data: {
-        labels: this.Name,
-        datasets: [
-          {
-            data: this.Money,
-            borderColor: '#3cba9f',
-            backgroundColor: [
-              '#3cb371',
-              '#0000FF',
-            ],
-            fill: true
-          }
-        ]
-      },
-      options: {
-        legend: {
-          display: true
-        },
-        scales: {
-          xAxes: [{
-            display: true
-          }],
-          yAxes: [{
-            display: true
-          }],
-        }
-      }
-    });
   }
 
   getAllWallet() {
@@ -75,9 +50,62 @@ export class PiechartComponent implements OnInit {
       });
   }
 
-  // getInOut() {
-  //   this.walletService.getInOut(this.)
-  // }
+  get walletControl() {
+    return this.YearMonth.get('wallet');
+    console.log(this.YearMonth.get('wallet'));
+  }
+
+  get monthControl() {
+    return this.YearMonth.get('month');
+    console.log(this.YearMonth.get('month'));
+  }
+
+  get yearControl() {
+    return this.YearMonth.get('year');
+  }
+
+  getInOut() {
+    this.walletService.getInOut(this.walletControl.value, this.monthControl.value, this.yearControl.value).subscribe(list => {
+      if (list.inFlow === 0 && list.outFlow === 0 ) {
+        this.sweetAlertService.showNotification('error', 'Không có thu chi trong tháng bạn chọn, vui lòng thử lại');
+      } else {
+        this.Money.push(list.inFlow);
+        this.Money.push(list.outFlow);
+        console.log(this.Money);
+        // @ts-ignore
+        this.chart = new Chart('canvas', {
+          type: 'pie',
+          data: {
+            labels: this.Name,
+            datasets: [
+              {
+                data: this.Money,
+                borderColor: '#FFFFFF',
+                backgroundColor: [
+                  '#A2CD5A',
+                  '#FF7F24',
+                ],
+                fill: true
+              }
+            ]
+          },
+          options: {
+            legend: {
+              display: true
+            },
+            scales: {
+              xAxes: [{
+                display: true
+              }],
+              yAxes: [{
+                display: true
+              }],
+            }
+          }
+        });
+      }
+    });
+  }
 }
 
 
