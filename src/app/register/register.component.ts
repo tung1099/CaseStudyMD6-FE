@@ -10,7 +10,9 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  checkUser: boolean;
   submitted = false;
+  username: string;
   regexUsername = '^A-Za-z0-9 \\S||@||\\.||_';
 
   signUpForm: FormGroup = new FormGroup({
@@ -58,5 +60,14 @@ export class RegisterComponent implements OnInit {
         timer: 1500});
     }
   }
+
+  usernameCheck($event) {
+    this.username = $event.target.value;
+    this.authenticationService.checkUserName(this.username).subscribe((check) => {
+      this.checkUser = check;
+    });
+  }
+
+
 
 }

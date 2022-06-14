@@ -5,11 +5,11 @@
     <!-- Login Form -->
     <form [formGroup]="signUpForm" (ngSubmit)="register()">
 
-      <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
+      <input type="text" id="login" (change)="usernameCheck($event)" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
       <div>
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.required">Vui lòng không để trống</span>
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.email">Vui lòng nhập đúng (abc@gmail.com)</span>
-        <span class="col alert alert-danger" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.pattern">Không nhập các ký tự đặc biệt (*, %, , ')!</span>
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && checkUser">Tên đăng nhập đã tồn tại!</span>
       </div>
       <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
       <div>
@@ -20,6 +20,8 @@
       <input type="password" id="passwordConfirm" class="fadeIn third" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu">
       <div>
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.confirmPassword?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.confirmPassword?.touched || submitted) && (signUpForm.controls.confirmPassword.value != signUpForm.controls.password.value )">Mật khẩu không trùng khớp!</span>
+
       </div>
       <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Tên">
       <div>
