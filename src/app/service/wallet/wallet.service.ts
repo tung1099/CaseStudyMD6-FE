@@ -4,6 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Wallet} from '../../model/wallet';
 import {MoneyType} from '../../model/money-type';
+import {SumMoney} from '../../model/sum-money';
+import {AddMoney} from '../../model/addMoney';
 import {InOut} from "../../model/inOut";
 const API_URL = `${environment.apiUrl}`;
 
@@ -36,5 +38,11 @@ export class WalletService {
   getInOut(idWallet, month, year): Observable<InOut> {
     // @ts-ignore
     return this.http.post<InOut>(`${API_URL}/wallet/inOut/${idWallet}?month=${month}&year=${year}`);
+  }
+  getSumMoney(id): Observable<SumMoney[]> {
+    return this.http.get<SumMoney[]>(`${API_URL}/wallet/sumMoney/${id}`);
+  }
+  getAllAddMoneyByWallet(idWallet): Observable<AddMoney[]> {
+    return this.http.get<AddMoney[]>(`${API_URL}/wallet/addMoney/${idWallet}`);
   }
 }

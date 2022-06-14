@@ -17,7 +17,7 @@
 <div class="container">
 
   <div class="mb-3">
-    <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'fullDate'}}</p>
+    <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'dd/MM/yyy'}}</p>
     <hr>
   </div>
   <div class="mb-3">
@@ -25,11 +25,11 @@
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total}}</p>
+    <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total | number}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance}}</p>
+    <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance | number}}</p>
     <hr>
   </div>
   <div class="mb-3">
@@ -42,6 +42,9 @@
   &nbsp;
 
     <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch</button>
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>&nbsp; &nbsp;
+
+  <button type="button" class="btn btn-outline-success" routerLink="/wallet/addMoney/{{wallet.id}}">Lịch sử nạp tiền</button>
 
 </div>
 
