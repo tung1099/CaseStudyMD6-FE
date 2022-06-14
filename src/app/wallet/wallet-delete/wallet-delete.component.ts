@@ -30,13 +30,14 @@ export class WalletDeleteComponent implements OnInit {
 
   deleteWallet(id) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      title: 'Bạn có chắc muốn xóa ví này?',
+      text: 'Thao tác này không thể hoàn tác lại!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Quay lại',
     }).then((result) => {
       if (result.isConfirmed) {
         this.walletService.delete(id).subscribe(() => {

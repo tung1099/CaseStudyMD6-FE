@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Category} from '../../model/category';
 import {AddMoney} from '../../model/addMoney';
+import {Transaction} from '../../model/transaction';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -20,5 +21,8 @@ export class AddMoneyService {
 
   getAllWallet(): Observable<AddMoney[]> {
     return this.http.get<AddMoney[]>(API_URL + '/wallet/list');
+  }
+  getAddMoneyInTimeByIdWallet(data): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(`${API_URL}/addMoney/addMoneyInTimeByIdWallet`, data);
   }
 }
