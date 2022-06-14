@@ -56,6 +56,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'charts',
+    loadChildren: () => import('./charts/charts.module').then(module => module.ChartsModule)
   }
 ];
 

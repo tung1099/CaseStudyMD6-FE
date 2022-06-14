@@ -37,7 +37,7 @@ import {HomeComponent} from './home/home.component';
     UserInfoComponent,
     ChangePasswordComponent,
     UserInfoEditComponent,
-    HomeComponent
+    HomeComponent,
     // TransactionCreateComponent,
     // TransactionListComponent,
     // TransactionDeleteComponent,

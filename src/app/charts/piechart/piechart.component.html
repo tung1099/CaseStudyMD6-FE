@@ -1,0 +1,30 @@
+<form [formGroup]="InOutForm">
+   <input type="text" formControlName="month">
+  <input type="text" formControlName="year">
+  <div class="col-3">
+    <div class="form-group">
+      <div class="col-12">
+        <label for="wallet">Ví</label>
+        <div class="input-group">
+          <select class="form-control" id="wallet" formControlName="wallet">
+            <option [value]="null">Chọn ví</option>
+            <ng-container *ngFor="let wallet of wallet">
+              <option [value]="wallet.id">{{wallet.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit">Submit</button>
+  <div class="card-body">
+
+  </div>
+
+
+
+</form>
+<div class="chart-container" style="position: relative; height:20vh; width:40vw" >
+  <canvas id="canvas"></canvas>
+</div>
+
