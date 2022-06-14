@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-wallet-detail',
@@ -11,9 +12,12 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 export class WalletDetailComponent implements OnInit {
   wallet: Wallet = {};
   id: number;
+  idUser: number;
 
   constructor(private walletService: WalletService,
+              private authService: AuthencicationService,
               private activatedRoute: ActivatedRoute) {
+    this.idUser = authService.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       const id = paramMap.get('id');
       // @ts-ignore

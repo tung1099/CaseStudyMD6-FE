@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
@@ -14,7 +14,7 @@ export class CategoryCreateComponent implements OnInit {
   idUser: number;
 
   categoryForm: FormGroup = new FormGroup({
-    name: new FormControl()
+    name: new FormControl('', [Validators.required])
   });
   constructor(private categoryService: CategoryService,
               private sweetAlertService: SweetAlertService,
@@ -34,5 +34,8 @@ export class CategoryCreateComponent implements OnInit {
         this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
       }
     );
+  }
+  get nameControl() {
+    return this.categoryForm.get('name');
   }
 }
