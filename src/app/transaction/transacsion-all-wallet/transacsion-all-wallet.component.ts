@@ -22,6 +22,7 @@ export class TransacsionAllWalletComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.getAllTransactionByWallet(id);
+      this.getSumTransactionByWallet(id);
     });
   }
 
@@ -45,4 +46,12 @@ export class TransacsionAllWalletComponent implements OnInit {
       });
     });
   }
+
+  private getSumTransactionByWallet(id) {
+    this.transactionService.getSumTransactionWallet(id).subscribe(sum => {
+      this.sum = sum;
+      console.log(sum);
+    });
+  }
+
 }

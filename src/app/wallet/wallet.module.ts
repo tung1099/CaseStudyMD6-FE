@@ -10,6 +10,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { WalletDetailComponent } from './wallet-detail/wallet-detail.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
+import { SumMoneyComponent } from './sum-money/sum-money.component';
+import { HistoryAddMoneyComponent } from './history-add-money/history-add-money.component';
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list
     WalletEditComponent,
     WalletDeleteComponent,
     WalletDetailComponent,
-    MoneytypeListComponent
+    MoneytypeListComponent,
+    SumMoneyComponent,
+    HistoryAddMoneyComponent
   ],
   exports: [
     WalletListComponent

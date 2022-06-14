@@ -37,8 +37,8 @@ export class TransactionDeleteComponent implements OnInit {
     });
 
     swalWithBootstrapButtons.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      title: 'Bạn có chắc chắn muốn xóa?',
+      text: 'Bạn sẽ không thể hoàn tác giao dịch này!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, delete it!',
