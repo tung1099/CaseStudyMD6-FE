@@ -33,6 +33,10 @@ const routes: Routes = [
     path: 'listType',
     component: MoneytypeListComponent
   },
+  {
+    path: 'inOut',
+    component: MoneytypeListComponent
+  },
 
 ];
 
