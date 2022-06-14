@@ -1,3 +1,6 @@
+
+
 export interface SumTransactionTodayByIdWallet {
-  sum?: number;
+  total?: number;
+  type?: string;
 }
