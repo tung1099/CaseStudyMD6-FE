@@ -32,7 +32,11 @@
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.required">Vui lòng không để trống</span>
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.pattern">SĐT có 10 hoặc 11 số, bắt đầu bằng số 0!</span>
       </div>
-      <input type="date" id="birthDay" class="fadeIn second" formControlName="birthDay" placeholder="Ngày sinh">
+      <input type="date"  (change)="checkBirthday($event)"  class="fadeIn second" formControlName="birthDay" placeholder="Ngày sinh">
+      <div >
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.birthDay?.touched || submitted) && signUpForm.controls.birthDay?.errors?.required">Hãy chọn ngày sinh</span>
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.birthDay?.touched || submitted) && checkDay">Hãy nhập ngày sinh trước ngày hôm nay</span>
+      </div>
       <input type="text" id="address" class="fadeIn second" formControlName="address" placeholder="Địa chỉ">
       <div>
         <span style="color: red" role="alert" *ngIf="(signUpForm.controls.address?.touched || submitted) && signUpForm.controls.address?.errors?.required">Vui lòng không để trống</span>

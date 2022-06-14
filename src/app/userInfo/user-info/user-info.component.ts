@@ -49,28 +49,6 @@ export class UserInfoComponent implements OnInit {
   avatarForm: FormGroup = new FormGroup({
     avatar: new FormControl('')
   })
-  onFileSelect($event) {
-    if ($event.target.files.length > 0) {
-      this.selectFile = $event.target.files[0];
-      // this.avatarForm.get('avatar').setValue(this.selectFile);
-      this.imageLink = URL.createObjectURL(this.selectFile);
-    }
-
-  }
-
-  setAvatar() {
-    const formData =  new FormData();
-    formData.append('avatar', this.selectFile);
-    this.userInfoService.setAvatar(this.id, formData).subscribe(() => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Cập nhật thành công!',
-        showConfirmButton: false,
-        timer: 1500});
-    })
-    this.router.navigate(['profile'])
-  }
 
 
 

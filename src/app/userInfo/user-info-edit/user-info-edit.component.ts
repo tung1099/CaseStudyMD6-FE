@@ -13,12 +13,11 @@ import {DomSanitizer} from "@angular/platform-browser";
   styleUrls: ['./user-info-edit.component.css']
 })
 export class UserInfoEditComponent implements OnInit {
-  selectFile: File;
   id: number;
   userInfo: UserInfo = {};
-  userInfoForm: FormGroup;
-  image: string;
+  selectFile: File;
   imageLink;
+  userInfoForm: FormGroup;
   constructor(
     private router: Router,
     private userInfoService: UserInfoService,
@@ -72,10 +71,9 @@ export class UserInfoEditComponent implements OnInit {
       this.imageLink = URL.createObjectURL(this.selectFile);
     }
   }
-
   setAvatar() {
     const formData =  new FormData();
-    formData.append('avatar', this.avatarForm.get('avatar').value);
+    formData.append('avatar', this.selectFile);
     this.userInfoService.setAvatar(this.id, formData).subscribe(() => {
       Swal.fire({
         position: 'top-end',
