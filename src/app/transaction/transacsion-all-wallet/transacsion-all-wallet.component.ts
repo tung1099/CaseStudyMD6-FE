@@ -3,6 +3,7 @@ import {Transaction} from '../../model/transaction';
 import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Wallet} from '../../model/wallet';
 declare var $: any;
 @Component({
   selector: 'app-transacsion-all-wallet',

@@ -69,7 +69,7 @@
                 <div class="col-3">
                   <label for="type">Loại tiền</label><br>
                   <select class="form-control" id="type" formControlName="moneyType">
-                    <option value="null">Chọn loại tiền</option>
+                    <option value="null" disabled>Chọn loại tiền</option>
                     <ng-container *ngFor="let m of moneyTypes">
                       <option [value]="m.id">{{m.name}}</option>
                     </ng-container>

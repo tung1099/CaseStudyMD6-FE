@@ -3,6 +3,8 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 import {UserInfo} from '../../model/user-info';
 import {UserInfoService} from '../../service/userInfo/user-info.service';
 import {Router} from '@angular/router';
+import {Wallet} from '../../model/wallet';
+import {WalletService} from '../../service/wallet/wallet.service';
 
 @Component({
   selector: 'app-side-bar',

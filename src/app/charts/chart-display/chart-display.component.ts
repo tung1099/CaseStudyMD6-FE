@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
-import {WalletService} from "../../service/wallet/wallet.service";
-import {AuthencicationService} from "../../service/auth/authencication.service";
-import {Router} from "@angular/router";
-import {FormControl, FormGroup} from "@angular/forms";
+import {WalletService} from '../../service/wallet/wallet.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
+import {Router} from '@angular/router';
+import {FormControl, FormGroup} from '@angular/forms';
 
 // @ts-ignore
 @Component({
