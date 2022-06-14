@@ -16,7 +16,7 @@
     <div class="col-3">
       <b></b><br>
       <select class="form-control" id="category" formControlName="wallet">
-        <option [value]="null">Chọn ví</option>
+        <option [value]="null" disabled>Chọn ví</option>
         <ng-container *ngFor="let w of wallet">
           <option [value]="w.id">{{w.name}}</option>
         </ng-container>
