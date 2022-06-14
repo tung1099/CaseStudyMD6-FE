@@ -11,11 +11,13 @@ import { TransactionListTodayComponent } from './transaction-list-today/transact
 import { TransactionListTodayWalletComponent } from './transaction-list-today-wallet/transaction-list-today-wallet.component';
 import {TransactionRoutingModule} from './transaction-routing.module';
 import { TransacsionAllWalletComponent } from './transacsion-all-wallet/transacsion-all-wallet.component';
+import { TransactionInTimeComponent } from './transaction-in-time/transaction-in-time.component';
+import { TransactionInTimeByWalletComponent } from './transaction-in-time-by-wallet/transaction-in-time-by-wallet.component';
 
 
 @NgModule({
   // tslint:disable-next-line:max-line-length
-  declarations: [TransactionListComponent, TransactionCreateComponent, TransactionEditComponent, TransactionDeleteComponent, TransactionListTodayComponent, TransactionListTodayWalletComponent, TransacsionAllWalletComponent],
+  declarations: [TransactionListComponent, TransactionCreateComponent, TransactionEditComponent, TransactionDeleteComponent, TransactionListTodayComponent, TransactionListTodayWalletComponent, TransacsionAllWalletComponent, TransactionInTimeComponent, TransactionInTimeByWalletComponent],
     imports: [
         CommonModule,
         TransactionRoutingModule,

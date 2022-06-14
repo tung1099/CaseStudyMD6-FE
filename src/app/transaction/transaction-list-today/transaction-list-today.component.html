@@ -24,9 +24,9 @@
               <tbody>
               <tr *ngFor="let transaction of transaction; index as i">
                 <td style="text-align:center">{{i+1}}</td>
-                <td style="text-align:center">{{transaction.category}}</td>
-                <td style="text-align:center">{{transaction.amount}}</td>
-                <td style="text-align:center">{{transaction.wallet}}</td>
+                <td style="text-align:center">{{transaction.category.name}}</td>
+                <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
+                <td style="text-align:center">{{transaction.wallet.name}}</td>
                 <td style="text-align:center">{{transaction.note}}</td>
                 <td style="text-align:center">
                   <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">

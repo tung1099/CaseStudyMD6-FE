@@ -25,7 +25,7 @@
                       <label for="wallet">Ví</label>
                       <div class="input-group">
                         <select class="form-control" id="wallet" formControlName="wallet">
-                          <option [value]="null">Chọn ví</option>
+                          <option [value]="null" disabled>Chọn ví</option>
                           <ng-container *ngFor="let wallet of wallet">
                             <option [value]="wallet.id">{{wallet.name}}</option>
                           </ng-container>
@@ -45,7 +45,7 @@
                       <label for="category">Thể loại tiêu dùng</label>
                       <div class="input-group">
                         <select class="form-control" id="category" formControlName="category">
-                          <option [value]="null">Chọn thể loại tiêu dùng</option>
+                          <option [value]="null" disabled>Chọn thể loại tiêu dùng</option>
                           <ng-container *ngFor="let category of categories">
                             <option [value]="category.id">{{category.name}}</option>
                           </ng-container>

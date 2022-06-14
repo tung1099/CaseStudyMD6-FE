@@ -6,8 +6,8 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a routerLink="/wallet/edit/{{wallet.id}}/{{idUser}}">Sửa ví</a></li>
-          <li class="breadcrumb-item active"><a routerLink="/wallet/delete/{{wallet.id}}" >Xóa ví</a></li>
+          <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}/{{idUser}}">Sửa ví</a> &nbsp;
+          <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}" >Xóa ví</a>
         </ol>
       </div>
     </div>
@@ -37,11 +37,11 @@
     <hr>
   </div>
 
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay trên ví này</button>
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay</button>
 
   &nbsp;
 
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch trên ví này</button>
+    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Tất cả giao dịch</button>
 
 </div>
 
