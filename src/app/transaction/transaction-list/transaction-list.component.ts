@@ -10,6 +10,15 @@ declare var $: any;
   styleUrls: ['./transaction-list.component.css']
 })
 export class TransactionListComponent implements OnInit {
+  content = '';
+  stt = '';
+  category = '';
+  amount = '';
+  wallet = '';
+  date1 = '';
+  note = '';
+  edit = '';
+  delete = '';
   idUser: number;
   date: Date[] = [];
   transaction: Transaction[] = [];
@@ -27,19 +36,19 @@ export class TransactionListComponent implements OnInit {
   private getAllTransaction() {
     this.transactionService.getAll(this.idUser).subscribe(transaction1 => {
       this.transaction = transaction1;
+      if (transaction1.length === 0) {
+        this.content = 'Không có giao dịch';
+      } else {
+        this.stt = 'Stt';
+        this.category = 'Thể loại tiêu dùng';
+        this.amount = 'Giá';
+        this.wallet = 'Ví';
+        this.date1 = 'Ngày';
+        this.note = 'Ghi chú';
+        this.edit = 'Sửa';
+        this.delete = 'Xóa';
+      }
       console.log(this.transaction);
-      $(function() {
-        $('#transaction').DataTable({
-          'paging': true,
-          'lengthChange': false,
-          'searching': true,
-          'ordering': true,
-          'info': true,
-          'pageLength': 5,
-          'autoWidth': false,
-          'responsive': true,
-        });
-      });
     });
   }
 

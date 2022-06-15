@@ -30,11 +30,11 @@
                             <option [value]="wallet.id">{{wallet.name}}</option>
                           </ng-container>
                         </select>
-                        <div *ngIf="walletControl.touched && walletControl.invalid">
-                          <p style="color: red" *ngIf="walletControl.errors?.required">
-                            Bạn chưa chọn ví
-                          </p>
-                        </div>
+                      </div>
+                      <div *ngIf="walletControl.touched && walletControl.invalid">
+                        <p style="color: red" *ngIf="walletControl.errors?.required">
+                          Bạn chưa chọn ví
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -50,14 +50,14 @@
                             <option [value]="category.id">{{category.name}}</option>
                           </ng-container>
                         </select>
-                        <div *ngIf="categoryControl.touched && categoryControl.invalid">
-                          <p style="color: red" *ngIf="categoryControl.errors?.required">
-                            Bạn chưa chọn thể loại
-                          </p>
-                        </div>
                         <div class="input-group-append">
                           <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}">Thêm danh mục</a>
                         </div>
+                      </div>
+                      <div *ngIf="categoryControl.touched && categoryControl.invalid">
+                        <p style="color: red" *ngIf="categoryControl.errors?.required">
+                          Bạn chưa chọn thể loại
+                        </p>
                       </div>
                     </div>
 
