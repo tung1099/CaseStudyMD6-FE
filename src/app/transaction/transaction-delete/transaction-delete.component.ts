@@ -11,6 +11,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 })
 export class TransactionDeleteComponent implements OnInit {
   idUser: number;
+
   constructor(
     private transactionService: TransactionService,
     private authService: AuthencicationService,
@@ -57,5 +58,4 @@ export class TransactionDeleteComponent implements OnInit {
       }
     });
   }
-
 }
