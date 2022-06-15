@@ -40,7 +40,7 @@ export class TransactionListTodayComponent implements OnInit {
       if (transaction1.length === 0) {
         this.content = 'Không có giao dịch trong ngày hôm nay';
       } else {
-        this.stt = 'Stt';
+        this.stt = 'STT';
         this.category = 'Thể loại tiêu dùng';
         this.amount = 'Giá';
         this.wallet = 'Ví';

@@ -42,7 +42,7 @@ idWallet: string;
       id: data.wallet
     };
     this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
-      this.sweetAlertService.showNotification('success', 'Xong');
+      this.sweetAlertService.showNotification('success', 'Thành công !!!');
       this.router.navigate(['wallet/list', this.idUser]);
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

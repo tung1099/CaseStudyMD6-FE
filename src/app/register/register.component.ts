@@ -8,6 +8,7 @@ import {
   addMonths, addYears, differenceInDays, differenceInMonths, differenceInYears, differenceInHours,
   differenceInMinutes, differenceInSeconds
 } from 'date-fns';
+import {SweetAlertService} from '../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-register',
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private authenticationService: AuthencicationService,
+              private sweetAlertService: SweetAlertService,
               private router: Router) {
   }
 
@@ -45,32 +47,13 @@ export class RegisterComponent implements OnInit {
     if (this.signUpForm.valid) {
       this.authenticationService.register(this.signUpForm.value).subscribe(() => {
         this.signUpForm.reset();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Đăng kí thành công!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        this.sweetAlertService.showNotification('success', 'Đăng kí thành công !!!');
         this.router.navigateByUrl('/login');
       }, error => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Đăng kí thất bại!',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        this.sweetAlertService.showNotification('error', 'Đăng kí thất bại !');
       });
     } else {
-      // @ts-ignore
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: 'Vui lòng nhập đúng định dạng!',
-        showConfirmButton: false,
-        timer: 1500
-      });
+      this.sweetAlertService.showNotification('error', 'Vui lòng nhập đúng định dạng');
     }
   }
 

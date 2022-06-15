@@ -45,7 +45,7 @@ export class TransactionListComponent implements OnInit {
         this.wallet = 'Ví';
         this.date1 = 'Ngày';
         this.note = 'Ghi chú';
-        this.edit = 'Sửa';
+        this.edit = 'Chỉnh sửa';
         this.delete = 'Xóa';
       }
       console.log(this.transaction);

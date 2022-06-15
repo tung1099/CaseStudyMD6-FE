@@ -71,7 +71,7 @@ export class TransactionCreateComponent implements OnInit {
     };
     this.transactionService.create(this.idUser, data).subscribe(() => {
       console.log(data, this.idUser);
-      this.sweetAlertService.showNotification('success', 'Xong');
+      this.sweetAlertService.showNotification('success', 'Thành công !!!');
       this.transactionForm.reset();
     }
     , () => {

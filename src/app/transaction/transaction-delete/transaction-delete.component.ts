@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthencicationService} from '../../service/auth/authencication.service';
+import {WalletService} from '../../service/wallet/wallet.service';
 
 @Component({
   selector: 'app-transaction-delete',
@@ -15,6 +16,7 @@ export class TransactionDeleteComponent implements OnInit {
     private transactionService: TransactionService,
     private authService: AuthencicationService,
     private activatedRoute: ActivatedRoute,
+    private walletService: WalletService,
     private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
@@ -36,25 +38,25 @@ export class TransactionDeleteComponent implements OnInit {
       buttonsStyling: false
     });
 
-    swalWithBootstrapButtons.fire({
+    Swal.fire({
       title: 'Bạn có chắc chắn muốn xóa?',
       text: 'Số tiền trên giao dịch này sẽ được hoàn lại vào ví của bạn. ' +
         'Bạn sẽ không thể hoàn tác giao dịch này!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Xóa',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Xóa!',
       cancelButtonText: 'Quay lại',
-      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.transactionService.delete(id).subscribe(() => {
-          this.router.navigate(['/transaction/listTransaction', this.idUser]);
+        this.walletService.delete(id).subscribe(() => {
         });
-        swalWithBootstrapButtons.fire(
+        Swal.fire(
           'Đã xóa!',
-          'success'
         );
       }
+      this.router.navigate(['/wallet/list', this.idUser]);
     });
   }
 

@@ -28,7 +28,7 @@ export class CategoryCreateComponent implements OnInit {
   createCategory() {
     const category = this.categoryForm.value;
     this.categoryService.saveCategory(this.idUser, category).subscribe(() => {
-      this.sweetAlertService.showNotification('success', 'Xong');
+      this.sweetAlertService.showNotification('success', 'Thành công !!!');
       this.categoryForm.reset();
     }, () => {
         this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

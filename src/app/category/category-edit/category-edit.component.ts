@@ -39,7 +39,7 @@ export class CategoryEditComponent implements OnInit {
   }
   updateCategory() {
     this.categoryService.updateCategory(this.id, this.categoryForm.value ).subscribe(() => {
-      this.sweetAlertService.showNotification('success', 'Xong');
+      this.sweetAlertService.showNotification('success', 'Thành công !!!');
       this.router.navigate(['category/list/{id}']);
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

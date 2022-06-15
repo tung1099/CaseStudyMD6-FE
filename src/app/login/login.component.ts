@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthencicationService} from '../service/auth/authencication.service';
 import Swal from 'sweetalert2';
+import {SweetAlertService} from '../service/sweetAlert/sweet-alert.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl()
   });
   constructor(private authenticationService: AuthencicationService,
+              private sweetAlertService: SweetAlertService,
               private router: Router) { }
 
   ngOnInit() {
@@ -23,22 +25,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(() => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Đăng nhập thành công!',
-          showConfirmButton: false,
-          timer: 1500});
-        this.router.navigate(['home']);
-      }, error => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'Sai tên đăng nhập hoặc mật khẩu!',
-          showConfirmButton: false,
-          timer: 1500});
-      }
-    );
+      // this.sweetAlertService.showNotification('success', 'Đăng nhập thành công !!!');
+      this.router.navigate(['wallet/list/{id}']);
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Đăng nhập thất bại !!!');
+    });
   }
 
 }

@@ -93,7 +93,7 @@ export class WalletEditComponent implements OnInit {
       id: data.icon
     };
     this.walletService.edit(this.idControl.value, this.idUser, data).subscribe(() => {
-      this.sweetAlertService.showNotification('success', 'Xong');
+      this.sweetAlertService.showNotification('success', 'Thành công !!!');
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });
