@@ -24,35 +24,35 @@
       </p>
     </div>
   </div>
-    <div class="form-group; col-3">
-      <label>Chọn ví</label>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Chọn ví</label>
+    <div class="input-group">
+
       <select class="form-control" id="category" formControlName="wallet">
         <option [value]="null" disabled>Chọn ví</option>
         <ng-container *ngFor="let w of wallet">
           <option [value]="w.id">{{w.name}}</option>
         </ng-container>
-      </select>
-      <div *ngIf="walletControl.touched && walletControl.invalid">
-        <p style="color: red" *ngIf="walletControl.errors?.required">
-          Bạn chưa chọn ví
-        </p>
+      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
       </div>
+
+    </div>
+          <div *ngIf="walletControl.touched && walletControl.invalid">
+            <p style="color: red" *ngIf="walletControl.errors?.required">
+              Bạn chưa chọn ví
+            </p>
+          </div>
+    </div>
     </div>
    </div>
-<!--    <div class="col-2">-->
-<!--      <b></b><br>-->
-<!--      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>-->
-<!--      <button (click)="exportexcel()">Export to Excel</button>-->
-<!--    </div>-->
-
   </div>
-  <br>
-    <div class="form-group; col-12">
-    <div class="col d-flex justify-content-center">
-      <br>
-      <button type="submit" class="btn btn-outline-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
-    </div>
-    </div>
+<!--  <br>-->
+<!--    <div class="col d-flex justify-content-center">-->
+<!--      <button type="submit" class="btn btn-outline-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>-->
+<!--    </div>-->
   <div class="card-body">
     <p style="color: red; text-align: center">{{content1}}</p>
     <table id="transaction" class="table table-bordered table-hover">
@@ -90,7 +90,7 @@
     </table>
     <br>
     <div class="col d-flex justify-content-center">
-      <a type="submit" class="btn btn-primary" (click)="exportexcel()"> <i class="material-icons" ></i>{{download}}</a>
+      <a type="submit" class="btn btn-primary" (click)="exportexcel()"> <i class="fas fa-download" ></i>{{download}}</a>
     </div>
 
   </div>

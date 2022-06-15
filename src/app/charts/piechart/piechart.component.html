@@ -1,14 +1,19 @@
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title; text-center">Biểu đồ</h3>
+  </div>
+</div>
 <div class="row">
   <div class="col-6">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1 style="text-align:center">Xem dưới dạng biểu đồ</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+<!--    <section class="content-header">-->
+<!--      <div class="container-fluid">-->
+<!--        <div class="row mb-2">-->
+<!--          <div class="col-sm-12">-->
+<!--            <h1 style="text-align:center">Xem dưới dạng biểu đồ</h1>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
 
     <section class="content">
       <div class="container-fluid">
@@ -16,9 +21,9 @@
           <div class="col-12">
             <div class="col-md-12">
               <div class="card card-success">
-                <div class="card-header">
-                  <h3 class="card-title">Nhập thời gian và ví bạn muốn tìm</h3>
-                </div>
+<!--                <div class="card-header">-->
+<!--                  <h3 class="card-title">Nhập thời gian và ví bạn muốn tìm</h3>-->
+<!--                </div>-->
                 <form [formGroup]="YearMonth" (ngSubmit)="getInOut()">
                   <div class="card-body">
 
@@ -107,22 +112,22 @@
     </section>
   </div>
   <div class="col-6">
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-12">
-            <h1 style="text-align:center">{{content}}</h1>
-          </div>
-        </div>
-      </div>
-    </section>
+<!--    <section class="content-header">-->
+<!--      <div class="container-fluid">-->
+<!--        <div class="row mb-2">-->
+<!--          <div class="col-sm-12">-->
+<!--            <h1 style="text-align:center">{{content}}</h1>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
     <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="wrapper">
               <div class="col d-flex justify-content-center">
-                <div class="chart-container" style="position: relative; height:50vh; width:25vw"  >
+                <div class="chart-container" style="position: relative; height:50vh; width:20vw"  >
                   <canvas id="canvas"></canvas>
                   <br>
                   <p style="text-align:center">{{month1}} {{year1}}{{soDu}} {{type}}</p>
