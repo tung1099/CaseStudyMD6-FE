@@ -41,7 +41,6 @@ export class WalletDeleteComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.walletService.delete(id).subscribe(() => {
-          this.router.navigate(['/wallet/list', this.idUser]);
         });
         Swal.fire(
           'Deleted!',
@@ -49,6 +48,7 @@ export class WalletDeleteComponent implements OnInit {
           'success'
         );
       }
+      this.router.navigate(['/wallet/list', this.idUser]);
     });
   }
 }
