@@ -22,7 +22,7 @@ export class TransactionCreateComponent implements OnInit {
   transactionForm: FormGroup = new FormGroup({
     amount: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
-    date: new FormControl('', [Validators.required]),
+    date: new FormControl((new Date()).toISOString().substring(0, 10), [Validators.required]),
     category: new FormControl('', [Validators.required]),
     wallet: new FormControl('', [Validators.required])
   });

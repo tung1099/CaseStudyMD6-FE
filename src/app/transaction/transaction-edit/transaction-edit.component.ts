@@ -57,7 +57,7 @@ export class TransactionEditComponent implements OnInit {
         id: new FormControl(transaction.id),
         amount: new FormControl(transaction.amount),
         note: new FormControl(transaction.note),
-        date: new FormControl(transaction.date),
+        date: new FormControl((transaction.date).substring(0, 10)),
         category: new FormControl(transaction.category.id),
         wallet: new FormControl(transaction.wallet.id)
       });

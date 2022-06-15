@@ -83,7 +83,7 @@
               <div class="row">
                 <div class="col-4">
                   <label for="date">Ngày giao dịch</label><br>
-                  <input class="form-control" type="date" [value]="date | date: 'dd-MM-yyyy' "  formControlName="date" id="date">
+                  <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
                   <div *ngIf="dateControl.touched && dateControl.invalid">
                     <p style="color: red" *ngIf="dateControl.errors?.required">
                       Bạn chưa chọn ngày giao dịch
