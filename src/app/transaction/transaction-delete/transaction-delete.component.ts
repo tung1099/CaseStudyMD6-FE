@@ -52,7 +52,6 @@ export class TransactionDeleteComponent implements OnInit {
         });
         swalWithBootstrapButtons.fire(
           'Đã xóa!',
-          'success'
         );
       }
     });
