@@ -1,0 +1,87 @@
+<form [formGroup]="dateForm" (ngSubmit)="getTransactionInTimeByIdWallet()">
+  <div class="card card-success">
+    <div class="card-header">
+      <h3 class="card-title; text-center">Tìm kiếm giao dịch của bạn</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-center" >
+  <div class="form-group; col-3">
+    <label>Từ ngày:</label>
+    <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
+    <div *ngIf="date1Control.touched && date1Control.invalid">
+      <p style="color: red" *ngIf="date1Control.errors?.required">
+        Bạn chưa chọn ngày
+      </p>
+    </div>
+  </div>
+  <div class="form-group; col-3">
+    <label>Đến ngày:</label>
+    <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
+    <div *ngIf="date2Control.touched && date2Control.invalid">
+      <p style="color: red" *ngIf="date2Control.errors?.required">
+        Bạn chưa chọn ngày
+      </p>
+    </div>
+  </div>
+    <div class="form-group; col-3">
+      <label>Chọn ví</label>
+      <select class="form-control" id="category" formControlName="wallet">
+        <option [value]="null" disabled>Chọn ví</option>
+        <ng-container *ngFor="let w of wallet">
+          <option [value]="w.id">{{w.name}}</option>
+        </ng-container>
+      </select>
+      <div *ngIf="walletControl.touched && walletControl.invalid">
+        <p style="color: red" *ngIf="walletControl.errors?.required">
+          Bạn chưa chọn ví
+        </p>
+      </div>
+    </div>
+   </div>
+  </div>
+  <br>
+    <div class="form-group; col-12">
+    <div class="col d-flex justify-content-center">
+      <br>
+      <button type="submit" class="btn btn-outline-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+    </div>
+    </div>
+  <div class="card-body">
+    <p style="color: red; text-align: center">{{content1}}</p>
+    <table id="transaction" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th style="text-align:center">{{index1}}</th>
+        <th style="text-align:center">{{category1}}</th>
+        <th style="text-align:center">{{price1}}</th>
+        <th style="text-align:center">{{walletName1}}</th>
+        <th style="text-align:center">{{dateTransaction1}}</th>
+        <th style="text-align:center">{{note1}}</th>
+        <th style="text-align:center">{{edit1}}</th>
+        <th style="text-align:center">{{delete1}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let transaction of transaction; index as i">
+        <td style="text-align:center">{{i+1}}</td>
+        <td style="text-align:center">{{transaction.category.name}}</td>
+        <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
+        <td style="text-align:center">{{transaction.wallet.name}}</td>
+        <td style="text-align:center">{{transaction.date | date: 'dd-MM-yyyy' }}</td>
+        <td style="text-align:center">{{transaction.note}}</td>
+        <td style="text-align:center">
+          <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
+            <span class="fas fa-edit"></span>
+          </a>
+        </td>
+        <td style="text-align:center">
+          <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
+            <span class="fas fa-trash"></span>
+          </a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</form>
+

@@ -25,16 +25,16 @@
                       <label for="wallet">Ví</label>
                       <div class="input-group">
                         <select class="form-control" id="wallet" formControlName="wallet">
-                          <option [value]="null">Chọn ví</option>
+                          <option [value]="null" disabled>Chọn ví</option>
                           <ng-container *ngFor="let wallet of wallet">
                             <option [value]="wallet.id">{{wallet.name}}</option>
                           </ng-container>
                         </select>
-                        <div *ngIf="walletControl.touched && walletControl.invalid">
-                          <p style="color: red" *ngIf="walletControl.errors?.required">
-                            Bạn chưa chọn ví
-                          </p>
-                        </div>
+                      </div>
+                      <div *ngIf="walletControl.touched && walletControl.invalid">
+                        <p style="color: red" *ngIf="walletControl.errors?.required">
+                          Bạn chưa chọn ví
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -45,19 +45,19 @@
                       <label for="category">Thể loại tiêu dùng</label>
                       <div class="input-group">
                         <select class="form-control" id="category" formControlName="category">
-                          <option [value]="null">Chọn thể loại tiêu dùng</option>
+                          <option [value]="null" disabled>Chọn thể loại tiêu dùng</option>
                           <ng-container *ngFor="let category of categories">
                             <option [value]="category.id">{{category.name}}</option>
                           </ng-container>
                         </select>
-                        <div *ngIf="categoryControl.touched && categoryControl.invalid">
-                          <p style="color: red" *ngIf="categoryControl.errors?.required">
-                            Bạn chưa chọn thể loại
-                          </p>
-                        </div>
                         <div class="input-group-append">
                           <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}">Thêm danh mục</a>
                         </div>
+                      </div>
+                      <div *ngIf="categoryControl.touched && categoryControl.invalid">
+                        <p style="color: red" *ngIf="categoryControl.errors?.required">
+                          Bạn chưa chọn thể loại
+                        </p>
                       </div>
                     </div>
 
@@ -101,7 +101,7 @@
             </div>
 
             <div class="card-footer">
-              <button type="submit" class="btn btn-outline-success">Thêm mới</button>
+              <button type="submit" class="btn btn-success">Thêm mới</button>
             </div>
           </form>
         </div>

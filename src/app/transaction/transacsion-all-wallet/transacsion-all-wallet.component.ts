@@ -3,6 +3,7 @@ import {Transaction} from '../../model/transaction';
 import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Wallet} from '../../model/wallet';
 declare var $: any;
 @Component({
   selector: 'app-transacsion-all-wallet',
@@ -21,6 +22,7 @@ export class TransacsionAllWalletComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
       this.getAllTransactionByWallet(id);
+      this.getSumTransactionByWallet(id);
     });
   }
 
@@ -30,18 +32,25 @@ export class TransacsionAllWalletComponent implements OnInit {
   private getAllTransactionByWallet(id) {
     this.transactionService.getAllTransactionByWallet(id).subscribe(transaction1 => {
       this.transaction = transaction1;
-      $(function() {
-        $('#transaction').DataTable({
-          'paging': true,
-          'lengthChange': false,
-          'searching': true,
-          'ordering': true,
-          'info': true,
-          'pageLength': 5,
-          'autoWidth': false,
-          'responsive': true,
-        });
-      });
+      // $(function() {
+      //   $('#transaction').DataTable({
+      //     'paging': true,
+      //     'lengthChange': false,
+      //     'searching': true,
+      //     'ordering': true,
+      //     'info': true,
+      //     'pageLength': 5,
+      //     'autoWidth': false,
+      //     'responsive': true,
+      //   });
+      // });
+    });
+  }
+
+  private getSumTransactionByWallet(id) {
+    this.transactionService.getSumTransactionWallet(id).subscribe(sum => {
+      this.sum = sum;
+      console.log(sum);
     });
   }
 

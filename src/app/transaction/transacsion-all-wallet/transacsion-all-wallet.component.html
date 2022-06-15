@@ -12,20 +12,20 @@
             <table id="transaction" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th style="text-align:center">Stt</th>
-                <th style="text-align:center">Category</th>
-                <th style="text-align:center">Amount</th>
-                <th style="text-align:center">Note</th>
+                <th style="text-align:center">STT</th>
+                <th style="text-align:center">Thể loại tiêu dùng</th>
+                <th style="text-align:center">Giá</th>
+                <th style="text-align:center">Ghi chú</th>
                 <th style="text-align:center">Ngày giao dịch</th>
-                <th style="text-align:center">Update</th>
-                <th style="text-align:center">Delete</th>
+                <th style="text-align:center">Chỉnh sửa</th>
+                <th style="text-align:center">Xóa</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let transaction of transaction; index as i">
                 <td style="text-align:center">{{i+1}}</td>
-                <td style="text-align:center">{{transaction.category}}</td>
-                <td style="text-align:center">{{transaction.amount}}</td>
+                <td style="text-align:center">{{transaction.category.name}}</td>
+                <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
                 <td style="text-align:center">{{transaction.note}}</td>
                 <td style="text-align:center">{{transaction.date | date: 'dd-MM-yyyy'}}</td>
                 <td style="text-align:center">
@@ -52,5 +52,6 @@
       </div>
     </div>
   </div>
+  <h3 style="text-align:center" *ngFor = "let sum of sum">Tổng chi tiêu trên ví này: {{sum.total}} {{sum.type}}</h3>
 </section>
 

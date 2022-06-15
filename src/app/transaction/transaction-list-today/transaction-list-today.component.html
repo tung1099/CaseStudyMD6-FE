@@ -9,24 +9,25 @@
             </h3>
           </div>
           <div class="card-body">
+            <p style="text-align:center">{{content}}</p>
             <table id="transaction" class="table table-bordered table-hover">
               <thead>
               <tr>
-                <th style="text-align:center">Stt</th>
-                <th style="text-align:center">Thể loại tiêu dùng</th>
-                <th style="text-align:center">Giá tiền</th>
-                <th style="text-align:center">Ví</th>
-                <th style="text-align:center">Ghi chú</th>
-                <th style="text-align:center">Chỉnh sửa</th>
-                <th style="text-align:center">Xóa</th>
+                <th style="text-align:center">{{stt}}</th>
+                <th style="text-align:center">{{category}}</th>
+                <th style="text-align:center">{{amount}}</th>
+                <th style="text-align:center">{{wallet}}</th>
+                <th style="text-align:center">{{note}}</th>
+                <th style="text-align:center">{{edit}}</th>
+                <th style="text-align:center">{{delete}}</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let transaction of transaction; index as i">
                 <td style="text-align:center">{{i+1}}</td>
-                <td style="text-align:center">{{transaction.category}}</td>
-                <td style="text-align:center">{{transaction.amount}}</td>
-                <td style="text-align:center">{{transaction.wallet}}</td>
+                <td style="text-align:center">{{transaction.category.name}}</td>
+                <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
+                <td style="text-align:center">{{transaction.wallet.name}}</td>
                 <td style="text-align:center">{{transaction.note}}</td>
                 <td style="text-align:center">
                   <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">

@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {Transaction} from '../../model/transaction';
 import {TransactionToday} from '../../model/transactionToday';
 import {SumTransactionTodayByIdWallet} from '../../model/sumTransactiontodayByIdWallet';
+import {DateDto} from '../../model/date-dto';
 
 
 
@@ -32,16 +33,25 @@ export class TransactionService {
   delete(id): Observable<Transaction> {
     return this.http.delete(`${API_URL}/transaction/deleteTransaction/${id}`);
   }
-  getAllTransactionToday(idUser): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);
+  getAllTransactionToday(idUser): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);
   }
-  getAllTransactionTodayByWallet(id): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);
+  getAllTransactionTodayByWallet(id): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/transactionInDayByIdWallet/${id}`);
   }
   getSumTransactionTodayByWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
     return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionInDay/${id}`);
   }
-  getAllTransactionByWallet(id): Observable<TransactionToday[]> {
-    return this.http.get<TransactionToday[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
+  getAllTransactionByWallet(id): Observable<Transaction[]> {
+    return this.http.get<Transaction[]>(`${API_URL}/transaction/allTransactionByIdWallet/${id}`);
+  }
+  getSumTransactionWallet(id): Observable<SumTransactionTodayByIdWallet[]> {
+    return this.http.get<SumTransactionTodayByIdWallet[]>(`${API_URL}/transaction/sumTransactionWallet/${id}`);
+  }
+  getTransactionInTime(id, data): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(`${API_URL}/transaction/transactionInTime/${id}`, data);
+  }
+  getTransactionInTimeByIdWallet(data): Observable<Transaction[]> {
+    return this.http.post<Transaction[]>(`${API_URL}/transaction/transactionInTimeByIdWallet`, data);
   }
 }

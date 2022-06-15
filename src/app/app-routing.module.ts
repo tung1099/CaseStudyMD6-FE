@@ -61,6 +61,10 @@ const routes: Routes = [
   {
     path: 'share',
     loadChildren: () => import('./share-wallet/share-wallet.module').then(module => ShareWalletModule)
+  },
+  {
+    path: 'charts',
+    loadChildren: () => import('./charts/charts.module').then(module => module.ChartsModule)
   }
 ];
 

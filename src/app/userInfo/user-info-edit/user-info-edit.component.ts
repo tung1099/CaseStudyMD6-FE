@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {UserInfo} from "../../model/user-info";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {UserInfoService} from "../../service/userInfo/user-info.service";
-import {AuthencicationService} from "../../service/auth/authencication.service";
-import Swal from "sweetalert2";
-import {DomSanitizer} from "@angular/platform-browser";
+import {UserInfo} from '../../model/user-info';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserInfoService} from '../../service/userInfo/user-info.service';
+import {AuthencicationService} from '../../service/auth/authencication.service';
+import Swal from 'sweetalert2';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-info-edit',
@@ -25,7 +25,7 @@ export class UserInfoEditComponent implements OnInit {
     private sanitizer: DomSanitizer
   ) {
     this.id = this.authentication.currentUserValue.id;
-    this.findByUserId(this.id)
+    this.findByUserId(this.id);
   }
 
   ngOnInit() {
@@ -41,8 +41,8 @@ export class UserInfoEditComponent implements OnInit {
         phoneNumber: new FormControl(this.userInfo.phoneNumber),
         birthDay: new FormControl(this.userInfo.birthDay),
         address: new FormControl(this.userInfo.address)
-      })
-    })
+      });
+    });
   }
 
   update() {
@@ -58,12 +58,12 @@ export class UserInfoEditComponent implements OnInit {
         title: 'Thành công!',
         showConfirmButton: false,
         timer: 1500});
-      this.router.navigate(['profile'])
-    })
+      this.router.navigate(['profile']);
+    });
   }
   avatarForm: FormGroup = new FormGroup({
     avatar: new FormControl('')
-  })
+  });
   onFileSelect($event) {
     if ($event.target.files.length > 0) {
       this.selectFile = $event.target.files[0];
@@ -81,7 +81,7 @@ export class UserInfoEditComponent implements OnInit {
         title: 'Cập nhật thành công!',
         showConfirmButton: false,
         timer: 1500});
-    })
-    this.router.navigate(['profile'])
+    });
+    this.router.navigate(['profile']);
   }
 }

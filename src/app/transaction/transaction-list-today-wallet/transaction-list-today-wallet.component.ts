@@ -33,18 +33,18 @@ export class TransactionListTodayWalletComponent implements OnInit {
   private getAllTransactionByWallet(id) {
     this.transactionService.getAllTransactionTodayByWallet(id).subscribe(transaction1 => {
       this.transaction = transaction1;
-      $(function() {
-        $('#transaction').DataTable({
-          // 'paging': true,
-          // 'lengthChange': false,
-          // 'searching': true,
-          // 'ordering': true,
-          'info': true,
-          // 'pageLength': 5,
-          'autoWidth': false,
-          'responsive': true,
-        });
-      });
+      // $(function() {
+      //   $('#transaction').DataTable({
+      //     // 'paging': true,
+      //     // 'lengthChange': false,
+      //     // 'searching': true,
+      //     // 'ordering': true,
+      //     'info': true,
+      //     // 'pageLength': 5,
+      //     'autoWidth': false,
+      //     'responsive': true,
+      //   });
+      // });
     });
   }
 
