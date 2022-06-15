@@ -1,12 +1,17 @@
   <section class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1>Ví của tôi</h1>
-        </div>
-
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title; text-center">Ví của tôi</h3>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
+<!--    <div class="container-fluid">-->
+<!--      <div class="row mb-2">-->
+<!--        <div class="col-sm-6">-->
+<!--          <h1>Ví của tôi</h1>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>&lt;!&ndash; /.container-fluid &ndash;&gt;-->
   </section>
 
   <!-- Main content -->
@@ -15,7 +20,7 @@
       <h5 class="mb-2">
         <a routerLink="/wallet/create/{{idUser}}" class="btn btn-success">Tạo ví mới</a>
       </h5>
-      <div class="row">
+      <div class="row" >
         <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
           <div class="info-box" >
             <span class="info-box-icon bg-info"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>

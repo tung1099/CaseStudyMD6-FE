@@ -1,7 +1,7 @@
 <form [formGroup]="dateForm" (ngSubmit)="getTransactionInTimeByIdWallet()">
   <div class="card card-success">
     <div class="card-header">
-      <h3 class="card-title; text-center">Tìm kiếm giao dịch của bạn</h3>
+      <h3 class="card-title; text-center">Giao dịch của bạn</h3>
     </div>
   </div>
   <div class="row">
@@ -39,11 +39,11 @@
       </div>
     </div>
    </div>
-    <div class="col-2">
-      <b></b><br>
-      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
-      <button (click)="exportexcel()">Export to Excel</button>
-    </div>
+<!--    <div class="col-2">-->
+<!--      <b></b><br>-->
+<!--      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>-->
+<!--      <button (click)="exportexcel()">Export to Excel</button>-->
+<!--    </div>-->
 
   </div>
   <br>
@@ -88,6 +88,11 @@
         </td>
       </tr>
     </table>
+    <br>
+    <div class="col d-flex justify-content-center">
+      <a type="submit" class="btn btn-primary"><i class="material-icons"></i>{{download}}</a>
+    </div>
+
   </div>
 </form>
 
