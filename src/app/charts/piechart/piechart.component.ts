@@ -13,11 +13,16 @@ import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
   styleUrls: ['./piechart.component.css']
 })
 export class PiechartComponent implements OnInit {
+  content = '';
+  type: string;
   idUser: number;
+  month1: string;
+  year1: string;
   title = 'Biểu đồ';
+  soDu: number;
   Year = [];
   Month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  Name = ['thu', 'chi'];
+  Name = ['Số dư ', 'tổng chi tiêu'];
   Money = [];
   chart = [];
   wallet: Wallet[] = [];
@@ -68,9 +73,15 @@ export class PiechartComponent implements OnInit {
   getInOut() {
     this.walletService.getInOut(this.walletControl.value, this.monthControl.value, this.yearControl.value).subscribe(list => {
       if (list.inFlow === 0 && list.outFlow === 0 ) {
-        this.sweetAlertService.showNotification('error', 'Không có thu chi trong tháng bạn chọn, vui lòng thử lại');
+        this.sweetAlertService.showNotification('error', 'Không có thu chi trong thời gian bạn chọn, vui lòng thử lại');
       } else {
-        this.Money.push(list.inFlow);
+        this.content = 'Biểu đồ thu chi';
+        this.type = list.wallet.moneyType.name;
+        this.month1 = 'Tổng thu tháng ' + list.year;
+        this.year1 = 'năm ' + list.month + ': ';
+        this.soDu = list.inFlow;
+        this.Money.push(list.inFlow - list.outFlow);
+        // this.Money.push(list.inFlow);
         this.Money.push(list.outFlow);
         console.log(this.Money);
         // @ts-ignore
@@ -83,7 +94,7 @@ export class PiechartComponent implements OnInit {
                 data: this.Money,
                 borderColor: '#FFFFFF',
                 backgroundColor: [
-                  '#A2CD5A',
+                  '#FFFF66',
                   '#FF7F24',
                 ],
                 fill: true
