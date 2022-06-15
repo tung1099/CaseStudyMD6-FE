@@ -16,7 +16,12 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./add-money-in-time-by-wallet.component.css']
 })
 export class AddMoneyInTimeByWalletComponent implements OnInit {
-  fileName = 'ExcelSheet.xlsx';
+  content = '';
+  t1 = '';
+  t2 = '';
+  t3 = '';
+  buttonSubmit = '';
+  fileName = 'Bao cao thu.xlsx';
   idUser: number;
   date: Date[] = [];
   addMoneys: AddMoney[] = [];
@@ -32,11 +37,11 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private authenticationService: AuthencicationService) {
     this.idUser = this.authenticationService.currentUserValue.id;
-    this.getAddMoneyInTimeByIdWallet();
   }
 
   ngOnInit() {
     this.getAllWalletById();
+    // this.getAddMoneyInTimeByIdWallet();
   }
 
   getAllWalletById() {
@@ -46,6 +51,7 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
       (error) => {
         console.log(error);
       });
+    console.log(this.content);
   }
 
   getAddMoneyInTimeByIdWallet() {
@@ -55,6 +61,19 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
     };
     this.addMoneyService.getAddMoneyInTimeByIdWallet(data).subscribe((list) => {
       this.addMoneys = list;
+      if (list.length === 0) {
+        this.content = 'Không có dữ liệu trong khoảng thời gian đã chọn';
+        this.t1 = '';
+        this.t2 = '';
+        this.t3 = '';
+        this.buttonSubmit = '';
+      } else {
+        this.content = '';
+        this.t1 = 'STT';
+        this.t2 = 'Ngày nạp tiền';
+        this.t3 = 'Số tiền nạp';
+        this.buttonSubmit = 'Xuất File Excel';
+      }
     });
   }
 

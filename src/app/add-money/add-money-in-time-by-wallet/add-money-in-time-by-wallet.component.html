@@ -13,8 +13,9 @@
       <label>Đến ngày:</label>
       <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
     </div>
-    <div class="col-3">
-      <b></b><br>
+    <div class="form-group; col-3">
+<!--      <b></b><br>-->
+      <label>Chọn ví:</label>
       <select class="form-control" id="category" formControlName="wallet">
         <option [value]="null" disabled>Chọn ví</option>
         <ng-container *ngFor="let w of wallet">
@@ -25,17 +26,19 @@
     <div class="col-2">
       <b></b><br>
       <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
-      <button (click)="exportexcel()">Export to Excel</button>
+
     </div>
 
   </div>
+
   <div class="card-body">
+    <p style="color: red; text-align: center">{{content}}</p>
     <table id="addMoney" class="table table-bordered table-hover">
       <thead>
       <tr>
-        <th style="text-align:center">STT</th>
-        <th style="text-align:center">Ngày nạp</th>
-        <th style="text-align:center">Số tiền nạp</th>
+        <th style="text-align:center">{{t1}}</th>
+        <th style="text-align:center">{{t2}}</th>
+        <th style="text-align:center">{{t3}}</th>
       </tr>
       </thead>
       <tbody>
@@ -43,11 +46,13 @@
         <td style="text-align:center">{{i+1}}</td>
         <td style="text-align:center">{{a.date | date : 'dd/MM/yyy'}}</td>
         <td style="text-align:center">{{a.money}}{{a.wallet.moneyType.name}} </td>
-
-
       </tr>
-    </table>
-  </div>
+      </table>
+    <div>
+    </div>
+      <button type="button" class="btn btn-success breadcrumb float-sm-right" (click)="exportexcel()">{{buttonSubmit}}</button>
+    </div>
+
 </form>
 
 
