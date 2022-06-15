@@ -32,8 +32,10 @@ export class RegisterComponent implements OnInit {
     birthDay: new FormControl('', [Validators.required]),
     address: new FormControl('', [Validators.required, Validators.pattern(this.regexUsername)]),
   });
+
   constructor(private authenticationService: AuthencicationService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -48,7 +50,8 @@ export class RegisterComponent implements OnInit {
           icon: 'success',
           title: 'Đăng kí thành công!',
           showConfirmButton: false,
-          timer: 1500});
+          timer: 1500
+        });
         this.router.navigateByUrl('/login');
       }, error => {
         Swal.fire({
@@ -56,7 +59,8 @@ export class RegisterComponent implements OnInit {
           icon: 'error',
           title: 'Đăng kí thất bại!',
           showConfirmButton: false,
-          timer: 1500});
+          timer: 1500
+        });
       });
     } else {
       // @ts-ignore
@@ -65,7 +69,8 @@ export class RegisterComponent implements OnInit {
         icon: 'error',
         title: 'Vui lòng nhập đúng định dạng!',
         showConfirmButton: false,
-        timer: 1500});
+        timer: 1500
+      });
     }
   }
 
@@ -75,11 +80,12 @@ export class RegisterComponent implements OnInit {
       this.checkUser = check;
     });
   }
+
   checkBirthday($event) {
     this.birthday = new Date($event.target.value);
     this.today = new Date();
     this.checkDay = false;
-    const days = differenceInDays(this.today, this.birthday );
+    const days = differenceInDays(this.today, this.birthday);
     if (days <= 0) {
       this.checkDay = true;
     }
@@ -87,7 +93,4 @@ export class RegisterComponent implements OnInit {
     //   this.invalidBirthday = true;
     // }
   }
-
-
-
 }

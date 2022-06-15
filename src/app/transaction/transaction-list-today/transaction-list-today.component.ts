@@ -10,7 +10,16 @@ declare var $: any;
   styleUrls: ['./transaction-list-today.component.css']
 })
 export class TransactionListTodayComponent implements OnInit {
-  sumMoney: number;
+
+  content = '';
+  stt = '';
+  category = '';
+  amount = '';
+  wallet = '';
+  date1 = '';
+  note = '';
+  edit = '';
+  delete = '';
   today = Date.now();
   idUser: number;
   transaction: Transaction[] = [];
@@ -28,6 +37,18 @@ export class TransactionListTodayComponent implements OnInit {
   private getAllTransaction() {
     this.transactionService.getAllTransactionToday(this.idUser).subscribe(transaction1 => {
       this.transaction = transaction1;
+      if (transaction1.length === 0) {
+        this.content = 'Không có giao dịch trong ngày hôm nay';
+      } else {
+        this.stt = 'Stt';
+        this.category = 'Thể loại tiêu dùng';
+        this.amount = 'Giá';
+        this.wallet = 'Ví';
+        this.date1 = 'Ngày';
+        this.note = 'Ghi chú';
+        this.edit = 'Sửa';
+        this.delete = 'Xóa';
+      }
     });
   }
 

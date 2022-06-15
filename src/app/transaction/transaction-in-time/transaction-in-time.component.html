@@ -4,32 +4,46 @@
       <h3 class="card-title; text-center">Tìm kiếm giao dịch của bạn</h3>
     </div>
   </div>
-  <div class="row">
+  <div class="row" >
+  <div class="col d-flex justify-content-center" style="padding: 12px">
   <div class="form-group; col-3">
     <label>Từ ngày:</label>
       <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
+    <div *ngIf="date1Control.touched && date1Control.invalid">
+      <p style="color: red" *ngIf="date1Control.errors?.required">
+        Bạn chưa chọn ngày
+      </p>
+    </div>
   </div>
   <div class="form-group; col-3">
     <label>Đến ngày:</label>
       <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
+    <div *ngIf="date2Control.touched && date2Control.invalid">
+      <p style="color: red" *ngIf="date2Control.errors?.required">
+        Bạn chưa chọn ngày
+      </p>
+    </div>
   </div>
-    <div class="col-2">
-      <b></b><br>
-      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+  </div>
+    <div class="form-group; col-12">
+      <div class="col d-flex justify-content-center">
+      <button type="submit" class="btn btn-outline-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+    </div>
     </div>
   </div>
   <div class="card-body">
+    <p style="color: red; text-align: center">{{content}}</p>
     <table id="transaction" class="table table-bordered table-hover">
       <thead>
       <tr>
-        <th style="text-align:center">STT</th>
-        <th style="text-align:center">Thể loại tiêu dùng</th>
-        <th style="text-align:center">Giá</th>
-        <th style="text-align:center">Ví</th>
-        <th style="text-align:center">Ngày giao dịch</th>
-        <th style="text-align:center">Ghi chú</th>
-        <th style="text-align:center">Chỉnh sửa</th>
-        <th style="text-align:center">Xóa </th>
+        <th style="text-align:center">{{index}}</th>
+        <th style="text-align:center">{{category}}</th>
+        <th style="text-align:center">{{price}}</th>
+        <th style="text-align:center">{{walletName}}</th>
+        <th style="text-align:center">{{dateTransaction}}</th>
+        <th style="text-align:center">{{note}}</th>
+        <th style="text-align:center">{{edit}}</th>
+        <th style="text-align:center">{{delete}}</th>
       </tr>
       </thead>
       <tbody>

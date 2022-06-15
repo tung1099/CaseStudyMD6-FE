@@ -1,3 +1,4 @@
+
 <aside class="main-sidebar sidebar-dark-cyan elevation-4">
 <!--   Brand Logo -->
 
@@ -14,10 +15,10 @@
     </div>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image">
+        <span><a routerLink="profile"><img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image"></a></span>
       </div>
       <div class="info">
-        <a routerLink="profile" class="d-block">{{userInfo.name}}</a>
+        <a style="text-decoration: none" routerLink="profile" class="d-block">{{userInfo.name}}</a>
       </div>
     </div>
 
@@ -107,7 +108,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a routerLink="/category/list/{{idUser}}" class="nav-link">
+          <a routerLink="/category/list/{{idUser}}" class="nav-link green">
             <i class="fa fa-align-left"></i>
             <p>
               Thể loại tiêu dùng
