@@ -7,7 +7,6 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
   id: number = 0;
   constructor(private authenticationService: AuthencicationService) {
   }
