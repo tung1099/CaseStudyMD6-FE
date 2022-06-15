@@ -52,7 +52,7 @@ export class WalletEditComponent implements OnInit {
     this.getAllIcon();
   }
   getWalletById(id) {
-    this.walletService.getById(id).subscribe((wallet) => {
+    this.walletService.getWalletByIdWalletIdUser().subscribe((wallet) => {
       this.wallet = wallet;
       this.walletForm = new FormGroup({
         id: new FormControl(wallet.id),

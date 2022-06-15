@@ -17,6 +17,8 @@ export class WalletListComponent implements OnInit {
   idUser: number = 0;
   sumMoneys: SumMoney[] = [];
 
+
+
   constructor(private walletService: WalletService,
               private authService: AuthencicationService,
               private activatedRoute: ActivatedRoute) {

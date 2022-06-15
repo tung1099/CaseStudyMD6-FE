@@ -12,7 +12,7 @@ import {HistoryAddMoneyComponent} from './history-add-money/history-add-money.co
 
 const routes: Routes = [
   {
-    path: 'list/:id',
+    path: 'list',
     component: WalletListComponent
   },
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
     component: WalletDeleteComponent
   },
   {
-    path: ':id',
+    path: 'detail/:id',
     component: WalletDetailComponent
   },
   {

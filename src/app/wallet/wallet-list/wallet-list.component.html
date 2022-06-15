@@ -18,7 +18,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
           <div class="info-box" >
-            <span class="info-box-icon bg-info"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+            <span class="info-box-icon bg-info"><a routerLink="/wallet/detail/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
             <div class="info-box-content">
               <span class="info-box-text">{{wallet.name}}</span>
               <span class="info-box-number">Số dư: {{wallet.balance | number}} {{wallet.moneyType.name}}</span>

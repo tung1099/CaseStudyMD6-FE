@@ -29,8 +29,8 @@ export class WalletService {
   delete(id): Observable<Wallet> {
     return this.http.delete<Wallet>(`${API_URL}/wallet/${id}`);
   }
-  getById(id): Observable<Wallet> {
-    return this.http.get<Wallet>(`${API_URL}/wallet/${id}`);
+  getWalletByIdWalletIdUser(idUser, idWallet): Observable<Wallet> {
+    return this.http.get<Wallet>(`${API_URL}/wallet/getWallet/${idUser}/${idWallet}`);
   }
   getAllType(): Observable<MoneyType[]> {
     return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
