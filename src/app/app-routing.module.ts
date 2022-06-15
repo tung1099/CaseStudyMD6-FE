@@ -6,6 +6,7 @@ import {UserInfoComponent} from './userInfo/user-info/user-info.component';
 import {UserInfoEditComponent} from './userInfo/user-info-edit/user-info-edit.component';
 import {ChangePasswordComponent} from './change-password/change-password.component';
 import {HomeComponent} from './home/home.component';
+import {ShareWalletModule} from "./share-wallet/share-wallet.module";
 
 
 const routes: Routes = [
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'share',
+    loadChildren: () => import('./share-wallet/share-wallet.module').then(module => ShareWalletModule)
   }
 ];
 
