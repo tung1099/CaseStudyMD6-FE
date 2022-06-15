@@ -25,7 +25,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
   note1 = '';
   edit1 = '';
   delete1 = '';
-  fileName = 'ExcelSheet.xlsx';
+  fileName = 'giao dich.xlsx';
   idUser: number;
   date: Date[] = [];
   transaction: Transaction[] = [];
@@ -140,6 +140,4 @@ export class TransactionInTimeByWalletComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
-
-
 }
