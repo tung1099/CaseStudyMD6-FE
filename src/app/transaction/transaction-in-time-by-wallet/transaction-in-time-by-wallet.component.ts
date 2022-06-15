@@ -6,6 +6,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {ActivatedRoute} from '@angular/router';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-transaction-in-time-by-wallet',
@@ -23,6 +24,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
   note1 = '';
   edit1 = '';
   delete1 = '';
+  fileName = 'ExcelSheet.xlsx';
   idUser: number;
   date: Date[] = [];
   transaction: Transaction[] = [];
@@ -92,4 +94,20 @@ export class TransactionInTimeByWalletComponent implements OnInit {
   get date2Control() {
     return this.dateForm.get('date2');
   }
+
+  exportexcel(): void  {
+    /* pass here the table id */
+    const element = document.getElementById('transaction');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+
+  }
+
+
 }
