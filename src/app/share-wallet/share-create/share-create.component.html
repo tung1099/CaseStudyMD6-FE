@@ -1,0 +1,17 @@
+<form [formGroup]="shareForm" (ngSubmit)="share()">
+  <select class="form-control"  formControlName="wallet">
+    <option disabled selected>Chọn ví</option>
+    <ng-container *ngFor="let wallet of wallets">
+      <option [value]="wallet.id">{{wallet.name}}</option>
+    </ng-container>
+  </select>
+  <div>
+    <span style="color: red" role="alert" *ngIf="(shareForm.controls.wallet?.touched || submitted) && shareForm.controls.wallet?.errors?.required">Vui lòng chọn ví</span>
+  </div>
+  <input class="form-control" (change)="usernameCheck($event)" type="text" formControlName="user" placeholder="Nhập gmail">
+
+  <div>
+    <span style="color: red" role="alert" role="alert" *ngIf="(shareForm.controls.user?.touched || submitted) && !checkUser">Tên đăng nhập không tồn tại</span>
+  </div>
+  <button type="submit">gui</button>
+</form>
