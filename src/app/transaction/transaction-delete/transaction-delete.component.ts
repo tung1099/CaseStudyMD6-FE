@@ -38,11 +38,12 @@ export class TransactionDeleteComponent implements OnInit {
 
     swalWithBootstrapButtons.fire({
       title: 'Bạn có chắc chắn muốn xóa?',
-      text: 'Bạn sẽ không thể hoàn tác giao dịch này!',
+      text: 'Số tiền trên giao dịch này sẽ được hoàn lại vào ví của bạn. ' +
+        'Bạn sẽ không thể hoàn tác giao dịch này!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonText: 'Xóa',
+      cancelButtonText: 'Quay lại',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
@@ -50,18 +51,8 @@ export class TransactionDeleteComponent implements OnInit {
           this.router.navigate(['/transaction/listTransaction', this.idUser]);
         });
         swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Đã xóa!',
           'success'
-        );
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        this.router.navigate(['/transaction/listTransaction', this.idUser]);
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
         );
       }
     });

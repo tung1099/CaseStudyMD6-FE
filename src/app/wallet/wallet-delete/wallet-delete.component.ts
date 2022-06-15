@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MoneytypeService} from '../../service/moneytype/moneytype.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {FnParam} from '@angular/compiler/src/output/output_ast';
 import {WalletService} from '../../service/wallet/wallet.service';
 import Swal from 'sweetalert2';
 import {AuthencicationService} from '../../service/auth/authencication.service';
@@ -30,22 +28,21 @@ export class WalletDeleteComponent implements OnInit {
 
   deleteWallet(id) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won\'t be able to revert this!',
+      title: 'Bạn có chắc chắn muốn xóa ví này?',
+      text: 'Thao tác này không thể hoàn tác lại!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Xóa!',
+      cancelButtonText: 'Quay lại',
     }).then((result) => {
       if (result.isConfirmed) {
         this.walletService.delete(id).subscribe(() => {
           this.router.navigate(['/wallet/list', this.idUser]);
         });
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
+          'Đã xóa!',
         );
       }
     });
