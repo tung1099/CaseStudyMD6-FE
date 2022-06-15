@@ -23,7 +23,7 @@ export class PiechartComponent implements OnInit {
   soDu: number;
   Year = [];
   Month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  Name = ['Số dư ', 'tổng chi tiêu'];
+  Name = ['Số dư ', 'Tổng chi tiêu'];
   Money = [];
   public chart: Chart;
   wallet: Wallet[] = [];
@@ -100,8 +100,8 @@ export class PiechartComponent implements OnInit {
                 data: this.Money,
                 borderColor: '#FFFFFF',
                 backgroundColor: [
-                  '#FFFF66',
-                  '#FF7F24',
+                  '#DE4A21',
+                  '#F7DF23',
                 ],
                 fill: true
               }
@@ -123,5 +123,6 @@ export class PiechartComponent implements OnInit {
         });
       }
     });
+    console.log(this.Money);
   }
 }
