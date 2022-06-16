@@ -23,14 +23,14 @@ export class WalletService {
   create(id, data): Observable<Wallet> {
     return this.http.post<Wallet>(`${API_URL}/wallet/createWallet/${id}`, data);
   }
-  edit(id, idUser, data): Observable<Wallet> {
-    return this.http.put<Wallet>(`${API_URL}/wallet/editWallet/${id}/${idUser}`, data);
+  edit(idUser, idWallet, data): Observable<Wallet> {
+    return this.http.put<Wallet>(`${API_URL}/wallet/editWallet/${idWallet}/${idUser}`, data);
   }
-  delete(id): Observable<Wallet> {
-    return this.http.delete<Wallet>(`${API_URL}/wallet/${id}`);
+  delete(idUser, idWallet): Observable<Wallet> {
+    return this.http.delete<Wallet>(`${API_URL}/wallet/${idUser}/${idWallet}`);
   }
-  getById(id): Observable<Wallet> {
-    return this.http.get<Wallet>(`${API_URL}/wallet/${id}`);
+  getById(idUser, idWallet): Observable<Wallet> {
+    return this.http.get<Wallet>(`${API_URL}/wallet/getWallet/${idUser}/${idWallet}`);
   }
   getAllType(): Observable<MoneyType[]> {
     return this.http.get<MoneyType[]>(`${API_URL}/wallet/moneytype`);
@@ -42,7 +42,7 @@ export class WalletService {
   getSumMoney(id): Observable<SumMoney[]> {
     return this.http.get<SumMoney[]>(`${API_URL}/wallet/sumMoney/${id}`);
   }
-  getAllAddMoneyByWallet(idWallet): Observable<AddMoney[]> {
-    return this.http.get<AddMoney[]>(`${API_URL}/wallet/addMoney/${idWallet}`);
+  getAllAddMoneyByWallet(idUser, idWallet): Observable<AddMoney[]> {
+    return this.http.get<AddMoney[]>(`${API_URL}/wallet/listAddMoney/${idUser}/${idWallet}`);
   }
 }

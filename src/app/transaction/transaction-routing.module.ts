@@ -22,7 +22,7 @@ const routes: Routes = [
     component: TransactionCreateComponent
   },
   {
-    path: 'listTransaction/:idUser',
+    path: 'listTransaction',
     component: TransactionListComponent
   },
   {
