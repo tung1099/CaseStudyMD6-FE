@@ -3,7 +3,6 @@ import Swal from 'sweetalert2';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthencicationService} from '../../service/auth/authencication.service';
-import {WalletService} from '../../service/wallet/wallet.service';
 
 @Component({
   selector: 'app-transaction-delete',
@@ -12,24 +11,26 @@ import {WalletService} from '../../service/wallet/wallet.service';
 })
 export class TransactionDeleteComponent implements OnInit {
   idUser: number;
+  idTransaction: string;
+
   constructor(
     private transactionService: TransactionService,
     private authService: AuthencicationService,
     private activatedRoute: ActivatedRoute,
-    private walletService: WalletService,
     private router: Router
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
+      this.idTransaction = id;
       this.idUser = this.authService.currentUserValue.id;
-      this.delete(id);
+      this.delete();
     });
   }
 
   ngOnInit() {
   }
 
-  delete(id) {
+  delete() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -38,26 +39,24 @@ export class TransactionDeleteComponent implements OnInit {
       buttonsStyling: false
     });
 
-    Swal.fire({
+    swalWithBootstrapButtons.fire({
       title: 'Bạn có chắc chắn muốn xóa?',
       text: 'Số tiền trên giao dịch này sẽ được hoàn lại vào ví của bạn. ' +
         'Bạn sẽ không thể hoàn tác giao dịch này!',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Xóa!',
+      confirmButtonText: 'Xóa',
       cancelButtonText: 'Quay lại',
+      reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.walletService.delete(id).subscribe(() => {
+        this.transactionService.delete(this.idUser, this.idTransaction).subscribe(() => {
+          this.router.navigate(['/transaction/listTransactionInTimeByIdWallet']);
         });
-        Swal.fire(
+        swalWithBootstrapButtons.fire(
           'Đã xóa!',
         );
       }
-      this.router.navigate(['transaction/listTransactionInTimeByIdWallet', this.idUser]);
     });
   }
-
 }

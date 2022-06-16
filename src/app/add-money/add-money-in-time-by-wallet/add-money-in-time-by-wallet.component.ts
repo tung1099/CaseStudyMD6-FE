@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Transaction} from '../../model/transaction';
 import {Wallet} from '../../model/wallet';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TransactionService} from '../../service/transaction/transaction.service';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {ActivatedRoute} from '@angular/router';
@@ -28,9 +28,9 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
   addMoneys: AddMoney[] = [];
   wallet: Wallet[] = [];
   dateForm: FormGroup = new FormGroup({
-    date1: new FormControl(),
-    date2: new FormControl(),
-    wallet: new FormControl()
+    date1: new FormControl('', [Validators.required]),
+    date2: new FormControl('', [Validators.required]),
+    wallet: new FormControl('', [Validators.required])
   });
 
   constructor(private addMoneyService: AddMoneyService,
@@ -42,7 +42,7 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
 
   ngOnInit() {
     this.getAllWalletById();
-    // this.getAddMoneyInTimeByIdWallet();
+    this.getAllAddMoney();
   }
 
   getAllWalletById() {
@@ -52,7 +52,24 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
       (error) => {
         console.log(error);
       });
-    console.log(this.content);
+  }
+  getAllAddMoney() {
+    this.addMoneyService.getAddMoneyByIdUser(this.idUser).subscribe((data) => {
+      this.addMoneys = data;
+      if (data.length === 0) {
+        this.content = 'Không có dữ liệu trong khoảng thời gian đã chọn';
+        this.t1 = '';
+        this.t2 = '';
+        this.t3 = '';
+        this.buttonSubmit = '';
+      } else {
+        this.content = '';
+        this.t1 = 'STT';
+        this.t2 = 'Ngày nạp tiền';
+        this.t3 = 'Số tiền nạp';
+        this.buttonSubmit = 'Tải xuống';
+      }
+      });
   }
 
   getAddMoneyInTimeByIdWallet() {
@@ -73,9 +90,18 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
         this.t1 = 'STT';
         this.t2 = 'Ngày nạp tiền';
         this.t3 = 'Số tiền nạp';
-        this.buttonSubmit = 'Xuất File Excel';
+        this.buttonSubmit = 'Tải xuống';
       }
     });
+  }
+  get walletControl() {
+    return this.dateForm.get('wallet');
+  }
+  get date1Control() {
+    return this.dateForm.get('date1');
+  }
+  get date2Control() {
+    return this.dateForm.get('date2');
   }
 
   exportexcel(): void {
