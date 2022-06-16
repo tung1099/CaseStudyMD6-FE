@@ -22,7 +22,10 @@ export class AddMoneyService {
   getAllWallet(): Observable<AddMoney[]> {
     return this.http.get<AddMoney[]>(API_URL + '/wallet/list');
   }
-  getAddMoneyInTimeByIdWallet(data): Observable<Transaction[]> {
-    return this.http.post<Transaction[]>(`${API_URL}/addMoney/addMoneyInTimeByIdWallet`, data);
+  getAddMoneyInTimeByIdWallet(data): Observable<AddMoney[]> {
+    return this.http.post<AddMoney[]>(`${API_URL}/addMoney/addMoneyInTimeByIdWallet`, data);
+  }
+  getAddMoneyByIdUser(idUser): Observable<AddMoney[]> {
+    return  this.http.get<AddMoney[]>(`${API_URL}/wallet/listAddMoneybyUser/${idUser}`);
   }
 }

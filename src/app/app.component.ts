@@ -14,7 +14,7 @@ export class AppComponent {
               private router: Router) {
   }
   ngOnInit() {
-    if (this.authenticationService.currentUserValue!=null) {
+    if (this.authenticationService.currentUserValue != null) {
       this.check = true;
     }
   }

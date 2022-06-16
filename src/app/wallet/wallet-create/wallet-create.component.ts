@@ -69,7 +69,7 @@ export class WalletCreateComponent implements OnInit {
     wallet.append('moneyType', this.walletForm.get('moneyType').value);
     this.walletService.create(this.idUser, wallet).subscribe(() => {
       this.sweetalertService.showNotification('success', 'Đã tạo mới thành công');
-      this.router.navigate(['/wallet/list', this.idUser]);
+      this.router.navigate(['/wallet/list']);
     },
     () => {
       this.sweetalertService.showNotification('error', 'Tạo mới không thành công');

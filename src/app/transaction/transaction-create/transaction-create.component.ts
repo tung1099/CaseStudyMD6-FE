@@ -106,11 +106,12 @@ export class TransactionCreateComponent implements OnInit {
   }
 
   walletCheck($event) {
-     this.walletService.getById($event.target.value).subscribe(wallet => {
+     // @ts-ignore
+    this.walletService.getById($event.target.value).subscribe(wallet => {
        this.checkWallet = wallet;
        console.log(this.checkWallet);
      });
-     console.log(this.checkTotal);
+    console.log(this.checkTotal);
   }
 
   get amountControl() {

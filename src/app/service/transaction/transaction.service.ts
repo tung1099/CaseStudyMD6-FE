@@ -30,8 +30,8 @@ export class TransactionService {
   findById(id): Observable<Transaction> {
     return this.http.get<Transaction>(`${API_URL}/transaction/findTransactionById/${id}`);
   }
-  delete(id): Observable<Transaction> {
-    return this.http.delete(`${API_URL}/transaction/deleteTransaction/${id}`);
+  delete(idUser, idTransaction): Observable<Transaction> {
+    return this.http.delete(`${API_URL}/transaction/deleteTransaction/${idUser}/${idTransaction}`);
   }
   getAllTransactionToday(idUser): Observable<Transaction[]> {
     return this.http.get<Transaction[]>(`${API_URL}/transaction/transactionInDay/${idUser}`);

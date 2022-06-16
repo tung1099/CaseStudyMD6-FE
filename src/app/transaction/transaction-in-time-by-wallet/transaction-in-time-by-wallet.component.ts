@@ -71,7 +71,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.note1 = 'Ghi chú';
         this.edit1 = 'Chỉnh sửa';
         this.delete1 = 'Xóa';
-        this.download = 'Tải xuống';
+        this.download = 'Xuất file Excel';
       }
       console.log(this.transaction);
     });

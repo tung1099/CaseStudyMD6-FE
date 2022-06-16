@@ -6,39 +6,49 @@
   </div>
   <div class="row">
     <div class="col d-flex justify-content-center" >
-    <div class="form-group; col-3">
-      <label>Từ ngày:</label>
-      <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
-    </div>
-    <div class="form-group; col-3">
-      <label>Đến ngày:</label>
-      <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
-    </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label>Chọn ví</label>
-        <div class="input-group">
+      <div class="form-group; col-3">
+        <label>Từ ngày:</label>
+        <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
+        <div *ngIf="date1Control.touched && date1Control.invalid">
+          <p style="color: red" *ngIf="date1Control.errors?.required">
+            Bạn chưa chọn ngày
+          </p>
+        </div>
+      </div>
+      <div class="form-group; col-3">
+        <label>Đến ngày:</label>
+        <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
+        <div *ngIf="date2Control.touched && date2Control.invalid">
+          <p style="color: red" *ngIf="date2Control.errors?.required">
+            Bạn chưa chọn ngày
+          </p>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <label>Chọn ví</label>
+          <div class="input-group">
 
-          <select class="form-control" id="category" formControlName="wallet">
-            <option [value]="null" disabled>Chọn ví</option>
-            <ng-container *ngFor="let w of wallet">
-              <option [value]="w.id">{{w.name}}</option>
-            </ng-container>
-          </select>&nbsp;&nbsp;&nbsp;&nbsp;
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+            <select class="form-control" id="category" formControlName="wallet">
+              <option [value]="null" disabled>Chọn ví</option>
+              <ng-container *ngFor="let w of wallet">
+                <option [value]="w.id">{{w.name}}</option>
+              </ng-container>
+            </select>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+            </div>
+
           </div>
-<!--          <div *ngIf="walletControl.touched && walletControl.invalid">-->
-<!--            <p style="color: red" *ngIf="walletControl.errors?.required">-->
-<!--              Bạn chưa chọn ví-->
-<!--            </p>-->
-<!--          </div>-->
+          <div *ngIf="walletControl.touched && walletControl.invalid">
+            <p style="color: red" *ngIf="walletControl.errors?.required">
+              Bạn chưa chọn ví
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
 
 
   <div class="card-body">

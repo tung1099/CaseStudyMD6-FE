@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChartsRoutingModule } from './charts-routing.module';
 import { PiechartComponent } from './piechart/piechart.component';
 import { ChartDisplayComponent } from './chart-display/chart-display.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {AuthencicationService} from '../../service/auth/authencication.service';
 import {SumMoney} from '../../model/sum-money';
 
@@ -11,34 +11,38 @@ import {SumMoney} from '../../model/sum-money';
   styleUrls: ['./wallet-detail.component.css']
 })
 export class WalletDetailComponent implements OnInit {
-  check : boolean;
+  check: boolean = false;
   wallet: Wallet = {};
-  id: number;
+  idWallet: number;
   idUser: number;
   constructor(private walletService: WalletService,
               private authService: AuthencicationService,
+              private router: Router,
               private activatedRoute: ActivatedRoute) {
     this.idUser = authService.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      // @ts-ignore
-      this.id = id;
-      this.getWalletById(id);
+      const id = +paramMap.get('id');
+      this.idWallet = id;
+
     });
   }
 
   ngOnInit() {
-    this.getWalletById(this.id);
-    if (this.wallet.user.id == this.idUser) {
-      this.check = true;
-    } else {
-      this.check= false;
-    }
+    this.getWalletById();
+    console.log(this.check)
   }
-  getWalletById(id) {
-    return this.walletService.getById(id).subscribe((wallet) => {
+  getWalletById() {
+     this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
       this.wallet = wallet;
-    });
+       if (this.idUser == this.wallet.user.id) {
+         this.check = true;
+       } else {
+         this.check = false;
+       }
+    }, error => () => {
+       this.router.navigate(['/wallet/list', this.idUser]);
+     }
+  );
   }
 
 }
