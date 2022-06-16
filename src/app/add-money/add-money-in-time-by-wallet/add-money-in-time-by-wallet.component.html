@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="row">
+    <div class="col d-flex justify-content-center" >
     <div class="form-group; col-3">
       <label>Từ ngày:</label>
       <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
@@ -13,23 +14,32 @@
       <label>Đến ngày:</label>
       <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
     </div>
-    <div class="form-group; col-3">
-<!--      <b></b><br>-->
-      <label>Chọn ví:</label>
-      <select class="form-control" id="category" formControlName="wallet">
-        <option [value]="null" disabled>Chọn ví</option>
-        <ng-container *ngFor="let w of wallet">
-          <option [value]="w.id">{{w.name}}</option>
-        </ng-container>
-      </select>
-    </div>
-    <div class="col-2">
-      <b></b><br>
-      <button type="submit" class="btn btn-outline-primary"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+    <div class="col-4">
+      <div class="form-group">
+        <label>Chọn ví</label>
+        <div class="input-group">
 
+          <select class="form-control" id="category" formControlName="wallet">
+            <option [value]="null" disabled>Chọn ví</option>
+            <ng-container *ngFor="let w of wallet">
+              <option [value]="w.id">{{w.name}}</option>
+            </ng-container>
+          </select>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+          </div>
+<!--          <div *ngIf="walletControl.touched && walletControl.invalid">-->
+<!--            <p style="color: red" *ngIf="walletControl.errors?.required">-->
+<!--              Bạn chưa chọn ví-->
+<!--            </p>-->
+<!--          </div>-->
+        </div>
+      </div>
     </div>
-
   </div>
+  </div>
+
+
 
   <div class="card-body">
     <p style="color: red; text-align: center">{{content}}</p>
@@ -47,11 +57,11 @@
         <td style="text-align:center">{{a.date | date : 'dd/MM/yyy'}}</td>
         <td style="text-align:center">{{a.money}}{{a.wallet.moneyType.name}} </td>
       </tr>
-      </table>
+    </table>
     <div>
     </div>
-      <button type="button" class="btn btn-success breadcrumb float-sm-right" (click)="exportexcel()">{{buttonSubmit}}</button>
-    </div>
+    <button type="button" class="btn btn-success breadcrumb float-sm-right" (click)="exportexcel()">{{buttonSubmit}}</button>
+  </div>
 
 </form>
 

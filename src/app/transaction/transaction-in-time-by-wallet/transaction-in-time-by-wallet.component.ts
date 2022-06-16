@@ -62,6 +62,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.note1 = '';
         this.edit1 = '';
         this.delete1 = '';
+        this.download = '';
       } else {
         this.content1 = '';
         this.index1 = 'STT';
@@ -116,6 +117,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.note1 = '';
         this.edit1 = '';
         this.delete1 = '';
+        this.download = '';
       } else {
         this.content1 = '';
         this.index1 = 'STT';
