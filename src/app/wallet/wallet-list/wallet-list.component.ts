@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {identity} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthencicationService} from '../../service/auth/authencication.service';
 import {SumMoney} from '../../model/sum-money';
 import {ShareWalletService} from '../../service/shareWallet/share-wallet.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
+import {SweetAlertService} from "../../service/sweetAlert/sweet-alert.service";
+import {AddMoneyService} from "../../service/add-money/add-money.service";
 
 @Component({
   selector: 'app-wallet-list',
@@ -16,12 +18,18 @@ import Swal from 'sweetalert2';
 })
 export class WalletListComponent implements OnInit {
 
-
+  idWallet: number;
 
   constructor(private walletService: WalletService,
+              private addMoneyService: AddMoneyService,
+              private sweetAlertService: SweetAlertService,
               private authService: AuthencicationService,
               private activatedRoute: ActivatedRoute,
+              private router: Router,
               private shareService: ShareWalletService) {
+    this.activatedRoute.paramMap.subscribe((paramMap) => {
+      this.idWallet = +paramMap.get('id');
+    });
     if (authService.currentUserValue != null) {
       this.idUser = authService.currentUserValue.id;
     }
@@ -38,8 +46,17 @@ export class WalletListComponent implements OnInit {
   idUser = 0;
   sumMoneys: SumMoney[] = [];
   shareForm: FormGroup = new FormGroup({
-    wallet: new FormControl('', Validators.required),
     user: new FormControl('', Validators.required)
+  });
+
+  findWalletId (id) {
+    this.idWallet = id;
+  }
+
+  addMoneyForm: FormGroup = new FormGroup({
+    money : new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
+    description : new FormControl(),
+    wallet : new FormControl(),
   });
 
   ngOnInit() {
@@ -61,7 +78,7 @@ export class WalletListComponent implements OnInit {
   share() {
     this.submitted = true;
     if (this.shareForm.valid) {
-      this.shareService.addNewShare(this.shareForm.get('wallet').value, this.shareForm.get('user').value).subscribe(() => {
+      this.shareService.addNewShare(this.idWallet, this.shareForm.get('user').value).subscribe(() => {
         this.shareForm.reset();
         Swal.fire({
           position: 'top-end',
@@ -87,6 +104,7 @@ export class WalletListComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500});
     }
+    this.shareForm.reset()
   }
 
   usernameCheck($event) {
@@ -94,6 +112,27 @@ export class WalletListComponent implements OnInit {
     this.authService.checkUserName(this.username).subscribe((check) => {
       this.checkUser = check;
     });
+  }
+
+  addMoney() {
+    const data = this.addMoneyForm.value;
+    data.wallet = {
+      id: data.wallet
+    };
+    this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
+      this.getAllWalletByUser();
+      this.router.navigate(['wallet/list']);
+
+      this.sweetAlertService.showNotification('success', 'Xong');
+      this.addMoneyForm.reset()
+
+    }, () => {
+      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
+    });
+  }
+
+  get moneyControl() {
+    return this.addMoneyForm.get('money');
   }
 
 }
