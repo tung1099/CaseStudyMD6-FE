@@ -1,11 +1,24 @@
-<button type="button" class="btn btn-outline-success" routerLink="/category/create/{{id}}">Thêm thể loại tiêu dùng</button>
-
-<ul class="list-group list-group-light hover">
-  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cate of categories; index as i">
-    <span class="badge rounded-pill badge-primary">{{i + 1}}</span>
-    <div>
-      <div class="fw-bold">{{cate.name}}</div>
+<div class="row">
+  <div class="col d-flex justify-content-center">
+    <div  class="form-group; col-6">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title; text-center">Danh sách thể loại tiêu dùng</h3>
+        </div>
+      </div>
+      <ul class="list-group list-group-light hover">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cate of categories; index as i">
+          <span class="badge rounded-pill badge-primary">{{i + 1}}</span>
+          <div>
+            <div class="fw-bold">{{cate.name}}</div>
+          </div>
+          <a class="btn btn-warning"  routerLink="/category/edit/{{cate.id}}" ><span class="fas fa-edit" ></span></a>
+        </li>
+      </ul>
+      <br>
+      <div class="col d-flex justify-content-center">
+        <button type="button" class="btn btn-outline-success" routerLink="/category/create/{{id}}">Thêm mới</button>
+      </div>
     </div>
-    <a class="btn btn-warning"  routerLink="/category/edit/{{cate.id}}" ><span class="fas fa-edit" ></span></a>
-  </li>
-</ul>
+  </div>
+</div>
