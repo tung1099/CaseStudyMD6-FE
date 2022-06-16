@@ -59,4 +59,5 @@ export class TransactionDeleteComponent implements OnInit {
       }
     });
   }
+
 }

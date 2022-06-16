@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="avatarForm" (ngSubmit)="setAvatar()">
+        <form [formGroup]="avatarForm" *ngIf="avatarForm" (ngSubmit)="setAvatar()">
           <div style="text-align: center">
             <img class="profile-user-img img-fluid img-circle"
                  [src]="sanitizer.bypassSecurityTrustUrl(imageLink)"

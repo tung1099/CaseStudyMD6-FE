@@ -11,7 +11,7 @@ import {SumMoney} from '../../model/sum-money';
   styleUrls: ['./wallet-detail.component.css']
 })
 export class WalletDetailComponent implements OnInit {
-  // check : boolean;
+  check: boolean = false;
   wallet: Wallet = {};
   idWallet: number;
   idUser: number;
@@ -21,24 +21,24 @@ export class WalletDetailComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
     this.idUser = authService.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const id = paramMap.get('id');
-      // @ts-ignore
+      const id = +paramMap.get('id');
       this.idWallet = id;
+
     });
   }
 
   ngOnInit() {
     this.getWalletById();
-    // this.getWalletById(this.id);
-    // if (this.wallet.user.id == this.idUser) {
-    //   this.check = true;
-    // } else {
-    //   this.check= false;
-    // }
+    console.log(this.check)
   }
   getWalletById() {
      this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
       this.wallet = wallet;
+       if (this.idUser == this.wallet.user.id) {
+         this.check = true;
+       } else {
+         this.check = false;
+       }
     }, error => () => {
        this.router.navigate(['/wallet/list', this.idUser]);
      }

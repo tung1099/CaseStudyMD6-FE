@@ -13,11 +13,6 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./user-info-edit.component.css']
 })
 export class UserInfoEditComponent implements OnInit {
-  id: number;
-  userInfo: UserInfo = {};
-  selectFile: File;
-  imageLink;
-  userInfoForm: FormGroup;
   constructor(
     private router: Router,
     private userInfoService: UserInfoService,
@@ -27,6 +22,14 @@ export class UserInfoEditComponent implements OnInit {
     this.id = this.authentication.currentUserValue.id;
     this.findByUserId(this.id);
   }
+  id: number;
+  userInfo: UserInfo = {};
+  selectFile: File;
+  imageLink;
+  userInfoForm: FormGroup;
+  avatarForm: FormGroup = new FormGroup({
+    avatar: new FormControl('')
+  });
 
   ngOnInit() {
 
@@ -62,9 +65,6 @@ export class UserInfoEditComponent implements OnInit {
 
     });
   }
-  avatarForm: FormGroup = new FormGroup({
-    avatar: new FormControl('')
-  });
   onFileSelect($event) {
     if ($event.target.files.length > 0) {
       this.selectFile = $event.target.files[0];

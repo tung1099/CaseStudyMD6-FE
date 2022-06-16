@@ -6,8 +6,14 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}">Chỉnh sửa</a> &nbsp;
-          <a class="btn btn-danger" routerLink="/wallet/delete/{{wallet.id}}" >Xóa</a>
+          <ng-container *ngIf="check; else elseBlock">
+            <a class="btn btn-warning" *ngIf="check" routerLink="/wallet/edit/{{wallet.id}}">Chỉnh sửa</a> &nbsp;
+            <a class="btn btn-danger" *ngIf="check" routerLink="/wallet/delete/{{wallet.id}}" >Xóa</a>
+          </ng-container>
+          <ng-template #elseBlock>
+
+          </ng-template>
+
         </ol>
       </div>
     </div>
