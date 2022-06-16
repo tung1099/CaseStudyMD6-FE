@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
-import {Router} from "@angular/router";
-import {UserInfoService} from "../../service/userInfo/user-info.service";
-import {UserInfo} from "../../model/user-info";
-import {AuthencicationService} from "../../service/auth/authencication.service";
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {UserInfoService} from '../../service/userInfo/user-info.service';
+import {UserInfo} from '../../model/user-info';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 import Swal from "sweetalert2";
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-info',
@@ -13,12 +13,6 @@ import {DomSanitizer} from "@angular/platform-browser";
   styleUrls: ['./user-info.component.css']
 })
 export class UserInfoComponent implements OnInit {
-
-  id: number;
-  userInfo: UserInfo = {};
-  selectFile: File;
-  imageLink;
-  userInfoForm: FormGroup;
   constructor(
     private router: Router,
     private userInfoService: UserInfoService,
@@ -28,6 +22,16 @@ export class UserInfoComponent implements OnInit {
     this.id = this.authentication.currentUserValue.id;
     this.findByUserId(this.id);
   }
+
+  id: number;
+  userInfo: UserInfo = {};
+  selectFile: File;
+  imageLink;
+  userInfoForm: FormGroup;
+
+  avatarForm: FormGroup = new FormGroup({
+    avatar: new FormControl('')
+  });
 
   ngOnInit() {
 
@@ -45,10 +49,6 @@ export class UserInfoComponent implements OnInit {
       })
     })
   }
-
-  avatarForm: FormGroup = new FormGroup({
-    avatar: new FormControl('')
-  })
 
 
 

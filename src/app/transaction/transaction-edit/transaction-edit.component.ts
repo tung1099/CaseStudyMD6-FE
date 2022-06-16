@@ -90,6 +90,7 @@ export class TransactionEditComponent implements OnInit {
       id: data.wallet
     };
     this.transactionService.update(this.idControl.value, this.idUser , data).subscribe(() => {
+      this.router.navigate(['/transaction/listTransactionInTimeByIdWallet', this.idUser]);
       this.sweetAlertService.showNotification('success', 'Xong');
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

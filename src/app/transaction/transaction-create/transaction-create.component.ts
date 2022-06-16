@@ -15,10 +15,14 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
+  checkWallet: Wallet = {};
+  checkAmount: number;
+  checkTotal: boolean;
   date = new Date();
   idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
+  walletId: number;
   transactionForm: FormGroup = new FormGroup({
     amount: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
@@ -32,8 +36,7 @@ export class TransactionCreateComponent implements OnInit {
     private sweetAlertService: SweetAlertService,
     private authService: AuthencicationService,
     private walletService: WalletService,
-    private transactionService: TransactionService,
-    private router: Router
+    private transactionService: TransactionService
   ) {
     this.idUser = this.authService.currentUserValue.id;
   }
@@ -41,6 +44,7 @@ export class TransactionCreateComponent implements OnInit {
   ngOnInit() {
     this.getAllWallet();
     this.getAllCategory();
+    this.walletId = this.transactionForm.get('wallet').value.id;
   }
 
   getAllCategory() {
@@ -74,16 +78,42 @@ export class TransactionCreateComponent implements OnInit {
     data.wallet = {
       id: data.wallet
     };
-    this.transactionService.create(this.idUser, data).subscribe(() => {
-      console.log(data, this.idUser);
-      this.sweetAlertService.showNotification('success', 'Xong');
-      this.transactionForm.reset();
+    if (this.transactionForm.valid) {
+      if (this.checkTotal) {
+        this.sweetAlertService.showNotification('error', 'Hmm... Số dư không đủ!');
+      } else {
+        this.transactionService.create(this.idUser, data).subscribe(() => {
+            this.sweetAlertService.showNotification('success', 'Xong');
+            this.transactionForm.reset();
+          }
+          , () => {
+            this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
+          });
+      }
+      } else {
+      this.sweetAlertService.showNotification('error', 'Hmm... Hãy nhập đủ dữ liệu');
     }
-    , () => {
-      this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
-    }
-    );
   }
+  usernameCheck($event) {
+    this.checkAmount = $event.target.value;
+    if (this.checkAmount > this.checkWallet.balance) {
+      this.checkTotal = true;
+    } else {
+      this.checkTotal = false;
+    }
+    console.log(this.checkAmount);
+    console.log(this.checkTotal);
+  }
+
+  walletCheck($event) {
+     // @ts-ignore
+    this.walletService.getById($event.target.value).subscribe(wallet => {
+       this.checkWallet = wallet;
+       console.log(this.checkWallet);
+     });
+    console.log(this.checkTotal);
+  }
+
   get amountControl() {
     return this.transactionForm.get('amount');
   }

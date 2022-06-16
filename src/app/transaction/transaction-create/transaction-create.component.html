@@ -27,7 +27,7 @@
                     <div class="col-12">
                       <label for="wallet">Ví</label>
                       <div class="input-group">
-                        <select class="form-control" id="wallet" formControlName="wallet">
+                        <select class="form-control" id="wallet" formControlName="wallet" (change)="walletCheck($event)">
                           <option [value]="null" disabled selected>Chọn ví</option>
                           <ng-container *ngFor="let wallet of wallet">
                             <option [value]="wallet.id">{{wallet.name}}</option>
@@ -69,13 +69,20 @@
                 </div>
                 <div class="col-4">
                   <label for="amount">Giá</label>
-                  <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
-                  <div *ngIf="amountControl.touched && amountControl.invalid">
-                    <p style="color: red" *ngIf="amountControl.errors?.required">
+                  <input class="form-control" type="number" formControlName="amount" (change)="usernameCheck($event)" id="amount" placeholder="Nhập giá tiền">
+                  <div>
+                    <p style="color: red" *ngIf=" transactionForm.controls.amount?.touched && amountControl.errors?.pattern">
+                      Vui lòng chỉ nhập số.
+                    </p>
+                  </div>
+                  <div>
+                    <p style="color: red" *ngIf="amountControl.errors?.required && amountControl.touched ">
                       Không được để trống
                     </p>
-                    <p style="color: red" *ngIf="amountControl.errors?.pattern">
-                      Vui lòng chỉ nhập số.
+                  </div>
+                  <div>
+                    <p style="color: red" *ngIf="transactionForm.controls.amount?.touched && checkTotal">
+                      Số dư không đủ
                     </p>
                   </div>
                 </div>

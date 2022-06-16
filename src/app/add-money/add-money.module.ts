@@ -8,11 +8,14 @@ import { AddMoneyInTimeByWalletComponent } from './add-money-in-time-by-wallet/a
 
 
 @NgModule({
-  declarations: [AddMoneyComponent, AddMoneyInTimeByWalletComponent],
-  imports: [
-    CommonModule,
-    AddMoneyRoutingModule,
-    ReactiveFormsModule
-  ]
+    declarations: [AddMoneyComponent, AddMoneyInTimeByWalletComponent],
+    exports: [
+        AddMoneyInTimeByWalletComponent
+    ],
+    imports: [
+        CommonModule,
+        AddMoneyRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class AddMoneyModule { }
