@@ -8,6 +8,7 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthencicationService} from '../../service/auth/authencication.service';
 import {AddMoneyService} from '../../service/add-money/add-money.service';
 import {AddMoney} from '../../model/addMoney';
+// @ts-ignore
 import * as XLSX from 'xlsx';
 
 @Component({
