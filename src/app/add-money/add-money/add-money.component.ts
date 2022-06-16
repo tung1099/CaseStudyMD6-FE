@@ -43,7 +43,7 @@ idWallet: string;
     };
     this.addMoneyService.addMoney(this.idWallet, data).subscribe(() => {
       this.sweetAlertService.showNotification('success', 'Xong');
-      this.router.navigate(['wallet/list', this.idUser]);
+      this.router.navigate(['wallet/list']);
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
     });

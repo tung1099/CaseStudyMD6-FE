@@ -21,6 +21,7 @@ export class WalletEditComponent implements OnInit {
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
   icons: Icon[] = [];
+  // idWallet: number;
   walletForm: FormGroup = new FormGroup({
     id: new FormControl(),
     icon: new FormControl(),
@@ -52,7 +53,7 @@ export class WalletEditComponent implements OnInit {
     this.getAllIcon();
   }
   getWalletById(id) {
-    this.walletService.getWalletByIdWalletIdUser().subscribe((wallet) => {
+    this.walletService.getById(this.idUser, id).subscribe((wallet) => {
       this.wallet = wallet;
       this.walletForm = new FormGroup({
         id: new FormControl(wallet.id),
@@ -92,7 +93,7 @@ export class WalletEditComponent implements OnInit {
     data.icon = {
       id: data.icon
     };
-    this.walletService.edit(this.idControl.value, this.idUser, data).subscribe(() => {
+    this.walletService.edit(this.idUser, this.idControl.value, data).subscribe(() => {
       this.sweetAlertService.showNotification('success', 'Xong');
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

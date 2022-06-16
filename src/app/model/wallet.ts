@@ -1,8 +1,9 @@
 import {MoneyType} from './money-type';
+import {Icon} from './icon';
 
 export interface Wallet {
   id?: number;
-  icon?: any;
+  icon?: Icon;
   name?: string;
   total?: number;
   balance?: number;

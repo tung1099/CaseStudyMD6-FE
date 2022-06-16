@@ -16,11 +16,11 @@ const routes: Routes = [
     component: WalletListComponent
   },
   {
-    path: 'create/:id',
+    path: 'create',
     component: WalletCreateComponent
   },
   {
-    path: 'edit/:id/:idUser',
+    path: 'edit/:id',
     component: WalletEditComponent
   },
   {

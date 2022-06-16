@@ -30,11 +30,12 @@ export class WalletDetailComponent implements OnInit {
     this.getWalletById();
   }
   getWalletById() {
-     this.walletService.getWalletByIdWalletIdUser(this.idUser, this.idWallet).subscribe((wallet) => {
+     this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
       this.wallet = wallet;
     }, error => () => {
        this.router.navigate(['/wallet/list', this.idUser]);
-     });
+     }
+  );
   }
 
 }

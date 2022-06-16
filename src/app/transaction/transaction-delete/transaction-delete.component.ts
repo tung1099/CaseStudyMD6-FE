@@ -11,6 +11,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 })
 export class TransactionDeleteComponent implements OnInit {
   idUser: number;
+  idTransaction: string;
 
   constructor(
     private transactionService: TransactionService,
@@ -20,15 +21,16 @@ export class TransactionDeleteComponent implements OnInit {
   ) {
     this.activatedRoute.paramMap.subscribe((paramMap) => {
       const id = paramMap.get('id');
+      this.idTransaction = id;
       this.idUser = this.authService.currentUserValue.id;
-      this.delete(id);
+      this.delete();
     });
   }
 
   ngOnInit() {
   }
 
-  delete(id) {
+  delete() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -48,8 +50,8 @@ export class TransactionDeleteComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this.transactionService.delete(id).subscribe(() => {
-          this.router.navigate(['/transaction/listTransaction', this.idUser]);
+        this.transactionService.delete(this.idUser, this.idTransaction).subscribe(() => {
+          this.router.navigate(['/transaction/listTransaction']);
         });
         swalWithBootstrapButtons.fire(
           'Đã xóa!',

@@ -3,6 +3,7 @@ import {AddMoney} from '../../model/addMoney';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {Wallet} from '../../model/wallet';
+import {AuthencicationService} from '../../service/auth/authencication.service';
 
 @Component({
   selector: 'app-history-add-money',
@@ -13,15 +14,18 @@ export class HistoryAddMoneyComponent implements OnInit {
   addMoneys: AddMoney[] = [];
   wallet: Wallet = {};
   idWallet: number;
+  idUser: number;
 
   constructor(private walletService: WalletService,
-              private activatedRoute: ActivatedRoute
+              private activatedRoute: ActivatedRoute,
+              private authService: AuthencicationService
               ) {
+    this.idUser = authService.currentUserValue.id;
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
-      const idWallet = paramMap.get('id');
+      const id = paramMap.get('id');
       // @ts-ignore
-      this.idWallet = idWallet;
-      this.getWalletById(idWallet);
+      this.idWallet = id;
+      this.getWalletById(id);
     });
   }
 
@@ -30,13 +34,13 @@ export class HistoryAddMoneyComponent implements OnInit {
   }
 
   getAllAddMoneyByWallet() {
-    return this.walletService.getAllAddMoneyByWallet(this.idWallet).subscribe((addMoneys) => {
+    return this.walletService.getAllAddMoneyByWallet(this.idUser, this.idWallet).subscribe((addMoneys) => {
       this.addMoneys = addMoneys;
     });
   }
 
   getWalletById(id) {
-    return this.walletService.getById(id).subscribe((wallet) => {
+    return this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
       this.wallet = wallet;
     });
   }
