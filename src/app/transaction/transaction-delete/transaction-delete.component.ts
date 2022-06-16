@@ -56,7 +56,7 @@ export class TransactionDeleteComponent implements OnInit {
           'Đã xóa!',
         );
       }
-      this.router.navigate(['/wallet/list', this.idUser]);
+      this.router.navigate(['transaction/listTransactionInTimeByIdWallet', this.idUser]);
     });
   }
 

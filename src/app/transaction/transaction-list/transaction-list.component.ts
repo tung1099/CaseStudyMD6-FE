@@ -36,6 +36,19 @@ export class TransactionListComponent implements OnInit {
   private getAllTransaction() {
     this.transactionService.getAll(this.idUser).subscribe(transaction1 => {
       this.transaction = transaction1;
+      // tslint:disable-next-line:only-arrow-functions
+      $(function() {
+        $('#transaction').DataTable({
+          paging: true,
+          lengthChange: false,
+          searching: true,
+          ordering: true,
+          info: true,
+          pageLength: 3,
+          autoWidth: false,
+          responsive: true,
+        });
+      });
       if (transaction1.length === 0) {
         this.content = 'Không có giao dịch';
       } else {

@@ -6,8 +6,9 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
 import {Wallet} from '../../model/wallet';
 import {WalletService} from '../../service/wallet/wallet.service';
 import {ActivatedRoute} from '@angular/router';
-// @ts-ignore
 import * as XLSX from 'xlsx';
+
+declare var $: any;
 
 @Component({
   selector: 'app-transaction-in-time-by-wallet',
@@ -52,7 +53,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
     this.transactionService.getAll(this.idUser).subscribe(transaction1 => {
       this.transaction = transaction1;
       if (transaction1.length === 0) {
-        this.content1 = 'Không có giao dịch';
+        this.content1 = 'Bạn đang không có giao dịch nào';
         this.index1 = '';
         this.category1 = '';
         this.price1 = '';
@@ -72,6 +73,19 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.edit1 = 'Chỉnh sửa';
         this.delete1 = 'Xóa';
         this.download = 'Tải xuống';
+        // tslint:disable-next-line:only-arrow-functions
+        $(function() {
+          $('#transaction').DataTable({
+            paging: true,
+            lengthChange: false,
+            searching: false,
+            ordering: true,
+            info: true,
+            pageLength: 3,
+            autoWidth: false,
+            responsive: true,
+          });
+        });
       }
       console.log(this.transaction);
     });
@@ -114,6 +128,19 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.delete1 = 'Xóa';
         this.download = 'Tải xuống';
       }
+      // tslint:disable-next-line:only-arrow-functions
+      $(function() {
+        $('#transaction').DataTable({
+          paging: true,
+          lengthChange: false,
+          searching: false,
+          ordering: true,
+          info: true,
+          pageLength: 3,
+          autoWidth: false,
+          responsive: true,
+        });
+      });
     });
     console.log(this.transaction);
   }
