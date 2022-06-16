@@ -54,4 +54,7 @@ export class TransactionService {
   getTransactionInTimeByIdWallet(data): Observable<Transaction[]> {
     return this.http.post<Transaction[]>(`${API_URL}/transaction/transactionInTimeByIdWallet`, data);
   }
+  check(id, amount): Observable<boolean> {
+    return this.http.get<boolean>(`${API_URL}/transaction/check/${id}/${amount}`);
+  }
 }

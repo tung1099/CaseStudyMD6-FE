@@ -62,6 +62,7 @@ export class UserInfoEditComponent implements OnInit {
         title: 'Thành công!',
         showConfirmButton: false,
         timer: 1500});
+
     });
   }
   onFileSelect($event) {
@@ -75,6 +76,7 @@ export class UserInfoEditComponent implements OnInit {
     const formData =  new FormData();
     formData.append('avatar', this.selectFile);
     this.userInfoService.setAvatar(this.id, formData).subscribe(() => {
+      this.router.navigate(['profile']);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -82,6 +84,5 @@ export class UserInfoEditComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500});
     });
-    this.router.navigate(['profile']);
   }
 }
