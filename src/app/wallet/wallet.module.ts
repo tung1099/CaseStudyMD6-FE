@@ -6,13 +6,34 @@ import { WalletListComponent } from './wallet-list/wallet-list.component';
 import { WalletCreateComponent } from './wallet-create/wallet-create.component';
 import { WalletEditComponent } from './wallet-edit/wallet-edit.component';
 import { WalletDeleteComponent } from './wallet-delete/wallet-delete.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { WalletDetailComponent } from './wallet-detail/wallet-detail.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
+import { SumMoneyComponent } from './sum-money/sum-money.component';
+import { HistoryAddMoneyComponent } from './history-add-money/history-add-money.component';
 
 
 @NgModule({
-  declarations: [WalletListComponent, WalletCreateComponent, WalletEditComponent, WalletDeleteComponent],
-  imports: [
-    CommonModule,
-    WalletRoutingModule
-  ]
+  declarations: [
+    WalletListComponent,
+    WalletCreateComponent,
+    WalletEditComponent,
+    WalletDeleteComponent,
+    WalletDetailComponent,
+    MoneytypeListComponent,
+    SumMoneyComponent,
+    HistoryAddMoneyComponent
+  ],
+  exports: [
+    WalletListComponent
+  ],
+    imports: [
+        CommonModule,
+        WalletRoutingModule,
+        ReactiveFormsModule,
+      HttpClientModule,
+      FormsModule
+    ]
 })
 export class WalletModule { }

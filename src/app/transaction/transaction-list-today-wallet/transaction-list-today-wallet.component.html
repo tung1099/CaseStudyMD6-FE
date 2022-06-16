@@ -1,0 +1,49 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3  style="text-align:center">
+              Giao dịch hôm nay trên ví này
+            </h3>
+          </div>
+          <div class="card-body">
+            <table id="transaction" class="table table-bordered table-hover">
+              <thead>
+              <tr>
+                <th style="text-align:center">Stt</th>
+                <th style="text-align:center">Thể loại tiêu dùng</th>
+                <th style="text-align:center">Giá tiền</th>
+                <th style="text-align:center">Ghi chú</th>
+                <th style="text-align:center">Chính sửa</th>
+                <th style="text-align:center">Xóa</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let transaction of transaction; index as i">
+                <td style="text-align:center">{{i+1}}</td>
+                <td style="text-align:center">{{transaction.category.name}}</td>
+                <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
+                <td style="text-align:center">{{transaction.note}}</td>
+
+                <td style="text-align:center">
+                  <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
+                    <span class="fas fa-edit"></span>
+                  </a>
+                </td>
+                <td style="text-align:center">
+                  <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
+                    <span class="fas fa-trash"></span>
+                  </a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 style="text-align:center" *ngFor = "let sum of sum; index as i" >Tổng chi tiêu: {{sum.total}} {{sum.type}}</h3>
+</section>

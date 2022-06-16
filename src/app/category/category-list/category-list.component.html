@@ -1,18 +1,11 @@
-<h1>Book list</h1>
-<a routerLink="/book/create">Add Category</a>
-<br>
-<table>
-  <tr>
-    <th>#</th>
-    <th>Name</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <tr *ngFor="let cate of categories; index as i">
-    <td>{{i + 1}}</td>
-    <td>{{cate.name}}</td>
-    <td><a [routerLink]="['/category/edit',cate.id]">Edit</a></td>
-    <td><a [routerLink]="['/category/delete',cate.id]">Delete</a></td>
-  </tr>
-</table>
+<button type="button" class="btn btn-outline-success" routerLink="/category/create/{{id}}">Thêm thể loại tiêu dùng</button>
 
+<ul class="list-group list-group-light hover">
+  <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let cate of categories; index as i">
+    <span class="badge rounded-pill badge-primary">{{i + 1}}</span>
+    <div>
+      <div class="fw-bold">{{cate.name}}</div>
+    </div>
+    <a class="btn btn-warning"  routerLink="/category/edit/{{cate.id}}" ><span class="fas fa-edit" ></span></a>
+  </li>
+</ul>

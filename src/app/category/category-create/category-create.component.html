@@ -1,1 +1,15 @@
-<p>category-create works!</p>
+<h1>Thêm thể loại tiêu dùng</h1>
+<form [formGroup]="categoryForm" (ngSubmit)="createCategory()">
+  <div class="form-group; col-6">
+    <label for="exampleInputName">Tên thể loại</label>
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="name" placeholder="Nhập thể loại tiêu dùng">
+    <br>
+    <div *ngIf="nameControl.touched && nameControl.invalid">
+      <p style="color: red" *ngIf="nameControl.errors?.required">
+        Không được để trống
+      </p>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">Tạo mới</button>  &nbsp;
+  <a type="submit" class="btn btn-outline-success" routerLink="/transaction/createTransaction">Thêm mới giao dịch</a>
+</form>

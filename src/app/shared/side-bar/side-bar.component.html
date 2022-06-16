@@ -1,1 +1,106 @@
-<p>side-bar works!</p>
+
+<aside class="main-sidebar sidebar-dark-cyan elevation-4">
+<!--   Brand Logo -->
+
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <a routerLink="/home" class="brand-link">
+        <img src="assets/dist/img/logoN4.png" alt="AdminLTE Logo" class="brand-image  elevation-3"
+             style="opacity: .8">
+<!--        <span class="brand-text font-weight-light">Double Cat</span>-->
+      </a>
+    </div>
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <span><a routerLink="profile"><img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image"></a></span>
+      </div>
+      <div class="info">
+        <a style="text-decoration: none" routerLink="profile" class="d-block">{{userInfo.name}}</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item">
+          <a routerLink="/wallet/list" class="nav-link">
+            <i class="fa fa-wallet"></i>
+            <p>
+              Ví của tôi
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/money/history" class="nav-link">
+            <i class="fa fa-history"></i>
+            <p>
+              Lịch sử nạp tiền
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/transaction/listTransactionInTimeByIdWallet" class="nav-link">
+            <i class="fa fa-money-bill-wave"></i>
+            <p>
+              Giao dịch
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/category/list/{{idUser}}" class="nav-link green">
+            <i class="fa fa-align-left"></i>
+            <p>
+              Thể loại tiêu dùng
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="charts/chart" class="nav-link active">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
+              Xem dưới dạng biểu đồ
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <div class="fa fa-cog"></div>
+            <p>
+              Cài đặt
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a routerLink="profile" class="nav-link">
+                <i class="fa fa-user"></i>
+                <p>
+                  Tài khoản
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a (click)="logout()" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <p>
+                  Đăng xuất
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>

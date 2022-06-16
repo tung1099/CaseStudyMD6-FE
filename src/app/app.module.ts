@@ -16,31 +16,45 @@ import { TransactionCreateComponent } from './transaction/transaction-create/tra
 import { TransactionEditComponent } from './transaction/transaction-edit/transaction-edit.component';
 import { TransactionDeleteComponent } from './transaction/transaction-delete/transaction-delete.component';
 import {SharedModule} from './shared/shared.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import { IconListComponent } from './icon/icon-list/icon-list.component';
+import {JwtInterceptor} from './helper/jwt-interceptor';
+import {ErrorInterceptor} from './helper/error-interceptor';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserInfoComponent } from './userInfo/user-info/user-info.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.component';
+import {HomeComponent} from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // CategoryListComponent,
-    // CategoryCreateComponent,
-    // CategoryEditComponent,
-    // CategoryDeleteComponent,
-    // WalletListComponent,
-    // WalletCreateComponent,
-    // WalletEditComponent,
-    // WalletDeleteComponent,
-    // TransactionListComponent,
+    // IconListComponent,
+    LoginComponent,
+    RegisterComponent,
+    UserInfoComponent,
+    ChangePasswordComponent,
+    UserInfoEditComponent,
+    HomeComponent,
     // TransactionCreateComponent,
+    // TransactionListComponent,
+    // TransactionDeleteComponent,
     // TransactionEditComponent,
-    // TransactionDeleteComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

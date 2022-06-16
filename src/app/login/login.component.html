@@ -1,0 +1,26 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Đăng nhập </h2>
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+      <input type="text" id="login" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
+      <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
+      <input type="submit" class="fadeIn fourth" value="Đăng nhập">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/register">Đăng kí</a>
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</section>

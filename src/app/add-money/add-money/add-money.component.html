@@ -1,0 +1,17 @@
+<h1>Nạp tiền</h1>
+<br>
+<form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
+  <div class="form-group; col-3">
+    <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Nhập số tiền">
+    <div *ngIf="addMoneyForm.touched && addMoneyForm.invalid">
+      <p style="color: red" *ngIf="moneyControl.errors?.required">
+        Không được để trống
+      </p>
+      <p style="color: red" *ngIf="moneyControl.errors?.pattern">
+        Vui lòng chỉ nhập số.
+      </p>
+    </div>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-outline-success">Nạp</button>
+</form>

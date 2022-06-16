@@ -1,0 +1,53 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Đăng kí tài khoản </h2>
+    <!-- Login Form -->
+    <form [formGroup]="signUpForm" (ngSubmit)="register()">
+
+      <input type="text" id="login" (change)="usernameCheck($event)" class="fadeIn second" formControlName="username" placeholder="Tài khoản">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && signUpForm.controls.username?.errors?.email">Vui lòng nhập đúng (abc@gmail.com)</span>
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.username?.touched || submitted) && checkUser">Tên đăng nhập đã tồn tại!</span>
+      </div>
+      <input type="password" id="password" class="fadeIn third" formControlName="password" placeholder="Mật khẩu">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.minlength">Hãy nhập tối thiểu 6 ký tự</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.password?.errors?.maxlength">Hãy nhập tối đa 32 ký tự</span>
+      </div>
+      <input type="password" id="passwordConfirm" class="fadeIn third" formControlName="confirmPassword" placeholder="Xác nhận mật khẩu">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.password?.touched || submitted) && signUpForm.controls.confirmPassword?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.confirmPassword?.touched || submitted) && (signUpForm.controls.confirmPassword.value != signUpForm.controls.password.value )">Mật khẩu không trùng khớp!</span>
+
+      </div>
+      <input type="text" id="name" class="fadeIn second" formControlName="name" placeholder="Tên">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.name?.touched || submitted) && signUpForm.controls.name?.errors?.required">Vui lòng không để trống</span>
+      </div>
+      <input type="text" id="phoneNumber" class="fadeIn second" formControlName="phoneNumber" placeholder="Số điện thoại">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.required">Vui lòng không để trống</span>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.phoneNumber?.touched || submitted) && signUpForm.controls.phoneNumber?.errors?.pattern">SĐT có 10 hoặc 11 số, bắt đầu bằng số 0!</span>
+      </div>
+      <input type="date"  (change)="checkBirthday($event)"  class="fadeIn second" formControlName="birthDay" placeholder="Ngày sinh">
+      <div >
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.birthDay?.touched || submitted) && signUpForm.controls.birthDay?.errors?.required">Hãy chọn ngày sinh</span>
+        <span style="color: red" role="alert" role="alert" *ngIf="(signUpForm.controls.birthDay?.touched || submitted) && checkDay">Hãy nhập ngày sinh trước ngày hôm nay</span>
+      </div>
+      <input type="text" id="address" class="fadeIn second" formControlName="address" placeholder="Địa chỉ">
+      <div>
+        <span style="color: red" role="alert" *ngIf="(signUpForm.controls.address?.touched || submitted) && signUpForm.controls.address?.errors?.required">Vui lòng không để trống</span>
+
+      </div>
+      <input type="submit" class="fadeIn fourth" value="Đăng Kí">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login">Đăng nhập</a>
+    </div>
+  </div>
+</div>

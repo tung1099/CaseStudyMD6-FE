@@ -1,1 +1,54 @@
-<p>wallet-list works!</p>
+
+    <div class="card card-success">
+      <div class="card-header">
+        <h3 class="card-title; text-center">Ví của tôi</h3>
+      </div>
+    </div>
+
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <h5 class="mb-2">
+        <a routerLink="/wallet/create/{{idUser}}" class="btn btn-success">Tạo ví mới</a>
+      </h5>
+      <div class="row" >
+        <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
+          <div class="info-box" >
+            <span class="info-box-icon bg-info"><a routerLink="/wallet/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+            <div class="info-box-content">
+              <span class="info-box-text">{{wallet.name}}</span>
+              <span class="info-box-number">Số dư: {{wallet.balance | number}} {{wallet.moneyType.name}}</span>
+              <button type="button" class="btn btn-outline-warning"  routerLink="/money/add/{{wallet.id}}">Nạp tiền</button>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+  </section>
+  <hr>
+
+  <div class="col d-flex justify-content-center">
+  <div class="col-12 col-sm-6 col-md-5">
+    <div class="info-box mb-3">
+      <span class="info-box-number bg-warning elevation-1"><img src="	https://static.moneylover.me/img/icon/icon_56.png"></span>
+      <div class="info-box-content ">
+        <span class="info-box-text">Tổng các loại tiền</span>
+        <span>
+          <ul *ngFor="let s of sumMoneys">
+          <li><span style="font-weight: bold">Tiền {{s.moneyType}}: </span>{{s.balance | number}} {{s.moneyType}}</li>
+        </ul>
+        </span>
+      </div>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+  </div>
+  <!-- /.col -->
+  <!-- /.row -->
+
+

@@ -1,1 +1,120 @@
-<p>transaction-create works!</p>
+<section class="content-header">
+  <div class="card card-success">
+    <div class="card-header">
+      <h3 class="card-title; text-center">Tạo giao dịch mới</h3>
+    </div>
+  </div>
+<!--  <div class="container-fluid">-->
+<!--      <div class="col-sm-12">-->
+<!--        <h1 style="text-align:center">Tạo giao dịch mới</h1>-->
+<!--      </div>-->
+<!--  </div>-->
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-success">
+<!--          <div class="card-header">-->
+<!--            <h3 class="card-title">Giao dịch</h3>-->
+<!--          </div>-->
+          <form [formGroup]="transactionForm" (ngSubmit)="createTransaction()">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group">
+                    <div class="col-12">
+                      <label for="wallet">Ví</label>
+                      <div class="input-group">
+                        <select class="form-control" id="wallet" formControlName="wallet">
+                          <option [value]="null" disabled selected>Chọn ví</option>
+                          <ng-container *ngFor="let wallet of wallet">
+                            <option [value]="wallet.id">{{wallet.name}}</option>
+                          </ng-container>
+                        </select>
+                      </div>
+                      <div *ngIf="walletControl.touched && walletControl.invalid">
+                        <p style="color: red" *ngIf="walletControl.errors?.required">
+                          Bạn chưa chọn ví
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <div class="col-12">
+                      <label for="category">Thể loại tiêu dùng</label>
+                      <div class="input-group">
+                        <select class="form-control" id="category" formControlName="category">
+                          <option [value]="null" disabled>Chọn thể loại tiêu dùng</option>
+                          <ng-container *ngFor="let category of categories">
+                            <option [value]="category.id">{{category.name}}</option>
+                          </ng-container>
+                        </select>
+                        <div class="input-group-append">
+                          <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}"><i class="fa fa-plus"></i></a>
+                        </div>
+                      </div>
+                      <div *ngIf="categoryControl.touched && categoryControl.invalid">
+                        <p style="color: red" *ngIf="categoryControl.errors?.required">
+                          Bạn chưa chọn thể loại
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div class="col-4">
+                  <label for="amount">Giá</label>
+                  <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
+                  <div *ngIf="amountControl.touched && amountControl.invalid">
+                    <p style="color: red" *ngIf="amountControl.errors?.required">
+                      Không được để trống
+                    </p>
+                    <p style="color: red" *ngIf="amountControl.errors?.pattern">
+                      Vui lòng chỉ nhập số.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <label for="date">Ngày giao dịch</label><br>
+                  <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
+                  <div *ngIf="dateControl.touched && dateControl.invalid">
+                    <p style="color: red" *ngIf="dateControl.errors?.required">
+                      Bạn chưa chọn ngày giao dịch
+                    </p>
+                  </div>
+                </div>
+                <br>
+                <div class="col-sm-8">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Thêm mới</button>
+            </div>
+          </form>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+<!--</div>-->

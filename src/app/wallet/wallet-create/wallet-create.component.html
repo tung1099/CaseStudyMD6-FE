@@ -1,1 +1,120 @@
-<p>wallet-create works!</p>
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>Tạo ví</h1>
+      </div>
+    </div>
+  </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title">Tạo ví mới</h3>
+          </div>
+          <form [formGroup]="walletForm" (ngSubmit)="createWallet()" >
+            <div class="card-body">
+              <div class="row">
+                <div class="col-3">
+                  <label for="name">Tên ví</label>
+                  <input class="form-control" type="text" formControlName="name" id="name" placeholder="Nhập tên ví">
+                  <div *ngIf="nameControl.touched && nameControl.invalid">
+                    <p style="color: red" *ngIf="nameControl.errors?.required">
+                      Không được để trống
+                    </p>
+                  </div>
+                </div>
+
+                <div class="col-3">
+                  <label>Icon</label>
+                  <div class="card collapsed-card">
+                    <div class="card-header">
+                      <div class="card-tools">
+                        <span class="btn btn-tool" data-card-widget="collapse">
+                          <img data-v-111acfae="" src="https://static.moneylover.me/img/icon/icon.png"  width="50px">
+                        </span>
+                      </div>
+                    </div>
+                    <div class="card-body" >
+                      <ul class="users-list clearfix" >
+                        <li *ngFor="let icon of icons">
+                          <img src="{{icon.linkIcon}}" width="50px" alt="User Image">
+                          <input type="radio" id="idIcon" formControlName="icon" value="{{icon.id}}">
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
+              <div class="row">
+                <div class="col-3">
+                  <label for="total">Số tiền nạp</label>
+                  <input class="form-control" type="text" formControlName="total" id="total" placeholder="Nhập số tiền">
+                  <div *ngIf="totalControl.touched && totalControl.invalid">
+                    <p style="color: red" *ngIf="totalControl.errors?.required">
+                      Không được để trống
+                    </p>
+                    <p style="color: red" *ngIf="totalControl.errors?.pattern">
+                      Vui lòng chỉ nhập số.
+                    </p>
+                  </div>
+                </div>
+
+
+                <div class="col-3">
+                  <label for="type">Loại tiền</label><br>
+                  <select class="form-control" id="type" formControlName="moneyType">
+                    <option value="null" disabled>Chọn loại tiền</option>
+                    <ng-container *ngFor="let m of moneyTypes">
+                      <option [value]="m.id">{{m.name}}</option>
+                    </ng-container>
+                  </select>
+                  <div *ngIf="moneyTypeControl.touched && moneyTypeControl.invalid">
+                    <p style="color: red" *ngIf="moneyTypeControl.errors?.required">
+                      Bạn chưa chọn loại tiền
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+                <br>
+                <div class="col-sm-7">
+                  <!-- textarea -->
+                  <div class="form-group">
+                    <label>Ghi chú</label>
+                    <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                  </div>
+                </div>
+
+              </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Thêm mới</button>
+            </div>
+
+
+          </form>
+
+            </div>
+      </div>
+
+
+
+
+        </div>
+
+
+      </div>
+
+
+</section>
+
+
+
+
+
+
