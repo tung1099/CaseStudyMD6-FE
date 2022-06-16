@@ -15,13 +15,14 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
+  date = new Date();
   idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
   transactionForm: FormGroup = new FormGroup({
     amount: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
     note: new FormControl(),
-    date: new FormControl('', [Validators.required]),
+    date: new FormControl((new Date()).toISOString().substring(0, 10), [Validators.required]),
     category: new FormControl('', [Validators.required]),
     wallet: new FormControl('', [Validators.required])
   });
@@ -63,6 +64,10 @@ export class TransactionCreateComponent implements OnInit {
     const data = this.transactionForm.value;
     console.log(data);
     console.log(data.category);
+    if (data.date == null) {
+      data.date = new Date();
+      console.log(data.date);
+    }
     data.category = {
       id: data.category
     };

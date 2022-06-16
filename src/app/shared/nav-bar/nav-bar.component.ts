@@ -9,7 +9,7 @@ import {Noti} from "../../model/noti";
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  id: number = 0;
+  id = 0;
   notifications: Noti[] = [];
   constructor(private authenticationService: AuthencicationService,
               private notificationService: NotificationService) {

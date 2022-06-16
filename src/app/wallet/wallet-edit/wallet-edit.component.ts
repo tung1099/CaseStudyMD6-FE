@@ -93,6 +93,7 @@ export class WalletEditComponent implements OnInit {
       id: data.icon
     };
     this.walletService.edit(this.idControl.value, this.idUser, data).subscribe(() => {
+      this.router.navigate(['/wallet/list', this.idUser]);
       this.sweetAlertService.showNotification('success', 'Xong');
     }, () => {
       this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');

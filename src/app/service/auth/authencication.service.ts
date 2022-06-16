@@ -5,7 +5,7 @@ import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {User} from '../../model/user';
-import {Repass} from "../../model/repass";
+import {Repass} from '../../model/repass';
 const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
