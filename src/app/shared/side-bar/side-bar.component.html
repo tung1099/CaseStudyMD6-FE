@@ -46,67 +46,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a routerLink="/transaction/listTransactionInTimeByIdWallet" class="nav-link">
             <i class="fa fa-money-bill-wave"></i>
             <p>
               Giao dịch
-              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a routerLink="/transaction/createTransaction" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Thêm giao dịch
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/transaction/listTransaction" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Danh sách tiêu dùng
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/transaction/listTransactionToday" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Danh sách tiêu dùng hôm nay
-                </p>
-              </a>
-            </li>
-          </ul>
         </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="fa fa-search-plus"></i>
-            <p>
-              Tìm kiếm giao dịch
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a routerLink="/transaction/listTransactionInTime/{{idUser}}" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Tìm kiếm theo khoảng thời gian
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a routerLink="/transaction/listTransactionInTimeByIdWallet" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>
-                  Tìm kiếm theo khoảng thời gian của từng ví
-                </p>
-              </a>
-            </li>
-          </ul>
-        </li>
+
         <li class="nav-item">
           <a routerLink="/category/list/{{idUser}}" class="nav-link green">
             <i class="fa fa-align-left"></i>
@@ -120,6 +67,14 @@
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
               Xem dưới dạng biểu đồ
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="share/list-share" class="nav-link green">
+            <i class="fa fa-share"></i>
+            <p>
+              Ví được chia sẻ với tôi
             </p>
           </a>
         </li>

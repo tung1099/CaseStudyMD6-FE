@@ -14,7 +14,7 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./transaction-in-time-by-wallet.component.css']
 })
 export class TransactionInTimeByWalletComponent implements OnInit {
-
+  download = '';
   content1 = '';
   index1 = '';
   category1 = '';
@@ -24,7 +24,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
   note1 = '';
   edit1 = '';
   delete1 = '';
-  fileName = 'ExcelSheet.xlsx';
+  fileName = 'giao dich.xlsx';
   idUser: number;
   date: Date[] = [];
   transaction: Transaction[] = [];
@@ -44,6 +44,37 @@ export class TransactionInTimeByWalletComponent implements OnInit {
 
   ngOnInit() {
     this.getAllWalletById();
+    this.getAllTransaction();
+  }
+
+  private getAllTransaction() {
+    this.transactionService.getAll(this.idUser).subscribe(transaction1 => {
+      this.transaction = transaction1;
+      if (transaction1.length === 0) {
+        this.content1 = 'Không có giao dịch';
+        this.index1 = '';
+        this.category1 = '';
+        this.price1 = '';
+        this.walletName1 = '';
+        this.dateTransaction1 = '';
+        this.note1 = '';
+        this.edit1 = '';
+        this.delete1 = '';
+        this.download = '';
+      } else {
+        this.content1 = '';
+        this.index1 = 'STT';
+        this.category1 = 'Thể loại tiêu dùng';
+        this.price1 = 'Giá';
+        this.walletName1 = 'Ví';
+        this.dateTransaction1 = 'Ngày giao dịch';
+        this.note1 = 'Ghi chú';
+        this.edit1 = 'Chỉnh sửa';
+        this.delete1 = 'Xóa';
+        this.download = 'Xuất file Excel';
+      }
+      console.log(this.transaction);
+    });
   }
 
   getAllWalletById() {
@@ -71,6 +102,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.note1 = '';
         this.edit1 = '';
         this.delete1 = '';
+        this.download = '';
       } else {
         this.content1 = '';
         this.index1 = 'STT';
@@ -81,6 +113,7 @@ export class TransactionInTimeByWalletComponent implements OnInit {
         this.note1 = 'Ghi chú';
         this.edit1 = 'Chỉnh sửa';
         this.delete1 = 'Xóa';
+        this.download = 'Tải xuống';
       }
     });
     console.log(this.transaction);
@@ -108,6 +141,4 @@ export class TransactionInTimeByWalletComponent implements OnInit {
     XLSX.writeFile(wb, this.fileName);
 
   }
-
-
 }

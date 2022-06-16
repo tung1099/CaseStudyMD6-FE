@@ -8,9 +8,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  check = false;
   title = 'casestudy-md6';
   constructor(private authenticationService: AuthencicationService,
               private router: Router) {
-
+  }
+  ngOnInit() {
+    if (this.authenticationService.currentUserValue != null) {
+      this.check = true;
+    }
   }
 }

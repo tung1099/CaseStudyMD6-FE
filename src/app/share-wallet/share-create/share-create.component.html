@@ -1,6 +1,6 @@
 <form [formGroup]="shareForm" (ngSubmit)="share()">
   <select class="form-control"  formControlName="wallet">
-    <option disabled selected>Chọn ví</option>
+    <option [value]="null" selected >chon vi</option>
     <ng-container *ngFor="let wallet of wallets">
       <option [value]="wallet.id">{{wallet.name}}</option>
     </ng-container>

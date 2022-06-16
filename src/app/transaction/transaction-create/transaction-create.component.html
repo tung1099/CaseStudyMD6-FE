@@ -1,11 +1,14 @@
 <section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 style="text-align:center">Tạo giao dịch mới</h1>
-      </div>
+  <div class="card card-success">
+    <div class="card-header">
+      <h3 class="card-title; text-center">Tạo giao dịch mới</h3>
     </div>
   </div>
+<!--  <div class="container-fluid">-->
+<!--      <div class="col-sm-12">-->
+<!--        <h1 style="text-align:center">Tạo giao dịch mới</h1>-->
+<!--      </div>-->
+<!--  </div>-->
 </section>
 
 <section class="content">
@@ -13,19 +16,19 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Giao dịch</h3>
-          </div>
+<!--          <div class="card-header">-->
+<!--            <h3 class="card-title">Giao dịch</h3>-->
+<!--          </div>-->
           <form [formGroup]="transactionForm" (ngSubmit)="createTransaction()">
             <div class="card-body">
               <div class="row">
-                <div class="col-3">
+                <div class="col-4">
                   <div class="form-group">
                     <div class="col-12">
                       <label for="wallet">Ví</label>
                       <div class="input-group">
                         <select class="form-control" id="wallet" formControlName="wallet">
-                          <option [value]="null" disabled>Chọn ví</option>
+                          <option [value]="null" disabled selected>Chọn ví</option>
                           <ng-container *ngFor="let wallet of wallet">
                             <option [value]="wallet.id">{{wallet.name}}</option>
                           </ng-container>
@@ -51,7 +54,7 @@
                           </ng-container>
                         </select>
                         <div class="input-group-append">
-                          <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}">Thêm danh mục</a>
+                          <a class="btn btn-outline-success" routerLink="/category/create/{{idUser}}"><i class="fa fa-plus"></i></a>
                         </div>
                       </div>
                       <div *ngIf="categoryControl.touched && categoryControl.invalid">
@@ -64,7 +67,7 @@
                   </div>
 
                 </div>
-                <div class="col-5">
+                <div class="col-4">
                   <label for="amount">Giá</label>
                   <input class="form-control" type="number" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
                   <div *ngIf="amountControl.touched && amountControl.invalid">
@@ -78,7 +81,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-5">
+                <div class="col-4">
                   <label for="date">Ngày giao dịch</label><br>
                   <input class="form-control" type="date" formControlName="date" id="date" placeholder="yyyy-mm-dd">
                   <div *ngIf="dateControl.touched && dateControl.invalid">
@@ -88,7 +91,7 @@
                   </div>
                 </div>
                 <br>
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Ghi chú</label>

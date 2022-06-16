@@ -21,7 +21,6 @@ export class WalletEditComponent implements OnInit {
   wallet: Wallet = {};
   moneyTypes: MoneyType[] = [];
   icons: Icon[] = [];
-  // idWallet: number;
   walletForm: FormGroup = new FormGroup({
     id: new FormControl(),
     icon: new FormControl(),

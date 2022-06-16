@@ -15,6 +15,7 @@ import {AuthencicationService} from '../../service/auth/authencication.service';
   styleUrls: ['./transaction-create.component.css']
 })
 export class TransactionCreateComponent implements OnInit {
+  date = new Date();
   idUser: number;
   categories: Category[] = [];
   wallet: Wallet[] = [];
@@ -63,6 +64,10 @@ export class TransactionCreateComponent implements OnInit {
     const data = this.transactionForm.value;
     console.log(data);
     console.log(data.category);
+    if (data.date == null) {
+      data.date = new Date();
+      console.log(data.date);
+    }
     data.category = {
       id: data.category
     };

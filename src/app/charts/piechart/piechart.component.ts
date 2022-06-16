@@ -6,6 +6,7 @@ import {WalletService} from '../../service/wallet/wallet.service';
 import {AuthencicationService} from '../../service/auth/authencication.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SweetAlertService} from '../../service/sweetAlert/sweet-alert.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-piechart',
@@ -22,9 +23,9 @@ export class PiechartComponent implements OnInit {
   soDu: number;
   Year = [];
   Month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  Name = ['Số dư ', 'tổng chi tiêu'];
+  Name = ['Số dư ', 'Tổng chi tiêu'];
   Money = [];
-  chart = [];
+  public chart: Chart;
   wallet: Wallet[] = [];
   YearMonth: FormGroup = new FormGroup({
     year: new FormControl(),
@@ -36,6 +37,7 @@ export class PiechartComponent implements OnInit {
     private walletService: WalletService,
     private authService: AuthencicationService,
     private sweetAlertService: SweetAlertService,
+    private router: Router
   ) {
     this.idUser = this.authService.currentUserValue.id;
   }
@@ -74,7 +76,11 @@ export class PiechartComponent implements OnInit {
     this.walletService.getInOut(this.walletControl.value, this.monthControl.value, this.yearControl.value).subscribe(list => {
       if (list.inFlow === 0 && list.outFlow === 0 ) {
         this.sweetAlertService.showNotification('error', 'Không có thu chi trong thời gian bạn chọn, vui lòng thử lại');
+        // tslint:disable-next-line:max-line-length
       } else {
+        // this.chart.destroy();
+        if (this.chart) {  this.chart.destroy(); }
+        this.Money = [];
         this.content = 'Biểu đồ thu chi';
         this.type = list.wallet.moneyType.name;
         this.month1 = 'Tổng thu tháng ' + list.year;
@@ -94,8 +100,8 @@ export class PiechartComponent implements OnInit {
                 data: this.Money,
                 borderColor: '#FFFFFF',
                 backgroundColor: [
-                  '#FFFF66',
-                  '#FF7F24',
+                  '#DE4A21',
+                  '#F7DF23',
                 ],
                 fill: true
               }
@@ -117,6 +123,7 @@ export class PiechartComponent implements OnInit {
         });
       }
     });
+    console.log(this.Money);
   }
 }
 

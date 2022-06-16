@@ -37,7 +37,7 @@ export class WalletService {
   }
   getInOut(idWallet, month, year): Observable<InOut> {
     // @ts-ignore
-    return this.http.post<InOut>(`${API_URL}/wallet/inOut/${idWallet}?month=${month}&year=${year}`);
+    return this.http.get<InOut>(`${API_URL}/wallet/inOut/${idWallet}?month=${month}&year=${year}`);
   }
   getSumMoney(id): Observable<SumMoney[]> {
     return this.http.get<SumMoney[]>(`${API_URL}/wallet/sumMoney/${id}`);

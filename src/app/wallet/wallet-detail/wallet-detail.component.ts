@@ -11,6 +11,7 @@ import {SumMoney} from '../../model/sum-money';
   styleUrls: ['./wallet-detail.component.css']
 })
 export class WalletDetailComponent implements OnInit {
+  // check : boolean;
   wallet: Wallet = {};
   idWallet: number;
   idUser: number;
@@ -28,6 +29,12 @@ export class WalletDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getWalletById();
+    // this.getWalletById(this.id);
+    // if (this.wallet.user.id == this.idUser) {
+    //   this.check = true;
+    // } else {
+    //   this.check= false;
+    // }
   }
   getWalletById() {
      this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {

@@ -13,6 +13,7 @@ import Swal from "sweetalert2";
   styleUrls: ['./share-create.component.css']
 })
 export class ShareCreateComponent implements OnInit {
+  select: string= "Chọn ví";
   userId: number = 0;
   checkMail = false;
   wallets: Wallet[] = [];
