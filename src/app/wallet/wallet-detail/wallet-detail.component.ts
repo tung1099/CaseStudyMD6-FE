@@ -29,20 +29,18 @@ export class WalletDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getWalletById();
-    console.log(this.check)
+    console.log(this.check);
   }
   getWalletById() {
      this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
       this.wallet = wallet;
-       if (this.idUser == this.wallet.user.id) {
+       if (this.idUser === this.wallet.user.id) {
          this.check = true;
        } else {
          this.check = false;
        }
     }, error => () => {
        this.router.navigate(['/wallet/list', this.idUser]);
-     }
-  );
+     });
   }
-
 }

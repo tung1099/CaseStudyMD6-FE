@@ -8,28 +8,17 @@
       </div>
       <div class="modal-body">
         <form [formGroup]="shareForm" (ngSubmit)="share()">
-          <select class="form-control"  formControlName="wallet">
-            <option [value]="null" selected >chon vi</option>
-            <ng-container *ngFor="let wallet of wallets">
-              <option [value]="wallet.id">{{wallet.name}}</option>
-            </ng-container>
-          </select>
-          <div>
-            <span style="color: red" role="alert" *ngIf="(shareForm.controls.wallet?.touched || submitted) && shareForm.controls.wallet?.errors?.required">Vui lòng chọn ví</span>
-          </div>
           <input class="form-control" (change)="usernameCheck($event)" type="text" formControlName="user" placeholder="Nhập gmail">
-
           <div>
             <span style="color: red" role="alert" role="alert" *ngIf="(shareForm.controls.user?.touched || submitted) && !checkUser">Tên đăng nhập không tồn tại</span>
           </div>
-          <button type="submit">gui</button>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Gửi</button>
+          </div>
         </form>
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -39,9 +28,9 @@
       <div class="col-sm-6">
         <h1>Ví của tôi</h1>
       </div>
-      <h5 class="mb-2">
-        <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Chia sẻ</a>
-      </h5>
+<!--      <h5 class="mb-2">-->
+<!--        <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Chia sẻ</a>-->
+<!--      </h5>-->
 
     </div>
   </div><!-- /.container-fluid -->
@@ -50,9 +39,14 @@
 <!-- Main content -->
 <section class="content">
   <div class="container-fluid">
-    <h5 class="mb-2">
-      <a routerLink="/wallet/create" class="btn btn-success">Tạo ví mới</a>
-    </h5>
+    <div class="row">
+      <div class="col-6">
+        <h5 class="mb-2">
+          <a routerLink="/wallet/create" class="btn btn-success">Tạo ví mới</a>
+        </h5>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
         <div class="info-box" >
@@ -60,7 +54,16 @@
           <div class="info-box-content">
             <span class="info-box-text">{{wallet.name}}</span>
             <span class="info-box-number">Số dư: {{wallet.balance | number}} {{wallet.moneyType.name}}</span>
-            <button type="button" class="btn btn-outline-warning"  routerLink="/money/add/{{wallet.id}}">Nạp tiền</button>
+            <div class="row">
+              <div class="info-box-content">
+                <button type="button" class="btn btn-outline-warning"   data-bs-toggle="modal" data-bs-target="#addMoney" (click)="findWalletId(wallet.id)">Nạp tiền</button>
+              </div>
+              <div class="info-box-content">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" (click)="findWalletId(wallet.id)"><i class="fa fa-share"></i></a>
+              </div>
+            </div>
+
+
           </div>
           <!-- /.info-box-content -->
         </div>
@@ -90,6 +93,43 @@
   </div>
   <!-- /.info-box -->
 </div>
+
+
+<div class="modal fade" id="addMoney" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sdf">Nạp tiền</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="addMoneyForm" (ngSubmit)="addMoney()">
+          <div class="form-group; col-12">
+            <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" formControlName="money" placeholder="Nhập số tiền">
+            <div *ngIf="addMoneyForm.touched && addMoneyForm.invalid">
+              <p style="color: red" *ngIf="moneyControl.errors?.required">
+                Không được để trống
+              </p>
+              <p style="color: red" *ngIf="moneyControl.errors?.pattern">
+                Vui lòng chỉ nhập số.
+              </p>
+            </div>
+          </div>
+          <br>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-success" data-bs-dismiss="modal"
+            >Nạp</button>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
 
 
 <!-- /.col -->

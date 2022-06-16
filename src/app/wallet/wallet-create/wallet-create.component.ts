@@ -25,7 +25,7 @@ export class WalletCreateComponent implements OnInit {
     icon: new FormControl(),
     name: new FormControl('', [Validators.required]),
     total: new FormControl('', [Validators.required, Validators.pattern(/^\d*$/)]),
-    note: new FormControl(),
+    note: new FormControl(''),
     moneyType: new FormControl('', [Validators.required]),
   });
 

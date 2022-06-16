@@ -16,6 +16,10 @@ const routes: Routes = [
     component: WalletListComponent
   },
   {
+    path: 'addMoney',
+    component: WalletListComponent
+  },
+  {
     path: 'create',
     component: WalletCreateComponent
   },
