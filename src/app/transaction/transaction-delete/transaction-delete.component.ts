@@ -48,7 +48,7 @@ export class TransactionDeleteComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.transactionService.delete(id).subscribe(() => {
-          this.router.navigate(['/transaction/listTransaction', this.idUser]);
+          this.router.navigate(['/transaction/listTransactionInTimeByIdWallet', this.idUser]);
         });
         swalWithBootstrapButtons.fire(
           'Đã xóa!',

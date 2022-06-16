@@ -13,11 +13,6 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./user-info-edit.component.css']
 })
 export class UserInfoEditComponent implements OnInit {
-  id: number;
-  userInfo: UserInfo = {};
-  selectFile: File;
-  imageLink;
-  userInfoForm: FormGroup;
   constructor(
     private router: Router,
     private userInfoService: UserInfoService,
@@ -27,6 +22,14 @@ export class UserInfoEditComponent implements OnInit {
     this.id = this.authentication.currentUserValue.id;
     this.findByUserId(this.id);
   }
+  id: number;
+  userInfo: UserInfo = {};
+  selectFile: File;
+  imageLink;
+  userInfoForm: FormGroup;
+  avatarForm: FormGroup = new FormGroup({
+    avatar: new FormControl('')
+  });
 
   ngOnInit() {
 
@@ -59,12 +62,8 @@ export class UserInfoEditComponent implements OnInit {
         title: 'Thành công!',
         showConfirmButton: false,
         timer: 1500});
-
     });
   }
-  avatarForm: FormGroup = new FormGroup({
-    avatar: new FormControl('')
-  });
   onFileSelect($event) {
     if ($event.target.files.length > 0) {
       this.selectFile = $event.target.files[0];
@@ -76,7 +75,6 @@ export class UserInfoEditComponent implements OnInit {
     const formData =  new FormData();
     formData.append('avatar', this.selectFile);
     this.userInfoService.setAvatar(this.id, formData).subscribe(() => {
-      this.router.navigate(['profile']);
       Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -84,5 +82,6 @@ export class UserInfoEditComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500});
     });
+    this.router.navigate(['profile']);
   }
 }
