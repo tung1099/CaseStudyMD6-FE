@@ -1,40 +1,40 @@
 
 
-<!-- Modal -->
-<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--  <div class="modal-dialog">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h5 class="modal-title" id="exampleModalLabel">Chia sẻ ví </h5>-->
-<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <form [formGroup]="shareForm" (ngSubmit)="share()">-->
-<!--          <select class="form-control"  formControlName="wallet">-->
-<!--            <option [value]="null" selected >chon vi</option>-->
-<!--            <ng-container *ngFor="let wallet of wallets">-->
-<!--              <option [value]="wallet.id">{{wallet.name}}</option>-->
-<!--            </ng-container>-->
-<!--          </select>-->
-<!--          <div>-->
-<!--            <span style="color: red" role="alert" *ngIf="(shareForm.controls.wallet?.touched || submitted) && shareForm.controls.wallet?.errors?.required">Vui lòng chọn ví</span>-->
-<!--          </div>-->
-<!--          <input class="form-control" (change)="usernameCheck($event)" type="text" formControlName="user" placeholder="Nhập gmail">-->
+ Modal
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Chia sẻ ví </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="shareForm" (ngSubmit)="share()">
+          <select class="form-control"  formControlName="wallet">
+            <option [value]="null" selected >chon vi</option>
+            <ng-container *ngFor="let wallet of wallets">
+              <option [value]="wallet.id">{{wallet.name}}</option>
+            </ng-container>
+          </select>
+          <div>
+            <span style="color: red" role="alert" *ngIf="(shareForm.controls.wallet?.touched || submitted) && shareForm.controls.wallet?.errors?.required">Vui lòng chọn ví</span>
+          </div>
+          <input class="form-control" (change)="usernameCheck($event)" type="text" formControlName="user" placeholder="Nhập gmail">
 
-<!--          <div>-->
-<!--            <span style="color: red" role="alert" role="alert" *ngIf="(shareForm.controls.user?.touched || submitted) && !checkUser">Tên đăng nhập không tồn tại</span>-->
-<!--          </div>-->
-<!--          <button type="submit">gui</button>-->
-<!--        </form>-->
+          <div>
+            <span style="color: red" role="alert" role="alert" *ngIf="(shareForm.controls.user?.touched || submitted) && !checkUser">Tên đăng nhập không tồn tại</span>
+          </div>
+          <button type="submit">gui</button>
+        </form>
 
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-<!--        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
