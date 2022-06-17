@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 style="text-align: center">Chi tiết ví {{wallet.name}}</h1>
+        <h1>Chi tiết ví {{wallet.name}}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -21,26 +21,24 @@
 </section>
 
 <div class="container">
-
-
   <div class="mb-3">
-    <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'dd/MM/yyy'}}</p>
+    <p>&nbsp;&nbsp;<span style="font-weight: bold">Ngày tạo ví :</span>&nbsp;&nbsp;{{wallet.date | date:'dd/MM/yyy'}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
+    <p>&nbsp;&nbsp;<span style="font-weight: bold">Loại tiền :</span>&nbsp;&nbsp;{{wallet.moneyType.name}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total | number}}</p>
+    <p>&nbsp;&nbsp;<span style="font-weight: bold">Tổng nạp :</span>&nbsp;&nbsp;{{wallet.total | number}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance | number}}</p>
+    <p>&nbsp;&nbsp;<span style="font-weight: bold">Số dư :</span>&nbsp;&nbsp;{{wallet.balance | number}}</p>
     <hr>
   </div>
   <div class="mb-3">
-    <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
+    <p>&nbsp;&nbsp;<span style="font-weight: bold">Ghi chú :</span>&nbsp;&nbsp;{{wallet.note}}</p>
     <hr>
   </div>
 

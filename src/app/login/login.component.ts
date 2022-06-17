@@ -19,17 +19,15 @@ export class LoginComponent implements OnInit {
   constructor(private authenticationService: AuthencicationService,
               private sweetAlertService: SweetAlertService,
               private router: Router) { }
-
   ngOnInit() {
   }
 
   login() {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe(() => {
-      // this.sweetAlertService.showNotification('success', 'Đăng nhập thành công !!!');
-      this.router.navigate(['wallet/list/{id}']);
+      this.sweetAlertService.showNotification('success', 'Đăng nhập thành công !!!');
+      this.router.navigate(['wallet/list']);
     }, () => {
       this.sweetAlertService.showNotification('error', 'Đăng nhập thất bại !!!');
     });
   }
-
 }
