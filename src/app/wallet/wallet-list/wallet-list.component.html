@@ -1,4 +1,88 @@
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="card-title; text-center">Ví của tôi</h3>
+            </div>
+          </div>
+          <!--    <div class="row mb-2">-->
+          <!--      <div class="col-sm-6">-->
+          <!--        <h1>Ví của tôi</h1>-->
+          <!--      </div>-->
+          <!--&lt;!&ndash;      <h5 class="mb-2">&ndash;&gt;-->
+          <!--&lt;!&ndash;        <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Chia sẻ</a>&ndash;&gt;-->
+          <!--&lt;!&ndash;      </h5>&ndash;&gt;-->
 
+          <!--    </div>-->
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              <h5 class="mb-2">
+                <a routerLink="/wallet/create" class="btn btn-success">Tạo ví mới</a>
+              </h5>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
+              <div class="info-box" >
+                <span class="info-box-icon bg-info"><a routerLink="/wallet/detail/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">{{wallet.name}}</span>
+                  <span class="info-box-number">Số dư: {{wallet.balance | number}} {{wallet.moneyType.name}}</span>
+                  <div class="row">
+                    <div class="info-box-content">
+                      <button type="button" class="btn btn-outline-warning"   data-bs-toggle="modal" data-bs-target="#addMoney" (click)="findWalletId(wallet.id)">Nạp tiền</button>
+                    </div>
+                    <div class="info-box-content">
+                      <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" (click)="findWalletId(wallet.id)"><i class="fa fa-share"></i></a>
+                    </div>
+                  </div>
+
+
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+          </div>
+        </div>
+      </section>
+
+      <hr>
+
+      <div class="col d-flex justify-content-center">
+        <div class="col-12 col-sm-6 col-md-5">
+          <div class="info-box mb-3">
+            <span class="info-box-number bg-warning elevation-1"><img src="	https://static.moneylover.me/img/icon/icon_56.png"></span>
+            <div class="info-box-content ">
+              <span class="info-box-text">Tổng các loại tiền</span>
+              <span>
+          <ul *ngFor="let s of sumMoneys">
+          <li><span style="font-weight: bold">Tiền {{s.moneyType}}: </span>{{s.balance | number}}</li>
+        </ul>
+        </span>
+            </div>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+      </div>
+    </div>
+  </div>
+
+<!--</div>-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -22,77 +106,7 @@
     </div>
   </div>
 </div>
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Ví của tôi</h1>
-      </div>
-<!--      <h5 class="mb-2">-->
-<!--        <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success">Chia sẻ</a>-->
-<!--      </h5>-->
 
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
-
-<!-- Main content -->
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-6">
-        <h5 class="mb-2">
-          <a routerLink="/wallet/create" class="btn btn-success">Tạo ví mới</a>
-        </h5>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-4 col-sm-6 col-12" *ngFor="let wallet of wallets" >
-        <div class="info-box" >
-          <span class="info-box-icon bg-info"><a routerLink="/wallet/detail/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
-          <div class="info-box-content">
-            <span class="info-box-text">{{wallet.name}}</span>
-            <span class="info-box-number">Số dư: {{wallet.balance | number}} {{wallet.moneyType.name}}</span>
-            <div class="row">
-              <div class="info-box-content">
-                <button type="button" class="btn btn-outline-warning"   data-bs-toggle="modal" data-bs-target="#addMoney" (click)="findWalletId(wallet.id)">Nạp tiền</button>
-              </div>
-              <div class="info-box-content">
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" (click)="findWalletId(wallet.id)"><i class="fa fa-share"></i></a>
-              </div>
-            </div>
-
-
-          </div>
-          <!-- /.info-box-content -->
-        </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-    </div>
-  </div>
-</section>
-
-<hr>
-
-<div class="col d-flex justify-content-center">
-  <div class="col-12 col-sm-6 col-md-5">
-    <div class="info-box mb-3">
-      <span class="info-box-number bg-warning elevation-1"><img src="	https://static.moneylover.me/img/icon/icon_56.png"></span>
-      <div class="info-box-content ">
-        <span class="info-box-text">Tổng các loại tiền</span>
-        <span>
-          <ul *ngFor="let s of sumMoneys">
-          <li><span style="font-weight: bold">Tiền {{s.moneyType}}: </span>{{s.balance | number}}</li>
-        </ul>
-        </span>
-      </div>
-    </div>
-    <!-- /.info-box-content -->
-  </div>
-  <!-- /.info-box -->
-</div>
 
 
 <div class="modal fade" id="addMoney" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -5,6 +5,7 @@ import { AddMoneyRoutingModule } from './add-money-routing.module';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { AddMoneyInTimeByWalletComponent } from './add-money-in-time-by-wallet/add-money-in-time-by-wallet.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AddMoneyInTimeByWalletComponent } from './add-money-in-time-by-wallet/a
     imports: [
         CommonModule,
         AddMoneyRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule
     ]
 })
 export class AddMoneyModule { }

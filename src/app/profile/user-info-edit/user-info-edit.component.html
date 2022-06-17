@@ -1,3 +1,32 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cập nhật ảnh đại diện</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="avatarForm" *ngIf="avatarForm" (ngSubmit)="setAvatar()">
+          <div style="text-align: center">
+            <img class="profile-user-img img-fluid img-circle"
+                 [src]="sanitizer.bypassSecurityTrustUrl(imageLink)"
+                 alt="User profile picture">
+            <br>
+            <label for="file-upload" class="custom-file-upload">
+              Tải ảnh lên
+            </label>
+            <input id="file-upload" type="file" (change)="onFileSelect($event)">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"  data-bs-dismiss="modal">Lưu</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Content Wrapper. Contains page content -->
 <div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
   <div class="wrapper">
     <app-nav-bar></app-nav-bar>
@@ -10,10 +39,10 @@
               <h1>Profile</h1>
             </div>
             <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <a class="btn btn-warning" routerLink="/profile-edit">Chỉnh sửa hồ sơ</a>
-                <!--              <a class="btn btn-warning" routerLink="/wallet/edit/{{wallet.id}}/{{idUser}}">Sửa ví</a>-->
-              </ol>
+              <!--            <ol class="breadcrumb float-sm-right">-->
+              <!--              <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+              <!--              <li class="breadcrumb-item active">User Profile</li>-->
+              <!--            </ol>-->
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -31,7 +60,7 @@
                   </div>
 
                   <h3 class="profile-username text-center">{{userInfo.name}}</h3>
-                  <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block"><b>Xem ảnh đại diện</b></a>
+                  <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary btn-block"><b>Thay đổi ảnh đại diện</b></a>
 
                 </div>
                 <!-- /.card-body -->
@@ -42,29 +71,34 @@
               <div class="card">
                 <div class="card-body">
                   <div class="tab-pane" id="settings">
-                    <form class="form-horizontal" [formGroup]="userInfoForm" *ngIf="userInfoForm">
+                    <form class="form-horizontal" [formGroup]="userInfoForm"  *ngIf="userInfoForm" (ngSubmit)="update()">
                       <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Tên</label>
+                        <label for="name" class="col-sm-2 col-form-label">Tên</label>
                         <div class="col-sm-10">
-                          <input   type="text" class="form-control" id="inputName" formControlName="name" disabled>
+                          <input  type="text" class="form-control" id="name" formControlName="name" >
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputEmail" class="col-sm-2 col-form-label">Số điện thoại</label>
                         <div class="col-sm-10">
-                          <input disabled type="text" class="form-control" id="inputEmail" formControlName="phoneNumber" placeholder="Email">
+                          <input  type="text" class="form-control" id="inputEmail" formControlName="phoneNumber">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputName2" class="col-sm-2 col-form-label">Ngày sinh</label>
                         <div class="col-sm-10">
-                          <input disabled type="text" class="form-control" id="inputName2" formControlName="birthDay" placeholder="Name">
+                          <input  type="text" class="form-control" id="inputName2" formControlName="birthDay" placeholder="Name">
                         </div>
                       </div>
                       <div class="form-group row">
                         <label for="inputExperience" class="col-sm-2 col-form-label">Địa chỉ</label>
                         <div class="col-sm-10">
-                          <textarea class="form-control" disabled id="inputExperience" formControlName="address" placeholder="Experience"></textarea>
+                          <textarea class="form-control"  id="inputExperience" formControlName="address" placeholder="Experience"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button type="submit" class="btn btn-primary">Lưu</button>
                         </div>
                       </div>
                     </form>
@@ -78,34 +112,9 @@
           </div>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
-      </section>    </div>
-  </div>
-</div>
-  <!-- Content Wrapper. Contains page content -->
-  <!-- Button trigger modal -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Xem ảnh đại diện</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="avatarForm">
-            <div style="text-align: center">
-              <img width="300"
-                   [src]="sanitizer.bypassSecurityTrustUrl(imageLink)"
-                   alt="User profile picture">
-            </div>
-          </form>
-        </div>
-
-      </div>
+      </section>
     </div>
   </div>
 
-    <!-- /.content -->
-
+</div>
 

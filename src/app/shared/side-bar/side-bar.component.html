@@ -15,10 +15,10 @@
     </div>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <span><a routerLink="profile"><img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image"></a></span>
+        <span><a routerLink="/profile"><img src="http://localhost:8080/image/{{userInfo.avatar}}" class="img-circle elevation-2" alt="User Image"></a></span>
       </div>
       <div class="info">
-        <a style="text-decoration: none" routerLink="profile" class="d-block">{{userInfo.name}}</a><a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+        <a style="text-decoration: none" routerLink="/profile" class="d-block">{{userInfo.name}}</a><a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
       </a>
       </div>
     </div>
@@ -64,7 +64,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a routerLink="charts/chart" class="nav-link active">
+          <a routerLink="/charts/chart" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
               Xem dưới dạng biểu đồ
@@ -89,7 +89,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a routerLink="profile" class="nav-link">
+              <a routerLink="/profile" class="nav-link">
                 <i class="fa fa-user"></i>
                 <p>
                   Tài khoản

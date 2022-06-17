@@ -11,6 +11,7 @@ import {SumMoney} from '../../model/sum-money';
   styleUrls: ['./wallet-detail.component.css']
 })
 export class WalletDetailComponent implements OnInit {
+  note = '';
   check: boolean = false;
   wallet: Wallet = {};
   idWallet: number;
@@ -33,6 +34,11 @@ export class WalletDetailComponent implements OnInit {
   }
   getWalletById() {
      this.walletService.getById(this.idUser, this.idWallet).subscribe((wallet) => {
+       if (this.wallet.note == null){
+         this.note = 'Không có ghi chú'
+       } else {
+         this.note = this.wallet.note
+       }
       this.wallet = wallet;
        if (this.idUser == this.wallet.user.id) {
          this.check = true;

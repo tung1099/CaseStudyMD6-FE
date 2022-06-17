@@ -1,78 +1,89 @@
-<form [formGroup]="dateForm" (ngSubmit)="getAddMoneyInTimeByIdWallet()">
-  <div class="card card-success">
-    <div class="card-header">
-      <h3 class="card-title; text-center">Tìm kiếm lịch sử nạp tiền</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col d-flex justify-content-center" >
-      <div class="form-group; col-3">
-        <label>Từ ngày:</label>
-        <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
-        <div *ngIf="date1Control.touched && date1Control.invalid">
-          <p style="color: red" *ngIf="date1Control.errors?.required">
-            Bạn chưa chọn ngày
-          </p>
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <form [formGroup]="dateForm" (ngSubmit)="getAddMoneyInTimeByIdWallet()">
+        <div class="card card-success">
+          <div class="card-header">
+            <h3 class="card-title; text-center">Tìm kiếm lịch sử nạp tiền</h3>
+          </div>
         </div>
-      </div>
-      <div class="form-group; col-3">
-        <label>Đến ngày:</label>
-        <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
-        <div *ngIf="date2Control.touched && date2Control.invalid">
-          <p style="color: red" *ngIf="date2Control.errors?.required">
-            Bạn chưa chọn ngày
-          </p>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="form-group">
-          <label>Chọn ví</label>
-          <div class="input-group">
-
-            <select class="form-control" id="category" formControlName="wallet">
-              <option [value]="null" disabled>Chọn ví</option>
-              <ng-container *ngFor="let w of wallet">
-                <option [value]="w.id">{{w.name}}</option>
-              </ng-container>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+        <div class="row">
+          <div class="col d-flex justify-content-center" >
+            <div class="form-group; col-3">
+              <label>Từ ngày:</label>
+              <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date1">
+              <div *ngIf="date1Control.touched && date1Control.invalid">
+                <p style="color: red" *ngIf="date1Control.errors?.required">
+                  Bạn chưa chọn ngày
+                </p>
+              </div>
             </div>
+            <div class="form-group; col-3">
+              <label>Đến ngày:</label>
+              <input type="date" class="form-control datetimepicker-input" data-target="#reservationdate" formControlName="date2">
+              <div *ngIf="date2Control.touched && date2Control.invalid">
+                <p style="color: red" *ngIf="date2Control.errors?.required">
+                  Bạn chưa chọn ngày
+                </p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label>Chọn ví</label>
+                <div class="input-group">
 
-          </div>
-          <div *ngIf="walletControl.touched && walletControl.invalid">
-            <p style="color: red" *ngIf="walletControl.errors?.required">
-              Bạn chưa chọn ví
-            </p>
+                  <select class="form-control" id="category" formControlName="wallet">
+                    <option [value]="null" disabled>Chọn ví</option>
+                    <ng-container *ngFor="let w of wallet">
+                      <option [value]="w.id">{{w.name}}</option>
+                    </ng-container>
+                  </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-search-plus"></i> Tìm kiếm</button>
+                  </div>
+
+                </div>
+                <div *ngIf="walletControl.touched && walletControl.invalid">
+                  <p style="color: red" *ngIf="walletControl.errors?.required">
+                    Bạn chưa chọn ví
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+
+
+        <div class="card-body">
+          <p style="color: red; text-align: center">{{content}}</p>
+          <table id="addMoney" class="table table-bordered table-hover">
+            <thead>
+            <tr>
+              <th style="text-align:center">{{t1}}</th>
+              <th style="text-align:center">{{t4}}</th>
+              <th style="text-align:center">{{t2}}</th>
+              <th style="text-align:center">{{t3}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let a of addMoneys; index as i">
+              <td style="text-align:center">{{i+1}}</td>
+              <td style="text-align:center">{{a.wallet.name}}</td>
+              <td style="text-align:center">{{a.date | date : 'dd/MM/yyy'}}</td>
+              <td style="text-align:center">{{a.money}}{{a.wallet.moneyType.name}} </td>
+            </tr>
+          </table>
+          <div>
+          </div>
+          <button type="button" class="btn btn-success breadcrumb float-sm-right" (click)="exportexcel()">{{buttonSubmit}}</button>
+        </div>
+
+      </form>
+
     </div>
   </div>
 
-
-  <div class="card-body">
-    <p style="color: red; text-align: center">{{content}}</p>
-    <table id="addMoney" class="table table-bordered table-hover">
-      <thead>
-      <tr>
-        <th style="text-align:center">{{t1}}</th>
-        <th style="text-align:center">{{t2}}</th>
-        <th style="text-align:center">{{t3}}</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let a of addMoneys; index as i">
-        <td style="text-align:center">{{i+1}}</td>
-        <td style="text-align:center">{{a.date | date : 'dd/MM/yyy'}}</td>
-        <td style="text-align:center">{{a.money}}{{a.wallet.moneyType.name}} </td>
-      </tr>
-    </table>
-    <div>
-    </div>
-    <button type="button" class="btn btn-success breadcrumb float-sm-right" (click)="exportexcel()">{{buttonSubmit}}</button>
-  </div>
-
-</form>
-
+</div>
 

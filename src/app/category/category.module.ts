@@ -7,6 +7,7 @@ import { CategoryCreateComponent } from './category-create/category-create.compo
 import { CategoryEditComponent } from './category-edit/category-edit.component';
 import { CategoryDeleteComponent } from './category-delete/category-delete.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         CategoryRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        SharedModule
     ]
 })
 export class CategoryModule { }

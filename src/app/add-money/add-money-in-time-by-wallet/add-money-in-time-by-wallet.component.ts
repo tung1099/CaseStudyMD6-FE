@@ -21,6 +21,7 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
   t1 = '';
   t2 = '';
   t3 = '';
+  t4 = '';
   buttonSubmit = '';
   fileName = 'Bao cao thu.xlsx';
   idUser: number;
@@ -61,12 +62,14 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
         this.t1 = '';
         this.t2 = '';
         this.t3 = '';
+        this.t4 = '';
         this.buttonSubmit = '';
       } else {
         this.content = '';
         this.t1 = 'STT';
         this.t2 = 'Ngày nạp tiền';
         this.t3 = 'Số tiền nạp';
+        this.t4 = 'Ví';
         this.buttonSubmit = 'Xuất File Excel';
       }
       });
@@ -84,12 +87,14 @@ export class AddMoneyInTimeByWalletComponent implements OnInit {
         this.t1 = '';
         this.t2 = '';
         this.t3 = '';
+        this.t4 = '';
         this.buttonSubmit = '';
       } else {
         this.content = '';
         this.t1 = 'STT';
         this.t2 = 'Ngày nạp tiền';
         this.t3 = 'Số tiền nạp';
+        this.t4 = 'Ví';
         this.buttonSubmit = 'Xuất File Excel';
       }
     });

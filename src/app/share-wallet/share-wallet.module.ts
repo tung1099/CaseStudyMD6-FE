@@ -6,14 +6,16 @@ import { ShareListComponent } from './share-list/share-list.component';
 import { ShareCreateComponent } from './share-create/share-create.component';
 import { ShareDeleteComponent } from './share-delete/share-delete.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
   declarations: [ShareListComponent, ShareCreateComponent, ShareDeleteComponent],
-  imports: [
-    CommonModule,
-    ShareWalletRoutingModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        ShareWalletRoutingModule,
+        ReactiveFormsModule,
+        SharedModule
+    ]
 })
 export class ShareWalletModule { }

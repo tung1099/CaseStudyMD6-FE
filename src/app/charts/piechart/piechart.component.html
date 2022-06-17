@@ -1,97 +1,107 @@
-<div class="card card-success">
-  <div class="card-header">
-    <h3 class="card-title; text-center">Biểu đồ</h3>
-  </div>
-</div>
-<div class="row">
-  <div class="col-6">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="col-md-12">
-              <div class="card card-success">
-                <form [formGroup]="YearMonth" (ngSubmit)="getInOut()">
-                  <div class="card-body">
 
-                    <div class="col-12">
-                      <label>Tháng</label><br>
-                      <div class="input-group">
-                        <select class="form-control" id="month" formControlName="month">
-                          <option [value]="null" disabled>Chọn tháng</option>
-                          <ng-container *ngFor="let m of Month; index as i">
-                            <option [value]="i+1">Tháng {{m}}</option>
-                          </ng-container>
-                        </select>
-                      </div>
-                    </div>
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title; text-center">Biểu đồ</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="col-md-12">
+                    <div class="card card-success">
+                      <form [formGroup]="YearMonth" (ngSubmit)="getInOut()">
+                        <div class="card-body">
 
-                    <div class="col-12">
-                      <div class="form-group">
-                        <label>Năm</label>
-                        <div class="input-group">
-                          <select class="form-control" id="year" formControlName="year">
-                            <option [value]="null" disabled>Chọn năm</option>
-                            <ng-container *ngFor="let m of Year; index as i">
-                              <option [value]="i+2022">{{m}}</option>
-                            </ng-container>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-group">
-                        <div class="col-12">
-                          <label for="wallet">Ví</label>
-                          <div class="input-group">
-                            <select class="form-control" id="wallet" formControlName="wallet">
-                              <option [value]="null" disabled>Chọn ví</option>
-                              <ng-container *ngFor="let wallet of wallet">
-                                <option [value]="wallet.id">{{wallet.name}} ({{wallet.moneyType.name}})</option>
-                              </ng-container>
-                            </select>
+                          <div class="col-12">
+                            <label>Tháng</label><br>
+                            <div class="input-group">
+                              <select class="form-control" id="month" formControlName="month">
+                                <option [value]="null" disabled>Chọn tháng</option>
+                                <ng-container *ngFor="let m of Month; index as i">
+                                  <option [value]="i+1">Tháng {{m}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="col-12">
+                            <div class="form-group">
+                              <label>Năm</label>
+                              <div class="input-group">
+                                <select class="form-control" id="year" formControlName="year">
+                                  <option [value]="null" disabled>Chọn năm</option>
+                                  <ng-container *ngFor="let m of Year; index as i">
+                                    <option [value]="i+2022">{{m}}</option>
+                                  </ng-container>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12">
+                            <div class="form-group">
+                              <div class="col-12">
+                                <label for="wallet">Ví</label>
+                                <div class="input-group">
+                                  <select class="form-control" id="wallet" formControlName="wallet">
+                                    <option [value]="null" disabled>Chọn ví</option>
+                                    <ng-container *ngFor="let wallet of wallet">
+                                      <option [value]="wallet.id">{{wallet.name}} ({{wallet.moneyType.name}})</option>
+                                    </ng-container>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <div class="row">
                           </div>
                         </div>
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </section>
+        </div>
+        <div class="col-6">
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="wrapper">
+                    <div class="col d-flex justify-content-center">
+                      <div class="chart-container" style="position: relative; height:50vh; width:20vw"  >
+                        <canvas id="canvas"></canvas>
+                        <br>
+                        <p style="text-align:center">{{month1}} {{year1}}<br>{{soDu | number}} {{type}}</p>
                       </div>
 
                     </div>
-                    <div class="row">
-                    </div>
                   </div>
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-  </div>
-  <div class="col-6">
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="wrapper">
-              <div class="col d-flex justify-content-center">
-                <div class="chart-container" style="position: relative; height:50vh; width:20vw"  >
-                  <canvas id="canvas"></canvas>
-                  <br>
-                  <p style="text-align:center">{{month1}} {{year1}}<br>{{soDu | number}} {{type}}</p>
                 </div>
 
               </div>
-            </div>
-          </div>
-
+              <!-- /.row -->
+            </div><!-- /.container-fluid -->
+          </section>
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+      </div>
+    </div>
   </div>
+
 </div>
 
 

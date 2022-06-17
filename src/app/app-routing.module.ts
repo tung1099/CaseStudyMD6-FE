@@ -42,14 +42,7 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-  {
-    path: 'profile',
-    component: UserInfoComponent
-  },
-  {
-    path: 'profile-edit',
-    component: UserInfoEditComponent
-  },
+
   {
     path: 'repass',
     component: ChangePasswordComponent
@@ -65,7 +58,15 @@ const routes: Routes = [
   {
     path: 'charts',
     loadChildren: () => import('./charts/charts.module').then(module => module.ChartsModule)
-  }
+  },
+  {
+    path: 'profile',
+    component: UserInfoComponent
+  },
+  {
+    path: 'profile-edit',
+    component: UserInfoEditComponent
+  },
 ];
 
 @NgModule({

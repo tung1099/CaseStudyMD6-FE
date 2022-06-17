@@ -1,50 +1,59 @@
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 style="text-align:center">
-              Tất cả chi tiêu hôm nay {{today | date:'dd-MM-yyyy'}}
-            </h3>
-          </div>
-          <div class="card-body">
-            <p style="text-align:center">{{content}}</p>
-            <table id="transaction" class="table table-bordered table-hover">
-              <thead>
-              <tr>
-                <th style="text-align:center">{{stt}}</th>
-                <th style="text-align:center">{{category}}</th>
-                <th style="text-align:center">{{amount | number}}</th>
-                <th style="text-align:center">{{wallet}}</th>
-                <th style="text-align:center">{{note}}</th>
-                <th style="text-align:center">{{edit}}</th>
-                <th style="text-align:center">{{delete}}</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let transaction of transaction; index as i">
-                <td style="text-align:center">{{i+1}}</td>
-                <td style="text-align:center">{{transaction.category.name}}</td>
-                <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
-                <td style="text-align:center">{{transaction.wallet.name}}</td>
-                <td style="text-align:center">{{transaction.note}}</td>
-                <td style="text-align:center">
-                  <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
-                    <span class="fas fa-edit"></span>
-                  </a>
-                </td>
-                <td style="text-align:center">
-                  <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
-                    <span class="fas fa-trash"></span>
-                  </a>
-                </td>
-              </tr>
-            </table>
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 style="text-align:center">
+                    Tất cả chi tiêu hôm nay {{today | date:'dd-MM-yyyy'}}
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <p style="text-align:center">{{content}}</p>
+                  <table id="transaction" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th style="text-align:center">{{stt}}</th>
+                      <th style="text-align:center">{{category}}</th>
+                      <th style="text-align:center">{{amount | number}}</th>
+                      <th style="text-align:center">{{wallet}}</th>
+                      <th style="text-align:center">{{note}}</th>
+                      <th style="text-align:center">{{edit}}</th>
+                      <th style="text-align:center">{{delete}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let transaction of transaction; index as i">
+                      <td style="text-align:center">{{i+1}}</td>
+                      <td style="text-align:center">{{transaction.category.name}}</td>
+                      <td style="text-align:center">{{transaction.amount}} {{transaction.wallet.moneyType.name}}</td>
+                      <td style="text-align:center">{{transaction.wallet.name}}</td>
+                      <td style="text-align:center">{{transaction.note}}</td>
+                      <td style="text-align:center">
+                        <a class="btn btn-warning" routerLink="/transaction/editTransaction/{{transaction.id}}">
+                          <span class="fas fa-edit"></span>
+                        </a>
+                      </td>
+                      <td style="text-align:center">
+                        <a class="btn btn-danger" routerLink="/transaction/deleteTransaction/{{transaction.id}}">
+                          <span class="fas fa-trash"></span>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </div>
-</section>
+
+</div>
 

@@ -28,6 +28,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { UserInfoEditComponent } from './userInfo/user-info-edit/user-info-edit.component';
 import {HomeComponent} from './home/home.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

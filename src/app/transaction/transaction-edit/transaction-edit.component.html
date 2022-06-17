@@ -1,80 +1,91 @@
 
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Chỉnh sửa giao dịch</h1>
-      </div>
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
 
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-success">
-          <div class="card-header">
-            <h3 class="card-title">Giao dịch</h3>
+
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Chỉnh sửa giao dịch</h1>
+            </div>
           </div>
-          <form [formGroup]="transactionForm" (ngSubmit)="update()">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-3">
-                  <label for="wallet">Ví</label>
-                  <select class="form-control" id="wallet" formControlName="wallet">
-                    <ng-container *ngFor="let wallet of wallet">
-                      <option [value]="wallet.id">{{wallet.name}}</option>
-                    </ng-container>
-                  </select>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-success">
+                <div class="card-header">
+                  <h3 class="card-title">Giao dịch</h3>
                 </div>
-                <div class="col-4">
-                  <div class="form-group">
-                    <label for="category">Thể loại tiêu dùng</label>
-                    <select class="form-control" id="category" formControlName="category">
-                      <ng-container *ngFor="let category of categories">
-                        <option [value]="category.id">{{category.name}}</option>
-                      </ng-container>
-                    </select>
+                <form [formGroup]="transactionForm" (ngSubmit)="update()">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-3">
+                        <label for="wallet">Ví</label>
+                        <select class="form-control" id="wallet" formControlName="wallet">
+                          <ng-container *ngFor="let wallet of wallet">
+                            <option [value]="wallet.id">{{wallet.name}}</option>
+                          </ng-container>
+                        </select>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label for="category">Thể loại tiêu dùng</label>
+                          <select class="form-control" id="category" formControlName="category">
+                            <ng-container *ngFor="let category of categories">
+                              <option [value]="category.id">{{category.name}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+
+                      </div>
+                      <div class="col-5">
+                        <label for="amount">Giá</label>
+                        <input class="form-control" type="text" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-5">
+                        <label for="date">Ngày giao dịch</label><br>
+                        <input class="form-control" type="date" formControlName="date" id="date">
+                      </div>
+                      <br>
+
+                      <div class="col-sm-7">
+                        <!-- textarea -->
+                        <div class="form-group">
+                          <label>Ghi chú</label>
+                          <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
 
-                </div>
-                <div class="col-5">
-                  <label for="amount">Giá</label>
-                  <input class="form-control" type="text" formControlName="amount" id="amount" placeholder="Nhập giá tiền">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-5">
-                  <label for="date">Ngày giao dịch</label><br>
-                  <input class="form-control" type="date" formControlName="date" id="date">
-                </div>
-                <br>
-
-                <div class="col-sm-7">
-                  <!-- textarea -->
-                  <div class="form-group">
-                    <label>Ghi chú</label>
-                    <textarea type="text" formControlName="note" id="note" class="form-control" rows="3" placeholder="Nhập ghi chú"></textarea>
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-outline-success">Chỉnh sửa</button>
                   </div>
-                </div>
+                </form>
               </div>
 
+
             </div>
-
-            <div class="card-footer">
-              <button type="submit" class="btn btn-outline-success">Chỉnh sửa</button>
-            </div>
-          </form>
-        </div>
-
-
-      </div>
-      <!--/.col (left) -->
-      <!-- right column -->
-      <!--/.col (right) -->
+            <!--/.col (left) -->
+            <!-- right column -->
+            <!--/.col (right) -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
     </div>
-    <!-- /.row -->
-  </div><!-- /.container-fluid -->
-</section>
+  </div>
+
+</div>
 

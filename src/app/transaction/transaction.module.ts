@@ -13,6 +13,7 @@ import {TransactionRoutingModule} from './transaction-routing.module';
 import { TransacsionAllWalletComponent } from './transacsion-all-wallet/transacsion-all-wallet.component';
 import { TransactionInTimeComponent } from './transaction-in-time/transaction-in-time.component';
 import { TransactionInTimeByWalletComponent } from './transaction-in-time-by-wallet/transaction-in-time-by-wallet.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -21,9 +22,10 @@ import { TransactionInTimeByWalletComponent } from './transaction-in-time-by-wal
     imports: [
         CommonModule,
         TransactionRoutingModule,
-      FormsModule,
+        FormsModule,
         ReactiveFormsModule,
-      HttpClientModule
+        HttpClientModule,
+        SharedModule
     ]
 })
 export class TransactionModule { }

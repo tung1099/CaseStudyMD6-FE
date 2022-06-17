@@ -12,6 +12,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MoneytypeListComponent} from '../moneytype/moneytype-list/moneytype-list.component';
 import { SumMoneyComponent } from './sum-money/sum-money.component';
 import { HistoryAddMoneyComponent } from './history-add-money/history-add-money.component';
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -32,8 +33,9 @@ import { HistoryAddMoneyComponent } from './history-add-money/history-add-money.
         CommonModule,
         WalletRoutingModule,
         ReactiveFormsModule,
-      HttpClientModule,
-      FormsModule
+        HttpClientModule,
+        FormsModule,
+        SharedModule
     ]
 })
 export class WalletModule { }

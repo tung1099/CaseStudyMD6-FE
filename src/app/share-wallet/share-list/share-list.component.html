@@ -1,33 +1,42 @@
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1>Ví được chia sẻ của tôi</h1>
-      </div>
 
-    </div>
-  </div><!-- /.container-fluid -->
-</section>
 
-<!-- Main content -->
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3 col-sm-6 col-12" *ngFor="let wallet of wallets" >
-        <div class="info-box" >
-          <span class="info-box-icon bg-info"><a routerLink="/wallet/detail/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
-          <div class="info-box-content">
-            <span class="info-box-text">{{wallet.user.username}}</span>
-            <span class="info-box-text">{{wallet.name}}</span>
-            <span class="info-box-number">Số dư: {{wallet.balance}} {{wallet.moneyType.name}}</span>
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 style="text-align: center">Ví được chia sẻ của tôi</h3>
+            </div>
           </div>
-          <!-- /.info-box-content -->
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-12" *ngFor="let wallet of wallets" >
+              <div class="info-box" >
+                <span class="info-box-icon bg-info"><a routerLink="/wallet/detail/{{wallet.id}}"><img src="{{wallet.icon.linkIcon}}" style="width: 60px"></a></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">{{wallet.user.username}}</span>
+                  <span class="info-box-text">{{wallet.name}}</span>
+                  <span class="info-box-number">Số dư: {{wallet.balance}} {{wallet.moneyType.name}}</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+          </div>
         </div>
-        <!-- /.info-box -->
-      </div>
-      <!-- /.col -->
-    </div>
+      </section>    </div>
   </div>
-</section>
+
+</div>
 
 

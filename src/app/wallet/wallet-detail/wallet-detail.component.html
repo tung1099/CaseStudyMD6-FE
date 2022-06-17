@@ -1,58 +1,74 @@
-<section class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 style="text-align: center">Chi tiết ví {{wallet.name}}</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <ng-container *ngIf="check; else elseBlock">
-            <a class="btn btn-warning" *ngIf="check" routerLink="/wallet/edit/{{wallet.id}}">Chỉnh sửa</a> &nbsp;
-            <a class="btn btn-danger" *ngIf="check" routerLink="/wallet/delete/{{wallet.id}}" >Xóa</a>
-          </ng-container>
-          <ng-template #elseBlock>
+<div class="hold-transition sidebar-mini" xmlns:text-align="http://www.w3.org/1999/xhtml">
+  <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+    <app-side-bar></app-side-bar>
+    <div class="content-wrapper">
+      <section class="content-header">
+        <div class="container-fluid">
 
-          </ng-template>
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 style="text-align: center">Chi tiết ví {{wallet.name}}</h3>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 style="text-align: center"></h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <ng-container *ngIf="check; else elseBlock">
+                  <a class="btn btn-warning" *ngIf="check" routerLink="/wallet/edit/{{wallet.id}}">Chỉnh sửa</a> &nbsp;
+                  <a class="btn btn-danger" *ngIf="check" routerLink="/wallet/delete/{{wallet.id}}" >Xóa</a>
+                </ng-container>
+                <ng-template #elseBlock>
 
-        </ol>
+                </ng-template>
+
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <div class="container">
+
+
+        <div class="mb-3">
+          <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'dd/MM/yyy'}}</p>
+          <hr>
+        </div>
+        <div class="mb-3">
+          <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
+          <hr>
+        </div>
+        <div class="mb-3">
+          <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total | number}}</p>
+          <hr>
+        </div>
+        <div class="mb-3">
+          <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance | number}}</p>
+          <hr>
+        </div>
+        <div class="mb-3">
+          <p><span style="font-weight: bold">Ghi chú: </span>{{note}}</p>
+          <hr>
+        </div>
+
+        <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay</button>
+
+
+
+        &nbsp;
+        <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Lịch sử giao dịch</button>&nbsp;&nbsp;
+
+        <button type="button" class="btn btn-outline-success" routerLink="/wallet/addMoney/{{wallet.id}}">Lịch sử nạp tiền</button>
+
       </div>
     </div>
-  </div><!-- /.container-fluid -->
-</section>
-
-<div class="container">
-
-
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Ngày tạo ví: </span>{{wallet.date | date:'dd/MM/yyy'}}</p>
-    <hr>
   </div>
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Loại tiền: </span>{{wallet.moneyType.name}}</p>
-    <hr>
-  </div>
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Tổng nạp: </span>{{wallet.total | number}}</p>
-    <hr>
-  </div>
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Số dư: </span>{{wallet.balance | number}}</p>
-    <hr>
-  </div>
-  <div class="mb-3">
-    <p><span style="font-weight: bold">Ghi chú: </span>{{wallet.note}}</p>
-    <hr>
-  </div>
-
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionTodayByIdWallet/{{wallet.id}}">Giao dịch hôm nay</button>
-
-
-
-    &nbsp;
-    <button type="button" class="btn btn-outline-success" routerLink="/transaction/listTransactionByIdWallet/{{wallet.id}}">Lịch sử giao dịch</button>&nbsp;&nbsp;
-
-  <button type="button" class="btn btn-outline-success" routerLink="/wallet/addMoney/{{wallet.id}}">Lịch sử nạp tiền</button>
 
 </div>
+
 
 

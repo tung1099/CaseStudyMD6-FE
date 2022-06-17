@@ -45,8 +45,8 @@ export class WalletDeleteComponent implements OnInit {
           this.router.navigate(['/wallet/list']);
         });
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Đã xóa',
+          '',
           'success'
         );
       }

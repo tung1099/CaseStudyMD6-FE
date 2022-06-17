@@ -31,12 +31,17 @@ export class TransactionCreateComponent implements OnInit {
     wallet: new FormControl('', [Validators.required])
   });
 
+  categoryForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required])
+  });
+
   constructor(
     private categoryService: CategoryService,
     private sweetAlertService: SweetAlertService,
     private authService: AuthencicationService,
     private walletService: WalletService,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
+    private router: Router,
   ) {
     this.idUser = this.authService.currentUserValue.id;
   }
@@ -125,5 +130,22 @@ export class TransactionCreateComponent implements OnInit {
   }
   get walletControl() {
     return this.transactionForm.get('wallet');
+  }
+
+  createCategory() {
+    const category = this.categoryForm.value;
+    this.categoryService.saveCategory(this.idUser, category).subscribe(() => {
+      this.getAllCategory()
+        this.sweetAlertService.showNotification('success', 'Xong');
+        this.categoryForm.reset();
+      // this.router.navigate(['/category/list', this.idUser]);
+      // this.router.navigate(['/transaction/createTransaction']);
+      }, () => {
+        this.sweetAlertService.showNotification('error', 'Hmm... Đã có lỗi xảy ra');
+      }
+    );
+  }
+  get nameControl() {
+    return this.categoryForm.get('name');
   }
 }
